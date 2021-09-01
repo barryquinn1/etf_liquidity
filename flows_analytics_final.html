@@ -1,0 +1,1982 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { color: #20794d; } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #20794d; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+  <!--radix_placeholder_meta_tags-->
+  <title>Credit Easing and ETF Flows</title>
+  
+  
+  
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2021-09-01"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-09-01"/>
+  <meta name="article:author" content="Lisha Li"/>
+  <meta name="article:author" content="Barry Quinn"/>
+  <meta name="article:author" content="Lisa Sheenan"/>
+  
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="Credit Easing and ETF Flows"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:locale" content="en_US"/>
+  
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="Credit Easing and ETF Flows"/>
+  
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Credit Easing and ETF Flows"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Lisha Li"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Barry Quinn"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Lisa Sheenan"]}]}]},{"type":"character","attributes":{},"value":["2021-09-01"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","cold_folding"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["flows_analytics_final_files/anchor-4.2.2/anchor.min.js","flows_analytics_final_files/bowser-1.9.3/bowser.min.js","flows_analytics_final_files/distill-2.2.21/template.v2.js","flows_analytics_final_files/figure-html5/correlation-1.png","flows_analytics_final_files/figure-html5/EU-1.png","flows_analytics_final_files/figure-html5/EUimpulse-1.png","flows_analytics_final_files/figure-html5/irf-1.png","flows_analytics_final_files/figure-html5/plot-1.png","flows_analytics_final_files/figure-html5/Sonia-1.png","flows_analytics_final_files/figure-html5/unnamed-chunk-1-1.png","flows_analytics_final_files/figure-html5/US-1.png","flows_analytics_final_files/jquery-1.11.3/jquery.min.js","flows_analytics_final_files/popper-2.6.0/popper.min.js","flows_analytics_final_files/tippy-6.2.7/tippy-bundle.umd.min.js","flows_analytics_final_files/tippy-6.2.7/tippy-light-border.css","flows_analytics_final_files/tippy-6.2.7/tippy.css","flows_analytics_final_files/tippy-6.2.7/tippy.umd.min.js","flows_analytics_final_files/webcomponents-2.0.0/webcomponents.js","raw.xlsx"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+  
+  <style type="text/css">
+  
+  body {
+    background-color: white;
+  }
+  
+  .pandoc-table {
+    width: 100%;
+  }
+  
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+  
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+  
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+  
+  d-byline .byline {
+    grid-template-columns: 2fr 2fr;
+  }
+  
+  d-byline .byline h3 {
+    margin-block-start: 1.5em;
+  }
+  
+  d-byline .byline .authors-affiliations h3 {
+    margin-block-start: 0.5em;
+  }
+  
+  .authors-affiliations .orcid-id {
+    width: 16px;
+    height:16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+  }
+  
+  d-title .dt-tags {
+    margin-top: 1em;
+    grid-column: text;
+  }
+  
+  .dt-tags .dt-tag {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0em 0.4em;
+    margin-right: 0.5em;
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  
+  d-article table.gt_table td,
+  d-article table.gt_table th {
+    border-bottom: none;
+  }
+  
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+  
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+  
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+  
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .shaded .shaded-content {
+    background: white;
+  }
+  
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+  
+  .hidden {
+    display: none !important;
+  }
+  
+  d-article {
+    padding-top: 2.5rem;
+    padding-bottom: 30px;
+  }
+  
+  d-appendix {
+    padding-top: 30px;
+  }
+  
+  d-article>p>img {
+    width: 100%;
+  }
+  
+  d-article h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+  
+  d-article h3 {
+    margin-top: 1.5rem;
+  }
+  
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+  
+  /* Tweak code blocks */
+  
+  d-article div.sourceCode code,
+  d-article pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+  
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: auto;
+  }
+  
+  d-article div.sourceCode {
+    background-color: white;
+  }
+  
+  d-article div.sourceCode pre {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+  
+  d-article pre {
+    font-size: 12px;
+    color: black;
+    background: none;
+    margin-top: 0;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+  
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+  
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+  
+  d-article pre a {
+    border-bottom: none;
+  }
+  
+  d-article pre a:hover {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+  
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+  
+  @media(min-width: 768px) {
+  
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: visible !important;
+  }
+  
+  d-article div.sourceCode pre {
+    padding-left: 18px;
+    font-size: 14px;
+  }
+  
+  d-article pre {
+    font-size: 14px;
+  }
+  
+  }
+  
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+  
+  /* CSS for d-contents */
+  
+  .d-contents {
+    grid-column: text;
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    justify-self: start;
+  }
+  
+  @media(min-width: 1000px) {
+    .d-contents.d-contents-float {
+      height: 0;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: center;
+      padding-right: 3em;
+      padding-left: 2em;
+    }
+  }
+  
+  .d-contents nav h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+  
+  .d-contents li {
+    list-style-type: none
+  }
+  
+  .d-contents nav > ul {
+    padding-left: 0;
+  }
+  
+  .d-contents ul {
+    padding-left: 1em
+  }
+  
+  .d-contents nav ul li {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
+  }
+  
+  .d-contents nav a {
+    font-size: 13px;
+    border-bottom: none;
+    text-decoration: none
+    color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .d-contents nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6)
+  }
+  
+  .d-contents nav > ul > li > a {
+    font-weight: 600;
+  }
+  
+  .d-contents nav > ul > li > ul {
+    font-weight: inherit;
+  }
+  
+  .d-contents nav > ul > li > ul > li {
+    margin-top: 0.2em;
+  }
+  
+  
+  .d-contents nav ul {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
+  
+  .d-article-with-toc h2:nth-child(2) {
+    margin-top: 0;
+  }
+  
+  
+  /* Figure */
+  
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+  
+  .figure img {
+    width: 100%;
+  }
+  
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+  
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+  
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+  
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+  
+  /* Citations */
+  
+  d-article .citation {
+    color: inherit;
+    cursor: inherit;
+  }
+  
+  div.hanging-indent{
+    margin-left: 1em; text-indent: -1em;
+  }
+  
+  /* Citation hover box */
+  
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+  
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
+  }
+  
+  
+  /* Tweak 1000px media break to show more text */
+  
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+  
+    .grid {
+      grid-column-gap: 16px;
+    }
+  
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+  
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+  
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+  
+  
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+  
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  
+  /* Include appendix styles here so they can be overridden */
+  
+  d-appendix {
+    contain: layout style;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-top: 60px;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+  
+  d-appendix h3 {
+    grid-column: page-start / text-start;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.65);
+  }
+  
+  d-appendix h3 + * {
+    margin-top: 1em;
+  }
+  
+  d-appendix ol {
+    padding: 0 0 0 15px;
+  }
+  
+  @media (min-width: 768px) {
+    d-appendix ol {
+      padding: 0 0 0 30px;
+      margin-left: -30px;
+    }
+  }
+  
+  d-appendix li {
+    margin-bottom: 1em;
+  }
+  
+  d-appendix a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+  
+  d-appendix > * {
+    grid-column: text;
+  }
+  
+  d-appendix > d-footnote-list,
+  d-appendix > d-citation-list,
+  d-appendix > distill-appendix {
+    grid-column: screen;
+  }
+  
+  /* Include footnote styles here so they can be overridden */
+  
+  d-footnote-list {
+    contain: layout style;
+  }
+  
+  d-footnote-list > * {
+    grid-column: text;
+  }
+  
+  d-footnote-list a.footnote-backlink {
+    color: rgba(0,0,0,0.3);
+    padding-left: 0.5em;
+  }
+  
+  
+  
+  /* Anchor.js */
+  
+  .anchorjs-link {
+    /*transition: all .25s linear; */
+    text-decoration: none;
+    border-bottom: none;
+  }
+  *:hover > .anchorjs-link {
+    margin-left: -1.125em !important;
+    text-decoration: none;
+    border-bottom: none;
+  }
+  
+  /* Social footer */
+  
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+  
+  .disqus-comments {
+    margin-right: 30px;
+  }
+  
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+  
+  #disqus_thread {
+    margin-top: 30px;
+  }
+  
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+  
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+  
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+  
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+  
+  
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+  
+  
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+  
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+  
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+  
+  /* Styles for posts lists (not auto-injected) */
+  
+  
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+  
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+  
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+  
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+  
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+  
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+  
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+  
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+  
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+  
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+  
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+  
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+  
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+  
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+  
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  
+  .posts-list img {
+    opacity: 1;
+  }
+  
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+  
+  .posts-more {
+    clear: both;
+  }
+  
+  
+  .posts-sidebar {
+    font-size: 16px;
+  }
+  
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+  
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+  
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+  
+  .categories li>a {
+    border-bottom: none;
+  }
+  
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+  
+  .categories .active {
+    font-weight: 600;
+  }
+  
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+  
+  
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+  
+  
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+  
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+  
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+  
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+  
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+  
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+  
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+  
+  
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+  
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+  
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+  
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+  
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+  
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+  
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+  
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+  
+  
+  
+  </style>
+  
+  <script type="application/javascript">
+  
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+  
+  // show body when load is complete
+  function on_load_complete() {
+  
+    // add anchors
+    if (window.anchors) {
+      window.anchors.options.placement = 'left';
+      window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+    }
+  
+  
+    // set body to visible
+    document.body.style.visibility = 'visible';
+  
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+  
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+  
+  function init_distill() {
+  
+    init_common();
+  
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+  
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+  
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+  
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+  
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+  
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+  
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+  
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+  
+    // move refs into #references-listing
+    $('#references-listing').replaceWith($('#refs'));
+  
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-contents a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+  
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+  
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+  
+      // capture layout
+      var layout = $(this).attr('data-layout');
+  
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+  
+  
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+  
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+  
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme
+    $('code.sourceCode a:empty').remove();
+  
+    // load distill framework
+    load_distill_framework();
+  
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+  
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+  
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+  
+      // article with toc class
+      $('.d-contents').parent().addClass('d-article-with-toc');
+  
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+  
+      // add orcid ids
+      $('.authors-affiliations').find('.author').each(function(i, el) {
+        var orcid_id = front_matter.authors[i].orcidID;
+        if (orcid_id) {
+          var a = $('<a></a>');
+          a.attr('href', 'https://orcid.org/' + orcid_id);
+          var img = $('<img></img>');
+          img.addClass('orcid-id');
+          img.attr('alt', 'ORCID ID');
+          img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+          a.append(img);
+          $(this).append(a);
+        }
+      });
+  
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+  
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+  
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+  
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+  
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+  
+      // remove d-appendix and d-footnote-list local styles
+      $('d-appendix > style:first-child').remove();
+      $('d-footnote-list > style:first-child').remove();
+  
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+  
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
+  
+      // clear polling timer
+      clearInterval(tid);
+  
+      // show body now that everything is ready
+      on_load_complete();
+    }
+  
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+  
+  }
+  
+  function init_downlevel() {
+  
+    init_common();
+  
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+  
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+  
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+  
+    // remove toc
+    $('.d-contents').remove();
+  
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+  
+  
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+  
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+  
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+  
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+  
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+  
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+  
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+  
+    $('body').addClass('downlevel');
+  
+    on_load_complete();
+  }
+  
+  
+  function init_common() {
+  
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+  
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+  
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+  
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+  
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+  
+      }
+    });
+  
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+  
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+  
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+  
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+  
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+  
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+  
+  </script>
+  
+  <!--/radix_placeholder_distill-->
+  <script src="flows_analytics_final_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="flows_analytics_final_files/popper-2.6.0/popper.min.js"></script>
+  <link href="flows_analytics_final_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="flows_analytics_final_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="flows_analytics_final_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="flows_analytics_final_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="flows_analytics_final_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="flows_analytics_final_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="flows_analytics_final_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Credit Easing and ETF Flows","authors":[{"author":"Lisha Li","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""},{"author":"Barry Quinn","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""},{"author":"Lisa Sheenan","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-09-01T00:00:00.000+00:00","citationText":"Li, et al., 2021"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Credit Easing and ETF Flows</h1>
+<!--radix_placeholder_categories-->
+<!--/radix_placeholder_categories-->
+
+</div>
+
+<div class="d-byline">
+  
+  Lisha Li
+  
+,   
+  Barry Quinn
+  
+,   
+  Lisa Sheenan
+  
+<br/>2021-09-01
+</div>
+
+<div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#data">Data</a><ul>
+<li><a href="#linear-pairwise-correlations">Linear pairwise correlations</a></li>
+<li><a href="#information-transfer-measurement">Information transfer measurement</a></li>
+<li><a href="#measuring-information-flows-using-transfer-entropy">Measuring information flows using transfer entropy</a></li>
+</ul></li>
+<li><a href="#linear-var-models-with-interactions">Linear VAR models with interactions</a><ul>
+<li><a href="#daily-delta-us-var-equation">Daily <span class="math inline">\(\delta\)</span> US VAR equation</a></li>
+<li><a href="#daily-delta-sonia-var-equation">Daily <span class="math inline">\(\delta\)</span> SONIA VAR equation</a></li>
+<li><a href="#eu-libor-rate-change-var-equation">EU Libor Rate Change VAR equation</a></li>
+<li><a href="#impulse-response-analysis">impulse response analysis</a></li>
+</ul></li>
+<li><a href="#reference">Reference</a></li>
+</ul>
+</nav>
+</div>
+<h1 id="introduction">Introduction</h1>
+<p>Quantitative easing (QE), basically the expansion of a central bank’s balance sheet by means of the large scale purchase of government bonds or other assets with the aim of stimulating the economy,originated in Japan in 2001. QE focuses on bank reserves, or central bank liabilities. The term credit easing (CE) was coined in 2009 by Ben Bernanke, the then Chairman of the Federal Reserve,and focuses on the asset side of the balance sheet with the aim of stimulating credit markets.These markets were hit hard during the global financial crisis of 2007-2008 and central banks like the Federal Reserve and the ECB began introducing credit support measures in its aftermath in an effort to aid recovery and trigger growth. These are part of a suite of unconventional monetary policy measures implemented by central banks in recent years.</p>
+<p>On 31<sup>st</sup> January 2020 the World Health Organisation (WHO) declared a global health emergency due to the COVID-19 pandemic, leading to lockdowns across the globe and, with this, a slowdown in the global economy and need for large scale assistance measures. On 23<sup>rd</sup> March 2020 the Federal Reserve announced the establishment of the Primary Market Corporate Credit Facility(PMCCF) and the Secondary Corporate Credit Facility (SMCCF), both aimed at supporting corporate bond markets. The SMCCF involves the purchase of corporate bonds in the secondary market, as well as U.S.-listed exchange-traded funds (ETFs).The European Central Bank had introduced a similar credit support program in June 2016 with the Corporate Sector Purchase Program (CSPP), which was then expanded on 18th March 2020 to include non-financial commercial paper, thus making all qualifying commercial papers eligible for purchase under the program.Although ETFs are not eligible for purchase under the CSPP following the initial announcement(and prior to the release of full details) of the program on 10th March 2016 corporate bond ETF trading boomed. The website ETFStrategy.com reported</p>
+<blockquote>
+<p>Data from European-listed ETF trading platform Tradeweb showed that trading in fixed income ETFs increased to 50.3% as a proportion of overall traded volume. The majority of this, 62.9%, was in corporate and high yield bonds, with ‘buys’ in corporate bond ETFs nearly double the amount of ‘sells’.</p>
+</blockquote>
+<p>We investigate the dynamic impact of fixed income ETF fund flows and central bank interest rates. Specifically, we assume that there is a substantive non-linear structure to bivariate relationship which we explore in two-stages. In stage one we use assess the bivariate information flow between fixed income ETFs and central bank interest rates using transfer entropy, a model-free measure of the asymmetric information flow between time series in a network. This is a popular approach to information diffusion and contagion in a complex systems such as global capital markets<span class="citation" data-cites="Bekiros2017">[@Bekiros2017,@Nam2019]</span>.</p>
+<p>This analysis investigates the linear and nonlinear dynamic relationships between fixed income ETF fund flows and three prominent interest rates. Specifically we first nonlinear flow of information between each ETF and the daily change in three interest rates using an information theoretic measure. Shannon’s transfer entropy measure the information flow (reduction in uncertainty in probability) is a model-free way that captures the non-linear complexity of a financial network. As an exploratory exercise, we assess the information transfer from and to the changes of three interest rates. Secondly, we investigate the linear and nonlinear aspects using a standard VAR model, specifying an interaction term as a</p>
+<h1 id="data">Data</h1>
+<p>The data is sourced from Bloomberg and consists of daily indices capturing net ETF Flows into different bond categories of ETF in the US market. The data is for the period 2021-12-07 - 2020-02-01. The sample also include three interest ratios, US 3-month LIBOR, EU 3-Month LIBOR and the SONIA interest rate benchmark.</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>Show code</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>y_endog_scaled</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>gather</span><span class='op'>(</span><span class='va'>variable</span>,<span class='va'>value</span>,<span class='op'>-</span><span class='va'>Date</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>mutate</span><span class='op'>(</span>predictors<span class='op'>=</span><span class='fu'>if_else</span><span class='op'>(</span><span class='va'>variable</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'d_US'</span>,<span class='st'>'d_EU'</span>,<span class='st'>'d_SONIA'</span><span class='op'>)</span>,<span class='st'>"Rate_Change"</span>,<span class='st'>"Flows"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>Date</span>,y<span class='op'>=</span><span class='va'>value</span>,colour<span class='op'>=</span><span class='va'>variable</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_line</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>title<span class='op'>=</span><span class='st'>"Interests and ETF Flows"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span><span class='va'>variable</span>,scales <span class='op'>=</span> <span class='st'>"free_y"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme</span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>'none'</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<p><img src="flows_analytics_final_files/figure-html5/plot-1.png" width="624" /></p>
+</div>
+<h2 id="linear-pairwise-correlations">Linear pairwise correlations</h2>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>Show code</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cor</a></span><span class='op'>(</span><span class='va'>y_endog_scaled</span> <span class='op'>%&gt;%</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>Date</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>corrplot</span><span class='op'>(</span>method<span class='op'>=</span><span class='st'>"circle"</span>,title<span class='op'>=</span><span class='st'>"linear correlations"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<p><img src="flows_analytics_final_files/figure-html5/correlation-1.png" width="624" /></p>
+</div>
+<p>Some obvious correlation in the three interest rates. There are also some strong correlations among the ETF bond flows that will require careful consideration. Is this due to overlapping categorisation?</p>
+<h2 id="information-transfer-measurement">Information transfer measurement</h2>
+<p>The quantification of information transfer commonly relies on measures that have been derived from subject-specific assumptions and restrictions concerning the underlying stochastic processes or theoretical models. With the development of transfer entropy, information theory based measures have become a popular alternative to quantify information flows within various disciplines. Transfer entropy is a non-parametric measure of directed, asymmetric information transfer between two processes.</p>
+<p>We quantify the information flow between two stationary time series and how to test for its statistical significance using Shannon transfer entropy within the package <code>RTransferEntropy</code>.A core aspect of the provided package is to allow statistical inference and hypothesis testing in the context of transfer entropy.</p>
+<p>In the literature, the Granger causality has been addressed in many fields, including finance. Despite its success in the identification of couplings between the interacting variables, the use of structural models restricts its performance. Unlike Granger causality, TE is a quantity that is directly estimated from data and it does not suffer from such constraints. In the specific case of Gaussian distributed random variables, equivalence between TE and Granger causality has been proven.</p>
+<h2 id="measuring-information-flows-using-transfer-entropy">Measuring information flows using transfer entropy</h2>
+<p>Let <span class="math inline">\(log\)</span> denote the logarithm to the base 2, then informational gain is measured in bits. Shannon entropy <span class="citation" data-cites="S48">[@S48]</span> states that for a discrete random variable <span class="math inline">\(J\)</span> with probability distribution <span class="math inline">\(p(j)\)</span>, where <span class="math inline">\(j\)</span> stands for the different outcomes the random variable <span class="math inline">\(J\)</span> can take, the average number of bits required to optimally encode independent draws from the distribution of <span class="math inline">\(J\)</span> can be calculated as</p>
+<p><span class="math display">\[
+  H_J = - \sum_j p(j) \cdot log \left(p(j)\right).
+\]</span></p>
+<p>Strictly speaking, Shannon’s formula is a measure for uncertainty, which increases with the number of bits needed to optimally encode a sequence of realizations of <span class="math inline">\(J\)</span>. In order to measure the information flow between two processes, Shannon entropy is combined with the concept of the Kullback-Leibler distance <span class="citation" data-cites="KL51">[@KL51]</span> and by assuming that the underlying processes evolve over time according to a Markov process <span class="citation" data-cites="schreiber2000">[@schreiber2000]</span>. Let <span class="math inline">\(I\)</span> and <span class="math inline">\(J\)</span> denote two discrete random variables with marginal probability distributions <span class="math inline">\(p(i)\)</span> and <span class="math inline">\(p(j)\)</span> and joint probability distribution <span class="math inline">\(p(i,j)\)</span>, whose dynamical structures correspond to stationary Markov processes of order <span class="math inline">\(k\)</span> (process <span class="math inline">\(I\)</span>) and <span class="math inline">\(l\)</span> (process <span class="math inline">\(J\)</span>). The Markov property implies that the probability to observe <span class="math inline">\(I\)</span> at time <span class="math inline">\(t+1\)</span> in state <span class="math inline">\(i\)</span> conditional on the <span class="math inline">\(k\)</span> previous observations is <span class="math inline">\(p(i_{t+1}|i_t,...,i_{t-k+1})=p(i_{t+1}|i_t,...,i_{t-k})\)</span>. The average number of bits needed to encode the observation in <span class="math inline">\(t+1\)</span> if the previous <span class="math inline">\(k\)</span> values are known is given by</p>
+<p><span class="math display">\[
+  h_I(k)=- \sum_i p\left(i_{t+1}, i_t^{(k)}\right) \cdot log \left(p\left(i_{t+1}|i_t^{(k)}\right)\right),
+\]</span> where <span class="math inline">\(i^{(k)}_t=(i_t,...,i_{t-k+1})\)</span>. <span class="math inline">\(h_J(l)\)</span> can be derived analogously for process <span class="math inline">\(J\)</span>. In the bivariate case, information flow from process <span class="math inline">\(J\)</span> to process <span class="math inline">\(I\)</span> is measured by quantifying the deviation from the generalized Markov property <span class="math inline">\(p(i_{t+1}| i_t^{(k)})=p(i_{t+1}| i_t^{(k)},j_t^{(l)})\)</span> relying on the Kullback-Leibler distance <span class="citation" data-cites="schreiber2000">[@schreiber2000]</span>. Thus, (Shannon) transfer entropy is given by</p>
+<p><span class="math display">\[
+  T_{J \rightarrow I}(k,l) = \sum_{i,j} p\left(i_{t+1}, i_t^{(k)}, j_t^{(l)}\right) \cdot log \left(\frac{p\left(i_{t+1}| i_t^{(k)}, j_t^{(l)}\right)}{p\left(i_{t+1}|i_t^{(k)}\right)}\right),
+\]</span> where <span class="math inline">\(T_{J\rightarrow I}\)</span> consequently measures the information flow from <span class="math inline">\(J\)</span> to <span class="math inline">\(I\)</span> ( <span class="math inline">\(T_{I \rightarrow J}\)</span> as a measure for the information flow from <span class="math inline">\(I\)</span> to <span class="math inline">\(J\)</span> can be derived analogously).</p>
+<p>Transfer entropy can also be based on RÃ©nyi entropy <span class="citation" data-cites="R70">[@R70]</span> rather than Shannon entropy. RÃ©nyi entropy introduces a weighting parameter <span class="math inline">\(q&gt;0\)</span> for the individual probabilities <span class="math inline">\(p(j)\)</span> and can be calculated as <span class="math display">\[
+  H^q_J = \frac{1}{1-q} log \left(\sum_j p^q(j)\right).
+\]</span> For <span class="math inline">\(q\rightarrow 1\)</span>, RÃ©nyi entropy converges to Shannon entropy. For <span class="math inline">\(0&lt;q&lt;1\)</span> events that have a low probability to occur receive more weight, while for <span class="math inline">\(q&gt;1\)</span> the weights induce a preference for outcomes <span class="math inline">\(j\)</span> with a higher initial probability. Consequently, RÃ©nyi entropy provides a more flexible tool for estimating uncertainty, since different areas of a distribution can be emphasized, depending on the parameter <span class="math inline">\(q\)</span>.</p>
+<p>Using the escort distribution <span class="citation" data-cites="BeckS93">[for more information, see @BeckS93]</span> <span class="math inline">\(\phi_q(j)=\frac{p^q(j)}{\sum_j p^q(j)}\)</span> with <span class="math inline">\(q &gt;0\)</span> to normalize the weighted distributions, <span class="citation" data-cites="JKS12">@JKS12</span> derive the RÃ©nyi transfer entropy measure as <span class="math display">\[
+  RT_{J \rightarrow I}(k,l) = \frac{1}{1-q} log \left(\frac{\sum_i \phi_q\left(i_t^{(k)}\right)p^q\left(i_{t+1}|i^{(k)}_t\right)}{\sum_{i,j} \phi_q\left(i^{(k)}_t,j^{(l)}_t\right)p^q\left(i_{t+1}|i^{(k)}_t,j^{(l)}_t \right)}\right).
+\]</span> Analogously to (Shannon) transfer entropy, RÃ©nyi transfer entropy measures the information flow from <span class="math inline">\(J\)</span> to <span class="math inline">\(I\)</span>. Note that, contrary to Shannon transfer entropy, the calculation of RÃ©nyi transfer entropy can result in negative values. In such a situation, knowing the history of <span class="math inline">\(J\)</span> reveals even greater risk than would otherwise be indicated by only knowing the history of <span class="math inline">\(I\)</span> alone. For more details on this issue see <span class="citation" data-cites="JKS12">@JKS12</span>.</p>
+<p>The above transfer entropy estimates are commonly biased due to small sample effects. A remedy is provided by the effective transfer entropy <span class="citation" data-cites="MK02">[@MK02]</span>, which is computed in the following way:</p>
+<p><span class="math display">\[
+  ET_{J \rightarrow I}(k,l)=  T_{J \rightarrow I}(k,l)- T_{J_{\text{shuffled}} \rightarrow I}(k,l),
+\]</span> where <span class="math inline">\(T_{J_{\text{shuffled}} \rightarrow I}(k,l)\)</span> indicates the transfer entropy using a shuffled version of the time series of <span class="math inline">\(J\)</span>. Shuffling implies randomly drawing values from the time series of <span class="math inline">\(J\)</span> and realigning them to generate a new time series. This procedure destroys the time series dependencies of <span class="math inline">\(J\)</span> as well as the statistical dependencies between <span class="math inline">\(J\)</span> and <span class="math inline">\(I\)</span>. As a result <span class="math inline">\(T_{J_{\text{shuffled}} \rightarrow I}(k,l)\)</span> converges to zero with increasing sample size and any nonzero value of <span class="math inline">\(T_{J_{\text{shuffled}} \rightarrow I}(k,l)\)</span> is due to small sample effects. The transfer entropy estimates from shuffled data can therefore be used as an estimator for the bias induced by these small sample effects. To derive a consistent estimator, shuffling is repeated many times and the average of the resulting shuffled transfer entropy estimates across all replications is subtracted from the Shannon or RÃ©nyi transfer entropy estimate to obtain a bias corrected effective transfer entropy estimate.</p>
+<p>In order to assess the statistical significance of transfer entropy estimates, we rely on a Markov block bootstrap as proposed by <span class="citation" data-cites="Dimpfl2013">@Dimpfl2013</span>. In contrast to shuffling, the Markov block bootstrap preserves the dependencies within each time series. Thereby, it generates the distribution of transfer entropy estimates under the null hypothesis of no information transfer, i.e. randomly drawn blocks of process <span class="math inline">\(J\)</span> are realigned to form a simulated series, which retains the univariate dependencies of <span class="math inline">\(J\)</span> but eliminates the statistical dependencies between <span class="math inline">\(J\)</span> and <span class="math inline">\(I\)</span>. Shannon or RÃ©nyi transfer entropy is then estimated based on the simulated time series. Repeating this procedure yields the distribution of the transfer entropy estimate under the null of no information flow. The p-value associated with the null hypothesis of no information transfer is given by <span class="math inline">\(1-\hat{q}_{TE}\)</span>, where <span class="math inline">\(\hat{q}_{TE}\)</span> denotes the quantile of the simulated distribution that corresponds to the original transfer entropy estimate.</p>
+<p>The calculation of Shannon and RÃ©nyi transfer entropy is based on discrete data. If the data does not exhibit a discrete structure that allows for transfer entropy estimation, it has to be discretized. This can be achieved by symbolic recoding, i.e. by partitioning the data into a finite number of bins, which can either be based on defining upper and lower bounds for the bins a priori or by choosing specific quantiles of the empirical distribution of the data. Denote the bounds specified for the <span class="math inline">\(n\)</span> bins by <span class="math inline">\(q_1, q_2, ..., q_n\)</span>, where <span class="math inline">\(q_1&lt; q_2&lt; ... &lt;q_n\)</span>, and consider a time series denoted by <span class="math inline">\(y_t\)</span>, the data is recoded as</p>
+<p><span class="math display">\[
+S_t=
+\begin{cases}
+~1~~~~~~~~ \mbox{ for }~  y_t\leq q_1\\
+~ 2~ ~~~~~~~\mbox{ for }~  q_1&lt;y_t\leq q_2\\
+~\vdots~~~~~~~~~~~~~~~~~\vdots\\
+~n-1~~\mbox{ for }~  q_{n-1}&lt;y_t \leq q_n\\
+~n ~~~~~~~~\mbox{     for } ~ y_t\geq q_n
+\end{cases}.
+\]</span> Thereby, each value in the observed time series <span class="math inline">\(y_t\)</span> is replaced by an integer (<span class="math inline">\(1\)</span>,<span class="math inline">\(2\)</span>,…,<span class="math inline">\(n\)</span>), according to how <span class="math inline">\(S_t\)</span> relates to the interval specified by the lower and upper bounds <span class="math inline">\(q_1\)</span> to <span class="math inline">\(q_n\)</span>. The choice of the bins should be motivated by the distribution of the data. However, we recommend that the number of bins is limited in order to avoid too many zero observations when calculating relative frequencies as estimators of the joint probabilities in the (effective) transfer entropy equations.</p>
+<p>Shannon’s transfer entropy measure the information flow (reduction in uncertainty in probability) is a model-free way that captures the non-linear complexity of a financial network. As an exploratory exercise, we assess the information transfer from and to the changes of three interest rates.</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>Show code</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/load.html'>load</a></span><span class='op'>(</span><span class='st'>"eteResults.RData"</span><span class='op'>)</span>
+<span class='va'>rename_data</span><span class='op'>&lt;-</span><span class='kw'>function</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span><span class='op'>{</span>
+ <span class='va'>df</span><span class='op'>[</span>, <span class='va'>ticker</span> <span class='op'>:=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>ticker</span>, 
+                        levels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>$</span><span class='va'>ticker</span><span class='op'>)</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/order.html'>order</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>[</span><span class='va'>dir</span> <span class='op'>==</span> <span class='st'>"X-&gt;Y"</span><span class='op'>]</span><span class='op'>$</span><span class='va'>ete</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span><span class='op'>]</span>
+  <span class='va'>df</span><span class='op'>[</span>, <span class='va'>dir</span> <span class='op'>:=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>dir</span>, levels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"X-&gt;Y"</span>, <span class='st'>"Y-&gt;X"</span><span class='op'>)</span>,
+                          labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Flow towards Interest Rate Changes"</span>,
+                                     <span class='st'>"Flow towards ETF"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>]</span>
+<span class='op'>}</span>
+<span class='va'>plot_data</span><span class='op'>&lt;-</span><span class='fu'>rename_data</span><span class='op'>(</span><span class='va'>df_EU</span><span class='op'>)</span>
+<span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>plot_data</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ticker</span>, y <span class='op'>=</span> <span class='va'>ete</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span><span class='va'>dir</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_hline</span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fl'>0</span>, color <span class='op'>=</span> <span class='st'>"gray"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme</span><span class='op'>(</span>axis.text.x <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>angle <span class='op'>=</span> <span class='fl'>90</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='cn'>NULL</span>, y <span class='op'>=</span> <span class='st'>"Effective Transfer Entropy"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_errorbar</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>ymin <span class='op'>=</span> <span class='va'>ete</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span><span class='op'>(</span><span class='fl'>0.95</span><span class='op'>)</span> <span class='op'>*</span> <span class='va'>se</span>,  
+                    ymax <span class='op'>=</span> <span class='va'>ete</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span><span class='op'>(</span><span class='fl'>0.95</span><span class='op'>)</span> <span class='op'>*</span> <span class='va'>se</span><span class='op'>)</span>,  
+                width <span class='op'>=</span> <span class='fl'>0.25</span>, col <span class='op'>=</span> <span class='st'>"blue"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<div class="figure"><span id="fig:EU"></span>
+<img src="flows_analytics_final_files/figure-html5/EU-1.png" alt="Effective Transfer Entropy for Change EU Libor" width="624" />
+<p class="caption">
+Figure 1: Effective Transfer Entropy for Change EU Libor
+</p>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>Show code</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>plot_data</span><span class='op'>&lt;-</span><span class='fu'>rename_data</span><span class='op'>(</span><span class='va'>df_US</span><span class='op'>)</span>
+<span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>plot_data</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ticker</span>, y <span class='op'>=</span> <span class='va'>ete</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span><span class='va'>dir</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_hline</span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fl'>0</span>, color <span class='op'>=</span> <span class='st'>"gray"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme</span><span class='op'>(</span>axis.text.x <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>angle <span class='op'>=</span> <span class='fl'>90</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='cn'>NULL</span>, y <span class='op'>=</span> <span class='st'>"Effective Transfer Entropy"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_errorbar</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>ymin <span class='op'>=</span> <span class='va'>ete</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span><span class='op'>(</span><span class='fl'>0.95</span><span class='op'>)</span> <span class='op'>*</span> <span class='va'>se</span>,  
+                    ymax <span class='op'>=</span> <span class='va'>ete</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span><span class='op'>(</span><span class='fl'>0.95</span><span class='op'>)</span> <span class='op'>*</span> <span class='va'>se</span><span class='op'>)</span>,  
+                width <span class='op'>=</span> <span class='fl'>0.25</span>, col <span class='op'>=</span> <span class='st'>"blue"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<div class="figure"><span id="fig:US"></span>
+<img src="flows_analytics_final_files/figure-html5/US-1.png" alt="Effective Transfer Entropy for Change US Libor" width="624" />
+<p class="caption">
+Figure 2: Effective Transfer Entropy for Change US Libor
+</p>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>Show code</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>plot_data</span><span class='op'>&lt;-</span><span class='fu'>rename_data</span><span class='op'>(</span><span class='va'>df_SONIA</span><span class='op'>)</span>
+<span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>plot_data</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ticker</span>, y <span class='op'>=</span> <span class='va'>ete</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span><span class='va'>dir</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_hline</span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fl'>0</span>, color <span class='op'>=</span> <span class='st'>"gray"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme</span><span class='op'>(</span>axis.text.x <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>angle <span class='op'>=</span> <span class='fl'>90</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='cn'>NULL</span>, y <span class='op'>=</span> <span class='st'>"Effective Transfer Entropy"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_errorbar</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>ymin <span class='op'>=</span> <span class='va'>ete</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span><span class='op'>(</span><span class='fl'>0.95</span><span class='op'>)</span> <span class='op'>*</span> <span class='va'>se</span>,  
+                    ymax <span class='op'>=</span> <span class='va'>ete</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span><span class='op'>(</span><span class='fl'>0.95</span><span class='op'>)</span> <span class='op'>*</span> <span class='va'>se</span><span class='op'>)</span>,  
+                width <span class='op'>=</span> <span class='fl'>0.25</span>, col <span class='op'>=</span> <span class='st'>"blue"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<p><img src="flows_analytics_final_files/figure-html5/unnamed-chunk-1-1.png" width="624" /></p>
+</div>
+<h1 id="linear-var-models-with-interactions">Linear VAR models with interactions</h1>
+<p>Vector autoregressive models are a conventional <em>go to</em> to analysis dynamic relationships in finance, predicated on the assumption of linearity and spherical error disturbances. What follows is an analysis of all the ETF flows and daily <span class="math inline">\(\delta\)</span> in each interest rate.</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>Show code</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://www.pfaffikus.de'>vars</a></span><span class='op'>)</span>
+<span class='va'>var_model</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/pkg/vars/man/VAR.html'>VAR</a></span><span class='op'>(</span><span class='va'>y_endog_scaled</span> <span class='op'>%&gt;%</span> 
+                <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>CE_dummy</span>,<span class='op'>-</span><span class='va'>Date</span><span class='op'>)</span>,
+               exogen <span class='op'>=</span><span class='va'>y_endog_scaled</span> <span class='op'>%&gt;%</span> 
+                 <span class='fu'>transmute</span><span class='op'>(</span>Corporate_i<span class='op'>=</span><span class='va'>`Corporate Bonds`</span><span class='op'>*</span><span class='va'>CE_dummy</span>,
+                        HighY_i<span class='op'>=</span><span class='va'>`High Yield`</span><span class='op'>*</span><span class='va'>CE_dummy</span>,
+                        Gov_i<span class='op'>=</span><span class='va'>`Government Bonds`</span><span class='op'>*</span><span class='va'>CE_dummy</span>,
+                                 Ip_i<span class='op'>=</span><span class='va'>`Inflation Protected`</span><span class='op'>*</span><span class='va'>CE_dummy</span>,
+                                 Us_i<span class='op'>=</span><span class='va'>`Ultra Short`</span><span class='op'>*</span><span class='va'>CE_dummy</span>,
+                                 Pref_i<span class='op'>=</span><span class='va'>Preferred</span><span class='op'>*</span><span class='va'>CE_dummy</span>,
+                                 CE_dummy<span class='op'>=</span><span class='va'>CE_dummy</span><span class='op'>)</span>,
+               lag.max <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span>
+<span class='va'>var_model</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/pkg/vars/man/summary.html'>summary</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>-&gt;</span> <span class='va'>var_model_results</span>
+</code></pre>
+</div>
+</details>
+</div>
+<h3 id="daily-delta-us-var-equation">Daily <span class="math inline">\(\delta\)</span> US VAR equation</h3>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>Show code</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>var_model_results</span><span class='op'>$</span><span class='va'>varresult</span><span class='op'>$</span><span class='va'>d_US</span>
+</code></pre>
+</div>
+</details>
+<pre><code>
+Call:
+lm(formula = y ~ -1 + ., data = datamat)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.1840 -0.2356 -0.0271  0.1393  4.8179 
+
+Coefficients:
+                        Estimate Std. Error t value Pr(&gt;|t|)    
+Investment.Grade.l1     0.803964   0.530525   1.515 0.130677    
+High.Yield.l1           0.415919   0.352602   1.180 0.239066    
+Corporate.Bonds.l1     -0.711383   0.491928  -1.446 0.149146    
+Municipals.l1          -0.075811   0.080235  -0.945 0.345459    
+Government.Bonds.l1    -0.359280   0.312416  -1.150 0.251019    
+Bank.Loans.l1           0.089816   0.075372   1.192 0.234312    
+Inflation.Protected.l1 -0.096715   0.106892  -0.905 0.366274    
+Long.Term.l1            0.094161   0.076494   1.231 0.219260    
+Mortgage.Backed.l1     -0.135113   0.103601  -1.304 0.193136    
+Preferred.l1           -0.002436   0.065534  -0.037 0.970371    
+Intermediate.Term.l1   -0.039964   0.086235  -0.463 0.643374    
+Short.Term.l1          -0.064913   0.077725  -0.835 0.404264    
+Ultra.Short.l1         -0.136142   0.076171  -1.787 0.074854 .  
+Aggregate.Bond.l1      -0.442380   0.254297  -1.740 0.082909 .  
+d_US.l1                -0.210247   0.088686  -2.371 0.018360 *  
+d_SONIA.l1              0.150590   0.091669   1.643 0.101435    
+d_EU.l1                -0.011675   0.069218  -0.169 0.866161    
+const                   0.015399   0.074565   0.207 0.836525    
+Corporate_i             0.203847   0.166960   1.221 0.223030    
+HighY_i                -0.150669   0.169262  -0.890 0.374066    
+Gov_i                  -0.153195   0.082651  -1.854 0.064749 .  
+Ip_i                    0.067055   0.091917   0.730 0.466232    
+Us_i                    0.076121   0.083213   0.915 0.361020    
+Pref_i                  0.267110   0.073550   3.632 0.000329 ***
+CE_dummy               -0.047449   0.112606  -0.421 0.673775    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.9517 on 313 degrees of freedom
+Multiple R-squared:  0.1417,    Adjusted R-squared:  0.07589 
+F-statistic: 2.153 on 24 and 313 DF,  p-value: 0.001649</code></pre>
+</div>
+<h3 id="daily-delta-sonia-var-equation">Daily <span class="math inline">\(\delta\)</span> SONIA VAR equation</h3>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>Show code</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>var_model_results</span><span class='op'>$</span><span class='va'>varresult</span><span class='op'>$</span><span class='va'>d_SONIA</span>
+</code></pre>
+</div>
+</details>
+<pre><code>
+Call:
+lm(formula = y ~ -1 + ., data = datamat)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.7619 -0.2139 -0.0374  0.1126  4.4806 
+
+Coefficients:
+                       Estimate Std. Error t value Pr(&gt;|t|)   
+Investment.Grade.l1     0.13861    0.53650   0.258  0.79629   
+High.Yield.l1           0.03252    0.35657   0.091  0.92738   
+Corporate.Bonds.l1     -0.00451    0.49747  -0.009  0.99277   
+Municipals.l1           0.02229    0.08114   0.275  0.78370   
+Government.Bonds.l1    -0.05448    0.31593  -0.172  0.86319   
+Bank.Loans.l1           0.08308    0.07622   1.090  0.27657   
+Inflation.Protected.l1 -0.08934    0.10809  -0.826  0.40915   
+Long.Term.l1            0.06339    0.07735   0.819  0.41316   
+Mortgage.Backed.l1     -0.05735    0.10477  -0.547  0.58450   
+Preferred.l1            0.02920    0.06627   0.441  0.65983   
+Intermediate.Term.l1   -0.01533    0.08721  -0.176  0.86057   
+Short.Term.l1          -0.10921    0.07860  -1.389  0.16570   
+Ultra.Short.l1         -0.09313    0.07703  -1.209  0.22756   
+Aggregate.Bond.l1      -0.05491    0.25716  -0.214  0.83106   
+d_US.l1                 0.22020    0.08968   2.455  0.01462 * 
+d_SONIA.l1             -0.27477    0.09270  -2.964  0.00327 **
+d_EU.l1                -0.05207    0.07000  -0.744  0.45755   
+const                   0.03738    0.07540   0.496  0.62042   
+Corporate_i            -0.10460    0.16884  -0.620  0.53602   
+HighY_i                 0.04636    0.17117   0.271  0.78670   
+Gov_i                   0.12603    0.08358   1.508  0.13260   
+Ip_i                    0.28753    0.09295   3.093  0.00216 **
+Us_i                   -0.03789    0.08415  -0.450  0.65287   
+Pref_i                  0.17297    0.07438   2.326  0.02068 * 
+CE_dummy               -0.01991    0.11387  -0.175  0.86129   
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.9624 on 313 degrees of freedom
+Multiple R-squared:  0.1422,    Adjusted R-squared:  0.07647 
+F-statistic: 2.163 on 24 and 313 DF,  p-value: 0.001555</code></pre>
+</div>
+<h3 id="eu-libor-rate-change-var-equation">EU Libor Rate Change VAR equation</h3>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>Show code</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>var_model_results</span><span class='op'>$</span><span class='va'>varresult</span><span class='op'>$</span><span class='va'>d_EU</span>
+</code></pre>
+</div>
+</details>
+<pre><code>
+Call:
+lm(formula = y ~ -1 + ., data = datamat)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.9939 -0.2709  0.0104  0.2452  4.5616 
+
+Coefficients:
+                       Estimate Std. Error t value Pr(&gt;|t|)   
+Investment.Grade.l1     1.40259    0.52286   2.683  0.00769 **
+High.Yield.l1           0.92136    0.34751   2.651  0.00843 **
+Corporate.Bonds.l1     -1.49866    0.48482  -3.091  0.00217 **
+Municipals.l1          -0.21165    0.07908  -2.677  0.00783 **
+Government.Bonds.l1    -0.88495    0.30790  -2.874  0.00433 **
+Bank.Loans.l1          -0.04369    0.07428  -0.588  0.55686   
+Inflation.Protected.l1 -0.20895    0.10535  -1.983  0.04820 * 
+Long.Term.l1            0.10669    0.07539   1.415  0.15801   
+Mortgage.Backed.l1     -0.24416    0.10210  -2.391  0.01738 * 
+Preferred.l1           -0.03520    0.06459  -0.545  0.58618   
+Intermediate.Term.l1   -0.01636    0.08499  -0.192  0.84750   
+Short.Term.l1           0.10195    0.07660   1.331  0.18418   
+Ultra.Short.l1          0.12870    0.07507   1.714  0.08745 . 
+Aggregate.Bond.l1      -0.74429    0.25062  -2.970  0.00321 **
+d_US.l1                -0.07013    0.08740  -0.802  0.42295   
+d_SONIA.l1              0.02958    0.09034   0.327  0.74359   
+d_EU.l1                -0.22202    0.06822  -3.254  0.00126 **
+const                  -0.02536    0.07349  -0.345  0.73021   
+Corporate_i             0.39892    0.16455   2.424  0.01590 * 
+HighY_i                -0.35586    0.16682  -2.133  0.03368 * 
+Gov_i                  -0.13743    0.08146  -1.687  0.09256 . 
+Ip_i                   -0.16047    0.09059  -1.771  0.07747 . 
+Us_i                    0.13833    0.08201   1.687  0.09266 . 
+Pref_i                  0.10087    0.07249   1.392  0.16505   
+CE_dummy               -0.03158    0.11098  -0.285  0.77620   
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.938 on 313 degrees of freedom
+Multiple R-squared:  0.1818,    Adjusted R-squared:  0.1191 
+F-statistic: 2.899 on 24 and 313 DF,  p-value: 1.227e-05</code></pre>
+</div>
+<h3 id="impulse-response-analysis">impulse response analysis</h3>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>Show code</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>irf_results</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/pkg/vars/man/irf.html'>irf</a></span><span class='op'>(</span><span class='va'>var_model</span>,n.ahead <span class='op'>=</span> <span class='fl'>20</span>,runs <span class='op'>=</span> <span class='fl'>500</span>,seed <span class='op'>=</span> <span class='fl'>123</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>Show code</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>bind_cols</span><span class='op'>(</span>
+<span class='va'>irf_results</span><span class='op'>$</span><span class='va'>Lower</span><span class='op'>$</span><span class='va'>d_US</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>as.tibble</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>steps<span class='op'>=</span><span class='fl'>1</span><span class='op'>:</span><span class='fu'>n</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>gather</span><span class='op'>(</span><span class='va'>x</span>,<span class='va'>lower</span>,<span class='op'>-</span><span class='va'>steps</span><span class='op'>)</span>,
+  
+<span class='va'>irf_results</span><span class='op'>$</span><span class='va'>irf</span><span class='op'>$</span><span class='va'>d_US</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>as.tibble</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>gather</span><span class='op'>(</span><span class='va'>x</span>,<span class='va'>value</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>value</span><span class='op'>)</span>,
+
+<span class='va'>irf_results</span><span class='op'>$</span><span class='va'>Upper</span><span class='op'>$</span><span class='va'>d_US</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>as.tibble</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>gather</span><span class='op'>(</span><span class='va'>x</span>,<span class='va'>upper</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>upper</span><span class='op'>)</span>
+<span class='op'>)</span><span class='op'>-&gt;</span><span class='va'>d_US_irf</span>
+
+<span class='va'>d_US_irf</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sign.html'>sign</a></span><span class='op'>(</span><span class='va'>lower</span><span class='op'>)</span><span class='op'>==</span><span class='fu'><a href='https://rdrr.io/r/base/sign.html'>sign</a></span><span class='op'>(</span><span class='va'>upper</span><span class='op'>)</span> <span class='op'>&amp;</span> <span class='va'>value</span><span class='op'>!=</span><span class='fl'>0</span> <span class='op'>&amp;</span> <span class='va'>lower</span><span class='op'>!=</span><span class='fl'>0</span> <span class='op'>&amp;</span> <span class='va'>upper</span><span class='op'>!=</span><span class='fl'>0</span><span class='op'>)</span>  <span class='op'>%&gt;%</span>
+<span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>steps</span>,y<span class='op'>=</span><span class='va'>value</span>,ymin<span class='op'>=</span><span class='va'>lower</span>,ymax<span class='op'>=</span><span class='va'>upper</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span> <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_errorbar</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>title<span class='op'>=</span><span class='st'>"Impulse Response for Change in US Libor"</span>,subtitle <span class='op'>=</span> <span class='st'>"95% bootstrapped intervals (n=500)"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<p><img src="flows_analytics_final_files/figure-html5/irf-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>Show code</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>bind_cols</span><span class='op'>(</span>
+<span class='va'>irf_results</span><span class='op'>$</span><span class='va'>Lower</span><span class='op'>$</span><span class='va'>d_EU</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>as.tibble</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>steps<span class='op'>=</span><span class='fl'>1</span><span class='op'>:</span><span class='fu'>n</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>gather</span><span class='op'>(</span><span class='va'>x</span>,<span class='va'>lower</span>,<span class='op'>-</span><span class='va'>steps</span><span class='op'>)</span>,
+  
+<span class='va'>irf_results</span><span class='op'>$</span><span class='va'>irf</span><span class='op'>$</span><span class='va'>d_EU</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>as.tibble</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>gather</span><span class='op'>(</span><span class='va'>x</span>,<span class='va'>value</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>value</span><span class='op'>)</span>,
+
+<span class='va'>irf_results</span><span class='op'>$</span><span class='va'>Upper</span><span class='op'>$</span><span class='va'>d_EU</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>as.tibble</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>gather</span><span class='op'>(</span><span class='va'>x</span>,<span class='va'>upper</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>upper</span><span class='op'>)</span>
+<span class='op'>)</span><span class='op'>-&gt;</span><span class='va'>d_irf</span>
+
+<span class='va'>d_irf</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sign.html'>sign</a></span><span class='op'>(</span><span class='va'>lower</span><span class='op'>)</span><span class='op'>==</span><span class='fu'><a href='https://rdrr.io/r/base/sign.html'>sign</a></span><span class='op'>(</span><span class='va'>upper</span><span class='op'>)</span><span class='op'>&amp;</span> <span class='va'>value</span><span class='op'>!=</span><span class='fl'>0</span> <span class='op'>&amp;</span> <span class='va'>lower</span><span class='op'>!=</span><span class='fl'>0</span> <span class='op'>&amp;</span> <span class='va'>upper</span><span class='op'>!=</span><span class='fl'>0</span><span class='op'>)</span>  <span class='op'>%&gt;%</span>
+<span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>steps</span>,y<span class='op'>=</span><span class='va'>value</span>,ymin<span class='op'>=</span><span class='va'>lower</span>,ymax<span class='op'>=</span><span class='va'>upper</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span> <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_errorbar</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>title<span class='op'>=</span><span class='st'>"Impulse Response for Change in EU Libor"</span>,subtitle <span class='op'>=</span> <span class='st'>"95% bootstrapped intervals(n=500)"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<p><img src="flows_analytics_final_files/figure-html5/EUimpulse-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>Show code</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>bind_cols</span><span class='op'>(</span>
+<span class='va'>irf_results</span><span class='op'>$</span><span class='va'>Lower</span><span class='op'>$</span><span class='va'>d_SONIA</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>as.tibble</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>steps<span class='op'>=</span><span class='fl'>1</span><span class='op'>:</span><span class='fu'>n</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>gather</span><span class='op'>(</span><span class='va'>x</span>,<span class='va'>lower</span>,<span class='op'>-</span><span class='va'>steps</span><span class='op'>)</span>,
+  
+<span class='va'>irf_results</span><span class='op'>$</span><span class='va'>irf</span><span class='op'>$</span><span class='va'>d_SONIA</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>as.tibble</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>gather</span><span class='op'>(</span><span class='va'>x</span>,<span class='va'>value</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>value</span><span class='op'>)</span>,
+
+<span class='va'>irf_results</span><span class='op'>$</span><span class='va'>Upper</span><span class='op'>$</span><span class='va'>d_SONIA</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>as.tibble</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>gather</span><span class='op'>(</span><span class='va'>x</span>,<span class='va'>upper</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>upper</span><span class='op'>)</span>
+<span class='op'>)</span><span class='op'>-&gt;</span><span class='va'>d_irf</span>
+
+<span class='va'>d_irf</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sign.html'>sign</a></span><span class='op'>(</span><span class='va'>lower</span><span class='op'>)</span><span class='op'>==</span><span class='fu'><a href='https://rdrr.io/r/base/sign.html'>sign</a></span><span class='op'>(</span><span class='va'>upper</span><span class='op'>)</span> <span class='op'>&amp;</span> <span class='va'>value</span><span class='op'>!=</span><span class='fl'>0</span> <span class='op'>&amp;</span> <span class='va'>lower</span><span class='op'>!=</span><span class='fl'>0</span> <span class='op'>&amp;</span> <span class='va'>upper</span><span class='op'>!=</span><span class='fl'>0</span><span class='op'>)</span>  <span class='op'>%&gt;%</span>
+<span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>steps</span>,y<span class='op'>=</span><span class='va'>value</span>,ymin<span class='op'>=</span><span class='va'>lower</span>,ymax<span class='op'>=</span><span class='va'>upper</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span> <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_errorbar</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>title<span class='op'>=</span><span class='st'>"Impulse Response for Change in SONIA"</span>,subtitle <span class='op'>=</span> <span class='st'>"95% bootstrapped intervals(n=500)"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<p><img src="flows_analytics_final_files/figure-html5/Sonia-1.png" width="624" /></p>
+</div>
+<h1 id="reference">Reference</h1>
+<p>Lundberg, S. M., &amp; Lee, S.-I. (2017). A unified approach to interpreting model predictions. Proceedings of the 31st International Conference on Neural Information Processing Systems, 4768–4777.</p>
+<p>Brandt, P. T., Colaresi, M., &amp; Freeman, J. R. (2008). The Dynamics of Reciprocity, Accountability, and Credibility. The Journal of Conflict Resolution, 52(3), 343–374.</p>
+<p>Brandt, P. T., &amp; Freeman, J. R. (2006). Advances in Bayesian Time Series Modeling and the Study of Politics: Theory Testing, Forecasting, and Policy Analysis. Political Analysis: An Annual Publication of the Methodology Section of the American Political Science Association, 14(1), 1–36.</p>
+<p>Brandt, P. T., Freeman, J. R., &amp; Schrodt, P. A. (2014). Evaluating forecasts of political conflict dynamics. International Journal of Forecasting, 30(4), 944–962.</p>
+<p>Beck, Christian, and Friedrich Schögl. 1993. Thermodynamics of Chaotic Systems: An Introduction. Cambridge Nonlinear Science Series 4. Cambridge University Press.</p>
+<p>Dimpfl, Thomas, and Franziska Julia Peter. 2013. “Using Transfer Entropy to Measure Information Flows Between Financial Markets.” Studies in Nonlinear Dynamics and Econometrics 17 (1): 85–102.</p>
+<p>Jizba, Petr, Hagen Kleinert, and Mohammad Shefaat. 2012. “Renyi’s Information Transfer Between Financial Time Series.” Physica A 391: 2971–89.</p>
+<p>Kullback, S., and R. A. Leibler. 1951. “On Information and Sufficiency.” The Annals of Mathematical Statistics 1: 79–86.</p>
+<p>Marschinski, R., and H. Kantz. 2002. “Analysing the Information Flow Between Financial Time Series: An Improved Estimator for Transfer Entropy.” European Physical Journal B 30 (2): 275–81.</p>
+<p>Rényi, A. 1970. Probability Theory. North-Holland, Amsterdam. Schreiber, T. 2000. “Measuring Information Transfer.” Physical Review Letters 85 (2): 461–64.</p>
+<p>Shannon, C. E. 1948. “A Mathematical Theory of Communication.” Bell System Technical Journal 27: 379–423.</p>
+<p>Sims, C. A., Waggoner, D. F., &amp; Zha, T. (2008). Methods for inference in large multiple-equation Markov-switching models. Journal of Econometrics, 146(2), 255–274.</p>
+<p>Sims, C. A., &amp; Zha, T. (1998). Bayesian Methods for Dynamic Multivariate Models. International Economic Review, 39(4), 949–968.</p>
+<p>Sims, C. A., &amp; Zha, T. (2006). Were There Regime Switches in U.S. Monetary Policy? The American Economic Review, 96(1), 54–81.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>

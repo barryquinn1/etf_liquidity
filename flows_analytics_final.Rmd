@@ -13,7 +13,7 @@ output:
 ---
 
 ```{r set-up, include=FALSE}
-knitr::opts_chunk$set(message = FALSE,warnings=FALSE, code_folding=TRUE)
+knitr::opts_chunk$set(message = FALSE,warnings=FALSE, code_folding=TRUE, cache = TRUE)
 dels<-ls()
 rm(list=dels)
 pacman::p_load("tidyverse","readxl","lubridate",'vars','corrplot','data.table')
@@ -53,6 +53,11 @@ dat %>%
                 -`US 3M LIBOR`,-`EU 3M LIBOR`,-`SONIA`
                 ) %>%
   drop_na() ->y_endog
+y_endog %>% 
+  dplyr::select(-Date,-CE_dummy) %>%
+  map_df(scale) %>%
+bind_cols(y_endog %>% 
+            dplyr::select(Date,CE_dummy)) ->y_endog_scaled
 ```
 
 # Introduction
@@ -65,17 +70,12 @@ On 31<sup>st</sup> January 2020 the World Health Organisation (WHO) declared a g
 
 We investigate the dynamic impact of fixed income ETF fund flows and central bank interest rates.  Specifically, we assume that there is a substantive non-linear structure to bivariate relationship which we explore in two-stages. In stage one we use assess the bivariate information flow between fixed income ETFs and central bank interest rates using transfer entropy, a model-free measure of the asymmetric information flow between time series in a network. This is a popular approach to information diffusion and contagion in a complex systems such as global capital markets[@Bekiros2017,@Nam2019].
 
-This paper aims to assess the impact of these credit easing programs on the underlying corporate bonds  in  order  to  ascertain  if  the  inclusion  of  EFTs  could  have  an  effect  on  the  program’s performance. While a number of studies compare quantitative easing to credit easing (refs) this work is the first to date to compare the performance of credit easing programs across countries.
+This analysis investigates the linear and nonlinear dynamic relationships between fixed income ETF fund flows and three prominent interest rates.  Specifically we first nonlinear flow of information between each ETF and the daily change in three interest rates using an information theoretic measure. Shannon's transfer entropy measure the information flow (reduction in uncertainty in probability) is a model-free way that captures the non-linear complexity of a financial network.  As an exploratory exercise, we assess the information transfer from and to the changes of three interest rates.  Secondly, we investigate the linear and nonlinear aspects using a standard VAR model, specifying an interaction term as a 
 
 # Data
 The data is sourced from Bloomberg and consists of daily indices capturing net ETF Flows into different bond categories of ETF in the US market. The data is for the period `r first(dat$Date)` - `r last(dat$Date)`.  The sample also include three interest ratios, US 3-month LIBOR, EU 3-Month LIBOR and the SONIA interest rate benchmark.
 
 ```{r plot}
-y_endog %>% 
-  dplyr::select(-Date,-CE_dummy) %>%
-  map_df(scale) %>%
-bind_cols(y_endog %>% 
-            dplyr::select(Date,CE_dummy)) ->y_endog_scaled
 y_endog_scaled %>%
   gather(variable,value,-Date) %>%
     mutate(predictors=if_else(variable %in% c('d_US','d_EU','d_SONIA'),"Rate_Change","Flows")) %>%
@@ -240,7 +240,7 @@ ggplot(plot_data, aes(x = ticker, y = ete)) +
 
 # Linear VAR models with interactions
 
-Vector autoregressive models are a conventional *go to* to analysis dynamic relationships in finance, predicated on the assumption of linearity and spherical error disturbances. What follows is an analysis of all the ETF flows and daily $\delta$ in each interest rate.  
+Vector autoregressive models are a conventional *go to* to analysis dynamic relationships in finance, predicated on the assumption of linearity and spherical error disturbances. What follows is an analysis of all the ETF flows and daily $\delta$ in each interest rate.  Specifically, the VAR linear specification considers all the variables as endogenous We also include a set of interaction terms as exogeneous shock variables which include; corporate bonds, high yield, government, inflation-protected, ultra short, 
  
 
 ```{r}
@@ -248,9 +248,13 @@ library(vars)
 var_model<-VAR(y_endog_scaled %>% 
                 dplyr::select(-CE_dummy,-Date),
                exogen =y_endog_scaled %>% 
-                 mutate(Corporate_i=`Corporate Bonds`*CE_dummy,
-                        HighY_i=`High Yield`*CE_dummy) %>% 
-                 dplyr::select(Corporate_i,HighY_i,CE_dummy),
+                 transmute(Corporate_i=`Corporate Bonds`*CE_dummy,
+                        HighY_i=`High Yield`*CE_dummy,
+                        Gov_i=`Government Bonds`*CE_dummy,
+                                 "Inflation Protected_i"=`Inflation Protected`*CE_dummy,
+                                 Us_i=`Ultra Short`*CE_dummy,
+                                 Pref_i=Preferred*CE_dummy,
+                                 CE_dummy=CE_dummy),
                lag.max = 4)
 var_model %>% summary() -> var_model_results
 ```
@@ -296,7 +300,7 @@ irf_results$Upper$d_US %>%
 )->d_US_irf
 
 d_US_irf %>% 
-  filter(sign(lower)==sign(upper),value!=0)  %>%
+  filter(sign(lower)==sign(upper) & value!=0 & lower!=0 & upper!=0)  %>%
 ggplot(aes(x=steps,y=value,ymin=lower,ymax=upper))+ geom_point() +
   geom_errorbar() + facet_wrap(~x) +
   labs(title="Impulse Response for Change in US Libor",subtitle = "95% bootstrapped intervals (n=500)")
