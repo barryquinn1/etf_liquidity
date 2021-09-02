@@ -38,7 +38,6 @@ We investigate the dynamic impact of fixed income ETF fund flows and central ban
 The data is sourced from Bloomberg and consists of daily indices capturing net ETF Flows into different bond categories of ETF in the US market. The data is for the period `r first(dat$Date)` - `r last(dat$Date)`.  The sample also include three interest ratios, US 3-month LIBOR, EU 3-Month LIBOR and the SONIA interest rate benchmark.
 
 ```{r plot}
-dat[match(y_endog$CORP,dat$CORP),]$Date
 y_endog %>%
   mutate(Date=dat[match(y_endog$CORP,dat$CORP),]$Date) %>%
   gather(variable,value,-Date) %>%
