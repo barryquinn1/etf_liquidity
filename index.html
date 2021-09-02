@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["flows_analytics_final_files/anchor-4.2.2/anchor.min.js","flows_analytics_final_files/bowser-1.9.3/bowser.min.js","flows_analytics_final_files/distill-2.2.21/template.v2.js","flows_analytics_final_files/figure-html5/correlation-1.png","flows_analytics_final_files/figure-html5/EU-1.png","flows_analytics_final_files/figure-html5/EUimpulse-1.png","flows_analytics_final_files/figure-html5/irf-1.png","flows_analytics_final_files/figure-html5/plot-1.png","flows_analytics_final_files/figure-html5/Sonia-1.png","flows_analytics_final_files/figure-html5/unnamed-chunk-1-1.png","flows_analytics_final_files/figure-html5/US-1.png","flows_analytics_final_files/jquery-1.11.3/jquery.min.js","flows_analytics_final_files/popper-2.6.0/popper.min.js","flows_analytics_final_files/tippy-6.2.7/tippy-bundle.umd.min.js","flows_analytics_final_files/tippy-6.2.7/tippy-light-border.css","flows_analytics_final_files/tippy-6.2.7/tippy.css","flows_analytics_final_files/tippy-6.2.7/tippy.umd.min.js","flows_analytics_final_files/webcomponents-2.0.0/webcomponents.js","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/correlation-1.png","index_files/figure-html5/EU-1.png","index_files/figure-html5/EUce-1.png","index_files/figure-html5/plot-1.png","index_files/figure-html5/Sonia-1.png","index_files/figure-html5/Soniace-1.png","index_files/figure-html5/US-1.png","index_files/figure-html5/USce-1.png","index_files/jquery-1.11.3/jquery.min.js","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js","raw.xlsx"]}
+  {"type":"character","attributes":{},"value":["etf_flows.csv","flows_analytics_final_files/anchor-4.2.2/anchor.min.js","flows_analytics_final_files/bowser-1.9.3/bowser.min.js","flows_analytics_final_files/distill-2.2.21/template.v2.js","flows_analytics_final_files/figure-html5/correlation-1.png","flows_analytics_final_files/figure-html5/EU-1.png","flows_analytics_final_files/figure-html5/EUimpulse-1.png","flows_analytics_final_files/figure-html5/irf-1.png","flows_analytics_final_files/figure-html5/plot-1.png","flows_analytics_final_files/figure-html5/Sonia-1.png","flows_analytics_final_files/figure-html5/unnamed-chunk-1-1.png","flows_analytics_final_files/figure-html5/US-1.png","flows_analytics_final_files/jquery-1.11.3/jquery.min.js","flows_analytics_final_files/popper-2.6.0/popper.min.js","flows_analytics_final_files/tippy-6.2.7/tippy-bundle.umd.min.js","flows_analytics_final_files/tippy-6.2.7/tippy-light-border.css","flows_analytics_final_files/tippy-6.2.7/tippy.css","flows_analytics_final_files/tippy-6.2.7/tippy.umd.min.js","flows_analytics_final_files/webcomponents-2.0.0/webcomponents.js","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/correlation-1.png","index_files/figure-html5/EU 1w-1.png","index_files/figure-html5/EU-1.png","index_files/figure-html5/EUce-1.png","index_files/figure-html5/EUce1w-1.png","index_files/figure-html5/plot-1.png","index_files/figure-html5/Sonia-1.png","index_files/figure-html5/Soniace-1.png","index_files/figure-html5/US 1w-1.png","index_files/figure-html5/US-1.png","index_files/figure-html5/USce-1.png","index_files/figure-html5/USce1w-1.png","index_files/jquery-1.11.3/jquery.min.js","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js","raw.xlsx"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1511,19 +1511,370 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </blockquote>
 <p>We investigate the dynamic impact of fixed income ETF fund flows and central bank interest rates. Specifically, we assume that there is a substantive non-linear dynamic structure to bivariate relationships. We assess the bivariate information flow between fixed income ETFs and LIBOR interest rates using transfer entropy, a model-free measure of the asymmetric information flow between time series in a network. This is a popular approach to information diffusion and contagion in a complex systems such as global capital markets<span class="citation" data-cites="Bekiros2017">[@Bekiros2017,@Nam2019]</span>.</p>
 <h1 id="data">Data</h1>
-<p>The data is sourced from Bloomberg and consists of daily indices capturing net ETF Flows into different bond categories of ETF in the US market. The data is for the period 2021-12-07 - 2020-02-01. The sample also include three interest ratios, US 3-month LIBOR, EU 3-Month LIBOR and the SONIA interest rate benchmark.</p>
+<p>The data is sourced from Bloomberg and consists of daily indices capturing net ETF Flows into different bond categories of ETF in the US market. The data is for the period 2021-09-02 - 2016-09-05. The sample also include three interest ratios, US 3-month LIBOR, EU 3-Month LIBOR and the SONIA interest rate benchmark.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>Show code</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>y_endog_scaled</span> <span class='op'>%&gt;%</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>dat</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/match.html'>match</a></span><span class='op'>(</span><span class='va'>y_endog</span><span class='op'>$</span><span class='va'>CORP</span>,<span class='va'>dat</span><span class='op'>$</span><span class='va'>CORP</span><span class='op'>)</span>,<span class='op'>]</span><span class='op'>$</span><span class='va'>Date</span>
+</code></pre>
+</div>
+</details>
+<pre><code>   [1] &quot;2016-09-07 UTC&quot; &quot;2016-09-08 UTC&quot; &quot;2016-09-09 UTC&quot;
+   [4] &quot;2016-09-12 UTC&quot; &quot;2016-09-13 UTC&quot; &quot;2016-09-14 UTC&quot;
+   [7] &quot;2016-09-15 UTC&quot; &quot;2016-09-16 UTC&quot; &quot;2016-09-20 UTC&quot;
+  [10] &quot;2016-09-21 UTC&quot; &quot;2016-09-22 UTC&quot; &quot;2016-09-26 UTC&quot;
+  [13] &quot;2016-09-27 UTC&quot; &quot;2016-09-28 UTC&quot; &quot;2016-09-29 UTC&quot;
+  [16] &quot;2016-09-30 UTC&quot; &quot;2016-10-03 UTC&quot; &quot;2016-10-04 UTC&quot;
+  [19] &quot;2016-10-05 UTC&quot; &quot;2016-10-06 UTC&quot; &quot;2016-10-07 UTC&quot;
+  [22] &quot;2016-10-11 UTC&quot; &quot;2016-10-12 UTC&quot; &quot;2016-10-13 UTC&quot;
+  [25] &quot;2016-10-14 UTC&quot; &quot;2016-10-17 UTC&quot; &quot;2016-10-18 UTC&quot;
+  [28] &quot;2016-10-20 UTC&quot; &quot;2016-10-21 UTC&quot; &quot;2016-10-24 UTC&quot;
+  [31] &quot;2016-10-25 UTC&quot; &quot;2016-10-26 UTC&quot; &quot;2016-10-27 UTC&quot;
+  [34] &quot;2016-10-28 UTC&quot; &quot;2016-10-31 UTC&quot; &quot;2016-11-01 UTC&quot;
+  [37] &quot;2016-11-02 UTC&quot; &quot;2016-11-04 UTC&quot; &quot;2016-11-10 UTC&quot;
+  [40] &quot;2016-11-14 UTC&quot; &quot;2016-11-15 UTC&quot; &quot;2016-11-16 UTC&quot;
+  [43] &quot;2016-11-17 UTC&quot; &quot;2016-11-18 UTC&quot; &quot;2016-11-21 UTC&quot;
+  [46] &quot;2016-11-22 UTC&quot; &quot;2016-11-23 UTC&quot; &quot;2016-11-24 UTC&quot;
+  [49] &quot;2016-11-28 UTC&quot; &quot;2016-11-29 UTC&quot; &quot;2016-11-30 UTC&quot;
+  [52] &quot;2016-12-01 UTC&quot; &quot;2016-12-02 UTC&quot; &quot;2016-12-05 UTC&quot;
+  [55] &quot;2016-12-06 UTC&quot; &quot;2016-12-07 UTC&quot; &quot;2016-12-08 UTC&quot;
+  [58] &quot;2016-12-09 UTC&quot; &quot;2016-12-12 UTC&quot; &quot;2016-12-13 UTC&quot;
+  [61] &quot;2016-12-14 UTC&quot; &quot;2016-12-15 UTC&quot; &quot;2016-12-16 UTC&quot;
+  [64] &quot;2016-12-19 UTC&quot; &quot;2016-12-20 UTC&quot; &quot;2016-12-21 UTC&quot;
+  [67] &quot;2016-12-22 UTC&quot; &quot;2016-12-23 UTC&quot; &quot;2016-12-28 UTC&quot;
+  [70] &quot;2016-12-29 UTC&quot; &quot;2016-12-30 UTC&quot; &quot;2017-01-03 UTC&quot;
+  [73] &quot;2017-01-04 UTC&quot; &quot;2017-01-05 UTC&quot; &quot;2017-01-09 UTC&quot;
+  [76] &quot;2017-01-10 UTC&quot; &quot;2017-01-11 UTC&quot; &quot;2017-01-12 UTC&quot;
+  [79] &quot;2017-01-13 UTC&quot; &quot;2017-01-16 UTC&quot; &quot;2017-01-17 UTC&quot;
+  [82] &quot;2017-01-18 UTC&quot; &quot;2017-01-19 UTC&quot; &quot;2017-01-20 UTC&quot;
+  [85] &quot;2017-01-23 UTC&quot; &quot;2017-01-24 UTC&quot; &quot;2017-01-25 UTC&quot;
+  [88] &quot;2017-01-26 UTC&quot; &quot;2017-01-27 UTC&quot; &quot;2017-01-30 UTC&quot;
+  [91] &quot;2017-01-31 UTC&quot; &quot;2017-02-01 UTC&quot; &quot;2017-02-02 UTC&quot;
+  [94] &quot;2017-02-03 UTC&quot; &quot;2017-02-06 UTC&quot; &quot;2017-02-07 UTC&quot;
+  [97] &quot;2017-02-08 UTC&quot; &quot;2017-02-09 UTC&quot; &quot;2017-02-10 UTC&quot;
+ [100] &quot;2017-02-13 UTC&quot; &quot;2017-02-14 UTC&quot; &quot;2017-02-15 UTC&quot;
+ [103] &quot;2017-02-16 UTC&quot; &quot;2017-02-17 UTC&quot; &quot;2017-02-20 UTC&quot;
+ [106] &quot;2017-02-21 UTC&quot; &quot;2017-02-22 UTC&quot; &quot;2017-02-23 UTC&quot;
+ [109] &quot;2017-02-24 UTC&quot; &quot;2017-02-27 UTC&quot; &quot;2017-02-28 UTC&quot;
+ [112] &quot;2017-03-01 UTC&quot; &quot;2017-03-02 UTC&quot; &quot;2017-03-03 UTC&quot;
+ [115] &quot;2017-03-06 UTC&quot; &quot;2017-03-07 UTC&quot; &quot;2017-03-08 UTC&quot;
+ [118] &quot;2017-03-10 UTC&quot; &quot;2017-03-14 UTC&quot; &quot;2017-03-15 UTC&quot;
+ [121] &quot;2017-03-16 UTC&quot; &quot;2017-03-17 UTC&quot; &quot;2017-03-20 UTC&quot;
+ [124] &quot;2017-03-21 UTC&quot; &quot;2017-03-22 UTC&quot; &quot;2017-03-23 UTC&quot;
+ [127] &quot;2017-03-27 UTC&quot; &quot;2017-03-28 UTC&quot; &quot;2017-03-29 UTC&quot;
+ [130] &quot;2017-03-30 UTC&quot; &quot;2017-03-31 UTC&quot; &quot;2017-04-04 UTC&quot;
+ [133] &quot;2017-04-05 UTC&quot; &quot;2017-04-06 UTC&quot; &quot;2017-04-10 UTC&quot;
+ [136] &quot;2017-04-11 UTC&quot; &quot;2017-04-12 UTC&quot; &quot;2017-04-13 UTC&quot;
+ [139] &quot;2017-04-19 UTC&quot; &quot;2017-04-20 UTC&quot; &quot;2017-04-21 UTC&quot;
+ [142] &quot;2017-04-24 UTC&quot; &quot;2017-04-25 UTC&quot; &quot;2017-04-27 UTC&quot;
+ [145] &quot;2017-04-28 UTC&quot; &quot;2017-05-03 UTC&quot; &quot;2017-05-04 UTC&quot;
+ [148] &quot;2017-05-05 UTC&quot; &quot;2017-05-09 UTC&quot; &quot;2017-05-11 UTC&quot;
+ [151] &quot;2017-05-12 UTC&quot; &quot;2017-05-16 UTC&quot; &quot;2017-05-17 UTC&quot;
+ [154] &quot;2017-05-18 UTC&quot; &quot;2017-05-19 UTC&quot; &quot;2017-05-22 UTC&quot;
+ [157] &quot;2017-05-23 UTC&quot; &quot;2017-05-24 UTC&quot; &quot;2017-05-25 UTC&quot;
+ [160] &quot;2017-05-26 UTC&quot; &quot;2017-05-30 UTC&quot; &quot;2017-05-31 UTC&quot;
+ [163] &quot;2017-06-01 UTC&quot; &quot;2017-06-02 UTC&quot; &quot;2017-06-05 UTC&quot;
+ [166] &quot;2017-06-06 UTC&quot; &quot;2017-06-07 UTC&quot; &quot;2017-06-08 UTC&quot;
+ [169] &quot;2017-06-12 UTC&quot; &quot;2017-06-15 UTC&quot; &quot;2017-06-20 UTC&quot;
+ [172] &quot;2017-06-21 UTC&quot; &quot;2017-06-22 UTC&quot; &quot;2017-06-23 UTC&quot;
+ [175] &quot;2017-06-26 UTC&quot; &quot;2017-06-27 UTC&quot; &quot;2017-06-28 UTC&quot;
+ [178] &quot;2017-06-29 UTC&quot; &quot;2017-06-30 UTC&quot; &quot;2017-07-03 UTC&quot;
+ [181] &quot;2017-07-07 UTC&quot; &quot;2017-07-13 UTC&quot; &quot;2017-07-17 UTC&quot;
+ [184] &quot;2017-07-18 UTC&quot; &quot;2017-07-19 UTC&quot; &quot;2017-07-21 UTC&quot;
+ [187] &quot;2017-07-24 UTC&quot; &quot;2017-07-25 UTC&quot; &quot;2017-07-27 UTC&quot;
+ [190] &quot;2017-07-31 UTC&quot; &quot;2017-08-02 UTC&quot; &quot;2017-08-04 UTC&quot;
+ [193] &quot;2017-08-07 UTC&quot; &quot;2017-08-08 UTC&quot; &quot;2017-08-09 UTC&quot;
+ [196] &quot;2017-08-10 UTC&quot; &quot;2017-08-14 UTC&quot; &quot;2017-08-18 UTC&quot;
+ [199] &quot;2017-08-21 UTC&quot; &quot;2017-08-24 UTC&quot; &quot;2017-09-06 UTC&quot;
+ [202] &quot;2017-09-07 UTC&quot; &quot;2017-09-08 UTC&quot; &quot;2017-09-12 UTC&quot;
+ [205] &quot;2017-09-14 UTC&quot; &quot;2017-09-19 UTC&quot; &quot;2017-09-21 UTC&quot;
+ [208] &quot;2017-09-22 UTC&quot; &quot;2017-09-26 UTC&quot; &quot;2017-09-27 UTC&quot;
+ [211] &quot;2017-09-28 UTC&quot; &quot;2017-09-29 UTC&quot; &quot;2017-10-02 UTC&quot;
+ [214] &quot;2017-10-03 UTC&quot; &quot;2017-10-05 UTC&quot; &quot;2017-10-06 UTC&quot;
+ [217] &quot;2017-10-10 UTC&quot; &quot;2017-10-11 UTC&quot; &quot;2017-10-13 UTC&quot;
+ [220] &quot;2017-10-16 UTC&quot; &quot;2017-10-17 UTC&quot; &quot;2017-10-18 UTC&quot;
+ [223] &quot;2017-10-19 UTC&quot; &quot;2017-10-20 UTC&quot; &quot;2017-10-23 UTC&quot;
+ [226] &quot;2017-10-24 UTC&quot; &quot;2017-10-25 UTC&quot; &quot;2017-10-27 UTC&quot;
+ [229] &quot;2017-10-30 UTC&quot; &quot;2017-11-01 UTC&quot; &quot;2017-11-03 UTC&quot;
+ [232] &quot;2017-11-06 UTC&quot; &quot;2017-11-07 UTC&quot; &quot;2017-11-08 UTC&quot;
+ [235] &quot;2017-11-09 UTC&quot; &quot;2017-11-10 UTC&quot; &quot;2017-11-13 UTC&quot;
+ [238] &quot;2017-11-14 UTC&quot; &quot;2017-11-15 UTC&quot; &quot;2017-11-17 UTC&quot;
+ [241] &quot;2017-11-21 UTC&quot; &quot;2017-11-22 UTC&quot; &quot;2017-11-27 UTC&quot;
+ [244] &quot;2017-11-28 UTC&quot; &quot;2017-11-29 UTC&quot; &quot;2017-11-30 UTC&quot;
+ [247] &quot;2017-12-01 UTC&quot; &quot;2017-12-04 UTC&quot; &quot;2017-12-05 UTC&quot;
+ [250] &quot;2017-12-06 UTC&quot; &quot;2017-12-07 UTC&quot; &quot;2017-12-11 UTC&quot;
+ [253] &quot;2017-12-14 UTC&quot; &quot;2017-12-15 UTC&quot; &quot;2017-12-18 UTC&quot;
+ [256] &quot;2017-12-20 UTC&quot; &quot;2017-12-21 UTC&quot; &quot;2017-12-22 UTC&quot;
+ [259] &quot;2017-12-27 UTC&quot; &quot;2017-12-29 UTC&quot; &quot;2018-01-08 UTC&quot;
+ [262] &quot;2018-01-09 UTC&quot; &quot;2018-01-10 UTC&quot; &quot;2018-01-11 UTC&quot;
+ [265] &quot;2018-01-12 UTC&quot; &quot;2018-01-15 UTC&quot; &quot;2018-01-16 UTC&quot;
+ [268] &quot;2018-01-17 UTC&quot; &quot;2018-01-18 UTC&quot; &quot;2018-01-19 UTC&quot;
+ [271] &quot;2018-01-22 UTC&quot; &quot;2018-01-23 UTC&quot; &quot;2018-01-25 UTC&quot;
+ [274] &quot;2018-01-26 UTC&quot; &quot;2018-01-29 UTC&quot; &quot;2018-01-30 UTC&quot;
+ [277] &quot;2018-01-31 UTC&quot; &quot;2018-02-01 UTC&quot; &quot;2018-02-02 UTC&quot;
+ [280] &quot;2018-02-06 UTC&quot; &quot;2018-02-07 UTC&quot; &quot;2018-02-08 UTC&quot;
+ [283] &quot;2018-02-09 UTC&quot; &quot;2018-02-12 UTC&quot; &quot;2018-02-15 UTC&quot;
+ [286] &quot;2018-02-16 UTC&quot; &quot;2018-02-19 UTC&quot; &quot;2018-02-20 UTC&quot;
+ [289] &quot;2018-02-22 UTC&quot; &quot;2018-02-23 UTC&quot; &quot;2018-02-26 UTC&quot;
+ [292] &quot;2018-02-27 UTC&quot; &quot;2018-02-28 UTC&quot; &quot;2018-03-01 UTC&quot;
+ [295] &quot;2018-03-05 UTC&quot; &quot;2018-03-06 UTC&quot; &quot;2018-03-08 UTC&quot;
+ [298] &quot;2018-03-09 UTC&quot; &quot;2018-03-12 UTC&quot; &quot;2018-03-13 UTC&quot;
+ [301] &quot;2018-03-14 UTC&quot; &quot;2018-03-15 UTC&quot; &quot;2018-03-16 UTC&quot;
+ [304] &quot;2018-03-19 UTC&quot; &quot;2018-03-20 UTC&quot; &quot;2018-03-21 UTC&quot;
+ [307] &quot;2018-03-22 UTC&quot; &quot;2018-03-23 UTC&quot; &quot;2018-03-26 UTC&quot;
+ [310] &quot;2018-03-27 UTC&quot; &quot;2018-04-03 UTC&quot; &quot;2018-04-04 UTC&quot;
+ [313] &quot;2018-04-05 UTC&quot; &quot;2018-04-06 UTC&quot; &quot;2018-04-09 UTC&quot;
+ [316] &quot;2018-04-10 UTC&quot; &quot;2018-04-12 UTC&quot; &quot;2018-04-13 UTC&quot;
+ [319] &quot;2018-04-17 UTC&quot; &quot;2018-04-19 UTC&quot; &quot;2018-04-20 UTC&quot;
+ [322] &quot;2018-04-23 UTC&quot; &quot;2018-04-25 UTC&quot; &quot;2018-04-26 UTC&quot;
+ [325] &quot;2018-04-27 UTC&quot; &quot;2018-04-30 UTC&quot; &quot;2018-05-01 UTC&quot;
+ [328] &quot;2018-05-03 UTC&quot; &quot;2018-05-04 UTC&quot; &quot;2018-05-08 UTC&quot;
+ [331] &quot;2018-05-10 UTC&quot; &quot;2018-05-11 UTC&quot; &quot;2018-05-14 UTC&quot;
+ [334] &quot;2018-05-16 UTC&quot; &quot;2018-05-17 UTC&quot; &quot;2018-05-22 UTC&quot;
+ [337] &quot;2018-05-23 UTC&quot; &quot;2018-05-25 UTC&quot; &quot;2018-05-29 UTC&quot;
+ [340] &quot;2018-05-30 UTC&quot; &quot;2018-05-31 UTC&quot; &quot;2018-06-01 UTC&quot;
+ [343] &quot;2018-06-04 UTC&quot; &quot;2018-06-06 UTC&quot; &quot;2018-06-07 UTC&quot;
+ [346] &quot;2018-06-08 UTC&quot; &quot;2018-06-11 UTC&quot; &quot;2018-06-12 UTC&quot;
+ [349] &quot;2018-06-13 UTC&quot; &quot;2018-06-14 UTC&quot; &quot;2018-06-15 UTC&quot;
+ [352] &quot;2018-06-18 UTC&quot; &quot;2018-06-21 UTC&quot; &quot;2018-06-22 UTC&quot;
+ [355] &quot;2018-06-25 UTC&quot; &quot;2018-06-26 UTC&quot; &quot;2018-06-27 UTC&quot;
+ [358] &quot;2018-06-28 UTC&quot; &quot;2018-06-29 UTC&quot; &quot;2018-07-03 UTC&quot;
+ [361] &quot;2018-07-04 UTC&quot; &quot;2018-07-05 UTC&quot; &quot;2018-07-09 UTC&quot;
+ [364] &quot;2018-07-10 UTC&quot; &quot;2018-07-11 UTC&quot; &quot;2018-07-12 UTC&quot;
+ [367] &quot;2018-07-13 UTC&quot; &quot;2018-07-16 UTC&quot; &quot;2018-07-18 UTC&quot;
+ [370] &quot;2018-07-19 UTC&quot; &quot;2018-07-20 UTC&quot; &quot;2018-07-27 UTC&quot;
+ [373] &quot;2018-07-31 UTC&quot; &quot;2018-08-01 UTC&quot; &quot;2018-08-02 UTC&quot;
+ [376] &quot;2018-08-06 UTC&quot; &quot;2018-08-07 UTC&quot; &quot;2018-08-08 UTC&quot;
+ [379] &quot;2018-08-10 UTC&quot; &quot;2018-08-13 UTC&quot; &quot;2018-08-15 UTC&quot;
+ [382] &quot;2018-08-16 UTC&quot; &quot;2018-08-20 UTC&quot; &quot;2018-08-21 UTC&quot;
+ [385] &quot;2018-08-29 UTC&quot; &quot;2018-08-30 UTC&quot; &quot;2018-08-31 UTC&quot;
+ [388] &quot;2018-09-04 UTC&quot; &quot;2018-09-05 UTC&quot; &quot;2018-09-07 UTC&quot;
+ [391] &quot;2018-09-11 UTC&quot; &quot;2018-09-12 UTC&quot; &quot;2018-09-13 UTC&quot;
+ [394] &quot;2018-09-14 UTC&quot; &quot;2018-09-18 UTC&quot; &quot;2018-09-19 UTC&quot;
+ [397] &quot;2018-09-21 UTC&quot; &quot;2018-09-25 UTC&quot; &quot;2018-09-26 UTC&quot;
+ [400] &quot;2018-09-27 UTC&quot; &quot;2018-09-28 UTC&quot; &quot;2018-10-02 UTC&quot;
+ [403] &quot;2018-10-03 UTC&quot; &quot;2018-10-04 UTC&quot; &quot;2018-10-05 UTC&quot;
+ [406] &quot;2018-10-09 UTC&quot; &quot;2018-10-10 UTC&quot; &quot;2018-10-11 UTC&quot;
+ [409] &quot;2018-10-12 UTC&quot; &quot;2018-10-15 UTC&quot; &quot;2018-10-16 UTC&quot;
+ [412] &quot;2018-10-17 UTC&quot; &quot;2018-10-23 UTC&quot; &quot;2018-10-24 UTC&quot;
+ [415] &quot;2018-10-26 UTC&quot; &quot;2018-10-30 UTC&quot; &quot;2018-10-31 UTC&quot;
+ [418] &quot;2018-11-01 UTC&quot; &quot;2018-11-05 UTC&quot; &quot;2018-11-06 UTC&quot;
+ [421] &quot;2018-11-07 UTC&quot; &quot;2018-11-08 UTC&quot; &quot;2018-11-09 UTC&quot;
+ [424] &quot;2018-11-14 UTC&quot; &quot;2018-11-15 UTC&quot; &quot;2018-11-16 UTC&quot;
+ [427] &quot;2018-11-19 UTC&quot; &quot;2018-11-20 UTC&quot; &quot;2018-11-21 UTC&quot;
+ [430] &quot;2018-11-23 UTC&quot; &quot;2018-11-26 UTC&quot; &quot;2018-11-28 UTC&quot;
+ [433] &quot;2018-12-03 UTC&quot; &quot;2018-12-04 UTC&quot; &quot;2018-12-05 UTC&quot;
+ [436] &quot;2018-12-06 UTC&quot; &quot;2018-12-07 UTC&quot; &quot;2018-12-10 UTC&quot;
+ [439] &quot;2018-12-11 UTC&quot; &quot;2018-12-12 UTC&quot; &quot;2018-12-13 UTC&quot;
+ [442] &quot;2018-12-14 UTC&quot; &quot;2018-12-17 UTC&quot; &quot;2018-12-18 UTC&quot;
+ [445] &quot;2018-12-19 UTC&quot; &quot;2018-12-20 UTC&quot; &quot;2018-12-21 UTC&quot;
+ [448] &quot;2018-12-24 UTC&quot; &quot;2018-12-27 UTC&quot; &quot;2018-12-31 UTC&quot;
+ [451] &quot;2019-01-02 UTC&quot; &quot;2019-01-03 UTC&quot; &quot;2019-01-04 UTC&quot;
+ [454] &quot;2019-01-07 UTC&quot; &quot;2019-01-09 UTC&quot; &quot;2019-01-10 UTC&quot;
+ [457] &quot;2019-01-11 UTC&quot; &quot;2019-01-14 UTC&quot; &quot;2019-01-15 UTC&quot;
+ [460] &quot;2019-01-16 UTC&quot; &quot;2019-01-18 UTC&quot; &quot;2019-01-22 UTC&quot;
+ [463] &quot;2019-01-23 UTC&quot; &quot;2019-01-25 UTC&quot; &quot;2019-01-28 UTC&quot;
+ [466] &quot;2019-01-29 UTC&quot; &quot;2019-01-30 UTC&quot; &quot;2019-01-31 UTC&quot;
+ [469] &quot;2019-02-01 UTC&quot; &quot;2019-02-05 UTC&quot; &quot;2019-02-06 UTC&quot;
+ [472] &quot;2019-02-07 UTC&quot; &quot;2019-02-11 UTC&quot; &quot;2019-02-12 UTC&quot;
+ [475] &quot;2019-02-13 UTC&quot; &quot;2019-02-14 UTC&quot; &quot;2019-02-19 UTC&quot;
+ [478] &quot;2019-02-20 UTC&quot; &quot;2019-02-21 UTC&quot; &quot;2019-02-22 UTC&quot;
+ [481] &quot;2019-02-25 UTC&quot; &quot;2019-02-26 UTC&quot; &quot;2019-02-27 UTC&quot;
+ [484] &quot;2019-02-28 UTC&quot; &quot;2019-03-01 UTC&quot; &quot;2019-03-04 UTC&quot;
+ [487] &quot;2019-03-05 UTC&quot; &quot;2019-03-06 UTC&quot; &quot;2019-03-07 UTC&quot;
+ [490] &quot;2019-03-08 UTC&quot; &quot;2019-03-11 UTC&quot; &quot;2019-03-12 UTC&quot;
+ [493] &quot;2019-03-13 UTC&quot; &quot;2019-03-14 UTC&quot; &quot;2019-03-18 UTC&quot;
+ [496] &quot;2019-03-19 UTC&quot; &quot;2019-03-20 UTC&quot; &quot;2019-03-21 UTC&quot;
+ [499] &quot;2019-03-22 UTC&quot; &quot;2019-03-27 UTC&quot; &quot;2019-03-28 UTC&quot;
+ [502] &quot;2019-03-29 UTC&quot; &quot;2019-04-01 UTC&quot; &quot;2019-04-03 UTC&quot;
+ [505] &quot;2019-04-04 UTC&quot; &quot;2019-04-08 UTC&quot; &quot;2019-04-09 UTC&quot;
+ [508] &quot;2019-04-10 UTC&quot; &quot;2019-04-11 UTC&quot; &quot;2019-04-12 UTC&quot;
+ [511] &quot;2019-04-16 UTC&quot; &quot;2019-04-17 UTC&quot; &quot;2019-04-18 UTC&quot;
+ [514] &quot;2019-04-23 UTC&quot; &quot;2019-04-24 UTC&quot; &quot;2019-04-26 UTC&quot;
+ [517] &quot;2019-04-29 UTC&quot; &quot;2019-05-01 UTC&quot; &quot;2019-05-02 UTC&quot;
+ [520] &quot;2019-05-03 UTC&quot; &quot;2019-05-07 UTC&quot; &quot;2019-05-08 UTC&quot;
+ [523] &quot;2019-05-09 UTC&quot; &quot;2019-05-13 UTC&quot; &quot;2019-05-16 UTC&quot;
+ [526] &quot;2019-05-17 UTC&quot; &quot;2019-05-20 UTC&quot; &quot;2019-05-21 UTC&quot;
+ [529] &quot;2019-05-22 UTC&quot; &quot;2019-05-23 UTC&quot; &quot;2019-05-24 UTC&quot;
+ [532] &quot;2019-05-28 UTC&quot; &quot;2019-05-29 UTC&quot; &quot;2019-05-30 UTC&quot;
+ [535] &quot;2019-05-31 UTC&quot; &quot;2019-06-03 UTC&quot; &quot;2019-06-04 UTC&quot;
+ [538] &quot;2019-06-05 UTC&quot; &quot;2019-06-10 UTC&quot; &quot;2019-06-11 UTC&quot;
+ [541] &quot;2019-06-14 UTC&quot; &quot;2019-06-18 UTC&quot; &quot;2019-06-20 UTC&quot;
+ [544] &quot;2019-06-21 UTC&quot; &quot;2019-06-25 UTC&quot; &quot;2019-06-26 UTC&quot;
+ [547] &quot;2019-06-28 UTC&quot; &quot;2019-07-01 UTC&quot; &quot;2019-07-02 UTC&quot;
+ [550] &quot;2019-07-03 UTC&quot; &quot;2019-07-08 UTC&quot; &quot;2019-07-11 UTC&quot;
+ [553] &quot;2019-07-12 UTC&quot; &quot;2019-07-18 UTC&quot; &quot;2019-07-22 UTC&quot;
+ [556] &quot;2019-07-23 UTC&quot; &quot;2019-07-25 UTC&quot; &quot;2019-07-26 UTC&quot;
+ [559] &quot;2019-07-29 UTC&quot; &quot;2019-07-30 UTC&quot; &quot;2019-07-31 UTC&quot;
+ [562] &quot;2019-08-01 UTC&quot; &quot;2019-08-02 UTC&quot; &quot;2019-08-05 UTC&quot;
+ [565] &quot;2019-08-06 UTC&quot; &quot;2019-08-07 UTC&quot; &quot;2019-08-08 UTC&quot;
+ [568] &quot;2019-08-09 UTC&quot; &quot;2019-08-12 UTC&quot; &quot;2019-08-13 UTC&quot;
+ [571] &quot;2019-08-14 UTC&quot; &quot;2019-08-15 UTC&quot; &quot;2019-08-16 UTC&quot;
+ [574] &quot;2019-08-19 UTC&quot; &quot;2019-08-20 UTC&quot; &quot;2019-08-22 UTC&quot;
+ [577] &quot;2019-08-23 UTC&quot; &quot;2019-08-28 UTC&quot; &quot;2019-09-03 UTC&quot;
+ [580] &quot;2019-09-04 UTC&quot; &quot;2019-09-05 UTC&quot; &quot;2019-09-06 UTC&quot;
+ [583] &quot;2019-09-09 UTC&quot; &quot;2019-09-11 UTC&quot; &quot;2019-09-12 UTC&quot;
+ [586] &quot;2019-09-13 UTC&quot; &quot;2019-09-16 UTC&quot; &quot;2019-09-17 UTC&quot;
+ [589] &quot;2019-09-18 UTC&quot; &quot;2019-09-19 UTC&quot; &quot;2019-09-20 UTC&quot;
+ [592] &quot;2019-09-23 UTC&quot; &quot;2019-09-24 UTC&quot; &quot;2019-09-25 UTC&quot;
+ [595] &quot;2019-09-27 UTC&quot; &quot;2019-10-02 UTC&quot; &quot;2019-10-03 UTC&quot;
+ [598] &quot;2019-10-04 UTC&quot; &quot;2019-10-07 UTC&quot; &quot;2019-10-08 UTC&quot;
+ [601] &quot;2019-10-09 UTC&quot; &quot;2019-10-10 UTC&quot; &quot;2019-10-11 UTC&quot;
+ [604] &quot;2019-10-15 UTC&quot; &quot;2019-10-16 UTC&quot; &quot;2019-10-17 UTC&quot;
+ [607] &quot;2019-10-18 UTC&quot; &quot;2019-10-21 UTC&quot; &quot;2019-10-22 UTC&quot;
+ [610] &quot;2019-10-23 UTC&quot; &quot;2019-10-25 UTC&quot; &quot;2019-10-28 UTC&quot;
+ [613] &quot;2019-10-29 UTC&quot; &quot;2019-10-31 UTC&quot; &quot;2019-11-01 UTC&quot;
+ [616] &quot;2019-11-04 UTC&quot; &quot;2019-11-05 UTC&quot; &quot;2019-11-07 UTC&quot;
+ [619] &quot;2019-11-08 UTC&quot; &quot;2019-11-12 UTC&quot; &quot;2019-11-13 UTC&quot;
+ [622] &quot;2019-11-14 UTC&quot; &quot;2019-11-15 UTC&quot; &quot;2019-11-18 UTC&quot;
+ [625] &quot;2019-11-19 UTC&quot; &quot;2019-11-20 UTC&quot; &quot;2019-11-21 UTC&quot;
+ [628] &quot;2019-11-22 UTC&quot; &quot;2019-11-25 UTC&quot; &quot;2019-11-26 UTC&quot;
+ [631] &quot;2019-11-27 UTC&quot; &quot;2019-12-02 UTC&quot; &quot;2019-12-03 UTC&quot;
+ [634] &quot;2019-12-04 UTC&quot; &quot;2019-12-05 UTC&quot; &quot;2019-12-06 UTC&quot;
+ [637] &quot;2019-12-09 UTC&quot; &quot;2019-12-10 UTC&quot; &quot;2019-12-11 UTC&quot;
+ [640] &quot;2019-12-12 UTC&quot; &quot;2019-12-13 UTC&quot; &quot;2019-12-17 UTC&quot;
+ [643] &quot;2019-12-18 UTC&quot; &quot;2019-12-19 UTC&quot; &quot;2019-12-20 UTC&quot;
+ [646] &quot;2019-12-23 UTC&quot; &quot;2019-12-24 UTC&quot; &quot;2020-01-02 UTC&quot;
+ [649] &quot;2020-01-03 UTC&quot; &quot;2020-01-06 UTC&quot; &quot;2020-01-07 UTC&quot;
+ [652] &quot;2020-01-08 UTC&quot; &quot;2020-01-09 UTC&quot; &quot;2020-01-10 UTC&quot;
+ [655] &quot;2020-01-13 UTC&quot; &quot;2020-01-14 UTC&quot; &quot;2020-01-16 UTC&quot;
+ [658] &quot;2020-01-17 UTC&quot; &quot;2020-01-21 UTC&quot; &quot;2020-01-22 UTC&quot;
+ [661] &quot;2020-01-23 UTC&quot; &quot;2020-01-24 UTC&quot; &quot;2020-01-27 UTC&quot;
+ [664] &quot;2020-01-28 UTC&quot; &quot;2020-01-29 UTC&quot; &quot;2020-01-30 UTC&quot;
+ [667] &quot;2020-01-31 UTC&quot; &quot;2020-02-03 UTC&quot; &quot;2020-02-04 UTC&quot;
+ [670] &quot;2020-02-05 UTC&quot; &quot;2020-02-06 UTC&quot; &quot;2020-02-07 UTC&quot;
+ [673] &quot;2020-02-10 UTC&quot; &quot;2020-02-11 UTC&quot; &quot;2020-02-12 UTC&quot;
+ [676] &quot;2020-02-13 UTC&quot; &quot;2020-02-14 UTC&quot; &quot;2020-02-18 UTC&quot;
+ [679] &quot;2020-02-20 UTC&quot; &quot;2020-02-21 UTC&quot; &quot;2020-02-24 UTC&quot;
+ [682] &quot;2020-02-25 UTC&quot; &quot;2020-02-26 UTC&quot; &quot;2020-02-27 UTC&quot;
+ [685] &quot;2020-02-28 UTC&quot; &quot;2020-03-02 UTC&quot; &quot;2020-03-03 UTC&quot;
+ [688] &quot;2020-03-04 UTC&quot; &quot;2020-03-05 UTC&quot; &quot;2020-03-06 UTC&quot;
+ [691] &quot;2020-03-09 UTC&quot; &quot;2020-03-10 UTC&quot; &quot;2020-03-11 UTC&quot;
+ [694] &quot;2020-03-12 UTC&quot; &quot;2020-03-13 UTC&quot; &quot;2020-03-16 UTC&quot;
+ [697] &quot;2020-03-17 UTC&quot; &quot;2020-03-18 UTC&quot; &quot;2020-03-19 UTC&quot;
+ [700] &quot;2020-03-20 UTC&quot; &quot;2020-03-23 UTC&quot; &quot;2020-03-24 UTC&quot;
+ [703] &quot;2020-03-25 UTC&quot; &quot;2020-03-26 UTC&quot; &quot;2020-03-27 UTC&quot;
+ [706] &quot;2020-03-30 UTC&quot; &quot;2020-03-31 UTC&quot; &quot;2020-04-01 UTC&quot;
+ [709] &quot;2020-04-02 UTC&quot; &quot;2020-04-06 UTC&quot; &quot;2020-04-07 UTC&quot;
+ [712] &quot;2020-04-08 UTC&quot; &quot;2020-04-09 UTC&quot; &quot;2020-04-14 UTC&quot;
+ [715] &quot;2020-04-15 UTC&quot; &quot;2020-04-20 UTC&quot; &quot;2020-04-22 UTC&quot;
+ [718] &quot;2020-04-23 UTC&quot; &quot;2020-04-24 UTC&quot; &quot;2020-04-28 UTC&quot;
+ [721] &quot;2020-04-29 UTC&quot; &quot;2020-05-01 UTC&quot; &quot;2020-05-04 UTC&quot;
+ [724] &quot;2020-05-05 UTC&quot; &quot;2020-05-06 UTC&quot; &quot;2020-05-07 UTC&quot;
+ [727] &quot;2020-05-11 UTC&quot; &quot;2020-05-12 UTC&quot; &quot;2020-05-13 UTC&quot;
+ [730] &quot;2020-05-14 UTC&quot; &quot;2020-05-15 UTC&quot; &quot;2020-05-18 UTC&quot;
+ [733] &quot;2020-05-20 UTC&quot; &quot;2020-05-21 UTC&quot; &quot;2020-05-22 UTC&quot;
+ [736] &quot;2020-05-26 UTC&quot; &quot;2020-05-27 UTC&quot; &quot;2020-05-28 UTC&quot;
+ [739] &quot;2020-05-29 UTC&quot; &quot;2020-06-01 UTC&quot; &quot;2020-06-02 UTC&quot;
+ [742] &quot;2020-06-03 UTC&quot; &quot;2020-06-04 UTC&quot; &quot;2020-06-05 UTC&quot;
+ [745] &quot;2020-06-08 UTC&quot; &quot;2020-06-09 UTC&quot; &quot;2020-06-11 UTC&quot;
+ [748] &quot;2020-06-12 UTC&quot; &quot;2020-06-15 UTC&quot; &quot;2020-06-17 UTC&quot;
+ [751] &quot;2020-06-18 UTC&quot; &quot;2020-06-19 UTC&quot; &quot;2020-06-22 UTC&quot;
+ [754] &quot;2020-06-23 UTC&quot; &quot;2020-06-24 UTC&quot; &quot;2020-06-25 UTC&quot;
+ [757] &quot;2020-06-26 UTC&quot; &quot;2020-06-29 UTC&quot; &quot;2020-06-30 UTC&quot;
+ [760] &quot;2020-07-01 UTC&quot; &quot;2020-07-02 UTC&quot; &quot;2020-07-06 UTC&quot;
+ [763] &quot;2020-07-07 UTC&quot; &quot;2020-07-08 UTC&quot; &quot;2020-07-09 UTC&quot;
+ [766] &quot;2020-07-10 UTC&quot; &quot;2020-07-15 UTC&quot; &quot;2020-07-16 UTC&quot;
+ [769] &quot;2020-07-17 UTC&quot; &quot;2020-07-20 UTC&quot; &quot;2020-07-22 UTC&quot;
+ [772] &quot;2020-07-23 UTC&quot; &quot;2020-07-24 UTC&quot; &quot;2020-07-27 UTC&quot;
+ [775] &quot;2020-07-28 UTC&quot; &quot;2020-07-29 UTC&quot; &quot;2020-08-04 UTC&quot;
+ [778] &quot;2020-08-05 UTC&quot; &quot;2020-08-06 UTC&quot; &quot;2020-08-07 UTC&quot;
+ [781] &quot;2020-08-11 UTC&quot; &quot;2020-08-13 UTC&quot; &quot;2020-08-14 UTC&quot;
+ [784] &quot;2020-08-17 UTC&quot; &quot;2020-08-18 UTC&quot; &quot;2020-08-19 UTC&quot;
+ [787] &quot;2020-08-20 UTC&quot; &quot;2020-08-24 UTC&quot; &quot;2020-08-25 UTC&quot;
+ [790] &quot;2020-08-26 UTC&quot; &quot;2020-08-28 UTC&quot; &quot;2020-09-01 UTC&quot;
+ [793] &quot;2020-09-02 UTC&quot; &quot;2020-09-03 UTC&quot; &quot;2020-09-04 UTC&quot;
+ [796] &quot;2020-09-08 UTC&quot; &quot;2020-09-09 UTC&quot; &quot;2020-09-10 UTC&quot;
+ [799] &quot;2020-09-11 UTC&quot; &quot;2020-09-14 UTC&quot; &quot;2020-09-15 UTC&quot;
+ [802] &quot;2020-09-16 UTC&quot; &quot;2020-09-17 UTC&quot; &quot;2020-09-18 UTC&quot;
+ [805] &quot;2020-09-21 UTC&quot; &quot;2020-09-22 UTC&quot; &quot;2020-09-23 UTC&quot;
+ [808] &quot;2020-09-24 UTC&quot; &quot;2020-09-25 UTC&quot; &quot;2020-09-28 UTC&quot;
+ [811] &quot;2020-09-29 UTC&quot; &quot;2020-09-30 UTC&quot; &quot;2020-10-02 UTC&quot;
+ [814] &quot;2020-10-05 UTC&quot; &quot;2020-10-06 UTC&quot; &quot;2020-10-07 UTC&quot;
+ [817] &quot;2020-10-08 UTC&quot; &quot;2020-10-09 UTC&quot; &quot;2020-10-12 UTC&quot;
+ [820] &quot;2020-10-13 UTC&quot; &quot;2020-10-14 UTC&quot; &quot;2020-10-15 UTC&quot;
+ [823] &quot;2020-10-16 UTC&quot; &quot;2020-10-19 UTC&quot; &quot;2020-10-20 UTC&quot;
+ [826] &quot;2020-10-21 UTC&quot; &quot;2020-10-22 UTC&quot; &quot;2020-10-23 UTC&quot;
+ [829] &quot;2020-10-26 UTC&quot; &quot;2020-10-27 UTC&quot; &quot;2020-10-28 UTC&quot;
+ [832] &quot;2020-10-29 UTC&quot; &quot;2020-10-30 UTC&quot; &quot;2020-11-02 UTC&quot;
+ [835] &quot;2020-11-03 UTC&quot; &quot;2020-11-04 UTC&quot; &quot;2020-11-05 UTC&quot;
+ [838] &quot;2020-11-06 UTC&quot; &quot;2020-11-09 UTC&quot; &quot;2020-11-10 UTC&quot;
+ [841] &quot;2020-11-12 UTC&quot; &quot;2020-11-13 UTC&quot; &quot;2020-11-16 UTC&quot;
+ [844] &quot;2020-11-17 UTC&quot; &quot;2020-11-18 UTC&quot; &quot;2020-11-19 UTC&quot;
+ [847] &quot;2020-11-23 UTC&quot; &quot;2020-11-24 UTC&quot; &quot;2020-11-25 UTC&quot;
+ [850] &quot;2020-11-27 UTC&quot; &quot;2020-11-30 UTC&quot; &quot;2020-12-01 UTC&quot;
+ [853] &quot;2020-12-02 UTC&quot; &quot;2020-12-03 UTC&quot; &quot;2020-12-04 UTC&quot;
+ [856] &quot;2020-12-08 UTC&quot; &quot;2020-12-11 UTC&quot; &quot;2020-12-14 UTC&quot;
+ [859] &quot;2020-12-16 UTC&quot; &quot;2020-12-17 UTC&quot; &quot;2020-12-18 UTC&quot;
+ [862] &quot;2020-12-21 UTC&quot; &quot;2020-12-22 UTC&quot; &quot;2020-12-23 UTC&quot;
+ [865] &quot;2020-12-24 UTC&quot; &quot;2020-12-29 UTC&quot; &quot;2021-01-04 UTC&quot;
+ [868] &quot;2021-01-05 UTC&quot; &quot;2021-01-06 UTC&quot; &quot;2021-01-07 UTC&quot;
+ [871] &quot;2021-01-08 UTC&quot; &quot;2021-01-11 UTC&quot; &quot;2021-01-12 UTC&quot;
+ [874] &quot;2021-01-13 UTC&quot; &quot;2021-01-14 UTC&quot; &quot;2021-01-15 UTC&quot;
+ [877] &quot;2021-01-19 UTC&quot; &quot;2021-01-20 UTC&quot; &quot;2021-01-21 UTC&quot;
+ [880] &quot;2021-01-22 UTC&quot; &quot;2021-01-25 UTC&quot; &quot;2021-01-26 UTC&quot;
+ [883] &quot;2021-01-27 UTC&quot; &quot;2021-01-28 UTC&quot; &quot;2021-01-29 UTC&quot;
+ [886] &quot;2021-02-01 UTC&quot; &quot;2021-02-02 UTC&quot; &quot;2021-02-03 UTC&quot;
+ [889] &quot;2021-02-04 UTC&quot; &quot;2021-02-05 UTC&quot; &quot;2021-02-08 UTC&quot;
+ [892] &quot;2021-02-09 UTC&quot; &quot;2021-02-10 UTC&quot; &quot;2021-02-11 UTC&quot;
+ [895] &quot;2021-02-12 UTC&quot; &quot;2021-02-16 UTC&quot; &quot;2021-02-17 UTC&quot;
+ [898] &quot;2021-02-18 UTC&quot; &quot;2021-02-19 UTC&quot; &quot;2021-02-22 UTC&quot;
+ [901] &quot;2021-02-23 UTC&quot; &quot;2021-02-24 UTC&quot; &quot;2021-02-25 UTC&quot;
+ [904] &quot;2021-02-26 UTC&quot; &quot;2021-03-01 UTC&quot; &quot;2021-03-02 UTC&quot;
+ [907] &quot;2021-03-03 UTC&quot; &quot;2021-03-04 UTC&quot; &quot;2021-03-05 UTC&quot;
+ [910] &quot;2021-03-08 UTC&quot; &quot;2021-03-09 UTC&quot; &quot;2021-03-10 UTC&quot;
+ [913] &quot;2021-03-11 UTC&quot; &quot;2021-03-12 UTC&quot; &quot;2021-03-15 UTC&quot;
+ [916] &quot;2021-03-16 UTC&quot; &quot;2021-03-17 UTC&quot; &quot;2021-03-18 UTC&quot;
+ [919] &quot;2021-03-19 UTC&quot; &quot;2021-03-23 UTC&quot; &quot;2021-03-24 UTC&quot;
+ [922] &quot;2021-03-25 UTC&quot; &quot;2021-03-26 UTC&quot; &quot;2021-03-29 UTC&quot;
+ [925] &quot;2021-03-30 UTC&quot; &quot;2021-03-31 UTC&quot; &quot;2021-04-01 UTC&quot;
+ [928] &quot;2021-04-06 UTC&quot; &quot;2021-04-07 UTC&quot; &quot;2021-04-08 UTC&quot;
+ [931] &quot;2021-04-09 UTC&quot; &quot;2021-04-12 UTC&quot; &quot;2021-04-13 UTC&quot;
+ [934] &quot;2021-04-14 UTC&quot; &quot;2021-04-15 UTC&quot; &quot;2021-04-16 UTC&quot;
+ [937] &quot;2021-04-19 UTC&quot; &quot;2021-04-20 UTC&quot; &quot;2021-04-21 UTC&quot;
+ [940] &quot;2021-04-22 UTC&quot; &quot;2021-04-23 UTC&quot; &quot;2021-04-26 UTC&quot;
+ [943] &quot;2021-04-27 UTC&quot; &quot;2021-04-28 UTC&quot; &quot;2021-04-29 UTC&quot;
+ [946] &quot;2021-04-30 UTC&quot; &quot;2021-05-04 UTC&quot; &quot;2021-05-05 UTC&quot;
+ [949] &quot;2021-05-06 UTC&quot; &quot;2021-05-07 UTC&quot; &quot;2021-05-11 UTC&quot;
+ [952] &quot;2021-05-12 UTC&quot; &quot;2021-05-13 UTC&quot; &quot;2021-05-14 UTC&quot;
+ [955] &quot;2021-05-17 UTC&quot; &quot;2021-05-18 UTC&quot; &quot;2021-05-19 UTC&quot;
+ [958] &quot;2021-05-20 UTC&quot; &quot;2021-05-21 UTC&quot; &quot;2021-05-24 UTC&quot;
+ [961] &quot;2021-05-25 UTC&quot; &quot;2021-05-26 UTC&quot; &quot;2021-05-27 UTC&quot;
+ [964] &quot;2021-05-28 UTC&quot; &quot;2021-06-01 UTC&quot; &quot;2021-06-02 UTC&quot;
+ [967] &quot;2021-06-03 UTC&quot; &quot;2021-06-04 UTC&quot; &quot;2021-06-07 UTC&quot;
+ [970] &quot;2021-06-08 UTC&quot; &quot;2021-06-09 UTC&quot; &quot;2021-06-10 UTC&quot;
+ [973] &quot;2021-06-11 UTC&quot; &quot;2021-06-14 UTC&quot; &quot;2021-06-15 UTC&quot;
+ [976] &quot;2021-06-16 UTC&quot; &quot;2021-06-17 UTC&quot; &quot;2021-06-18 UTC&quot;
+ [979] &quot;2021-06-21 UTC&quot; &quot;2021-06-22 UTC&quot; &quot;2021-06-23 UTC&quot;
+ [982] &quot;2021-06-24 UTC&quot; &quot;2021-06-25 UTC&quot; &quot;2021-06-28 UTC&quot;
+ [985] &quot;2021-06-29 UTC&quot; &quot;2021-06-30 UTC&quot; &quot;2021-07-01 UTC&quot;
+ [988] &quot;2021-07-02 UTC&quot; &quot;2021-07-06 UTC&quot; &quot;2021-07-07 UTC&quot;
+ [991] &quot;2021-07-08 UTC&quot; &quot;2021-07-09 UTC&quot; &quot;2021-07-12 UTC&quot;
+ [994] &quot;2021-07-13 UTC&quot; &quot;2021-07-14 UTC&quot; &quot;2021-07-15 UTC&quot;
+ [997] &quot;2021-07-19 UTC&quot; &quot;2021-07-20 UTC&quot; &quot;2021-07-21 UTC&quot;
+[1000] &quot;2021-07-23 UTC&quot; &quot;2021-07-26 UTC&quot; &quot;2021-07-27 UTC&quot;
+[1003] &quot;2021-07-28 UTC&quot; &quot;2021-07-29 UTC&quot; &quot;2021-07-30 UTC&quot;
+[1006] &quot;2021-08-02 UTC&quot; &quot;2021-08-03 UTC&quot; &quot;2021-08-04 UTC&quot;
+[1009] &quot;2021-08-05 UTC&quot; &quot;2021-08-06 UTC&quot; &quot;2021-08-09 UTC&quot;
+[1012] &quot;2021-08-10 UTC&quot; &quot;2021-08-11 UTC&quot; &quot;2021-08-12 UTC&quot;
+[1015] &quot;2021-08-13 UTC&quot; &quot;2021-08-16 UTC&quot; &quot;2021-08-17 UTC&quot;
+[1018] &quot;2021-08-18 UTC&quot; &quot;2021-08-19 UTC&quot; &quot;2021-08-20 UTC&quot;
+[1021] &quot;2021-08-23 UTC&quot; &quot;2021-08-25 UTC&quot; &quot;2021-08-26 UTC&quot;
+[1024] &quot;2021-08-27 UTC&quot;</code></pre>
+<details>
+<summary>Show code</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>y_endog</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>Date<span class='op'>=</span><span class='va'>dat</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/match.html'>match</a></span><span class='op'>(</span><span class='va'>y_endog</span><span class='op'>$</span><span class='va'>CORP</span>,<span class='va'>dat</span><span class='op'>$</span><span class='va'>CORP</span><span class='op'>)</span>,<span class='op'>]</span><span class='op'>$</span><span class='va'>Date</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'>gather</span><span class='op'>(</span><span class='va'>variable</span>,<span class='va'>value</span>,<span class='op'>-</span><span class='va'>Date</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-    <span class='fu'>mutate</span><span class='op'>(</span>predictors<span class='op'>=</span><span class='fu'>if_else</span><span class='op'>(</span><span class='va'>variable</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'d_US'</span>,<span class='st'>'d_EU'</span>,<span class='st'>'d_SONIA'</span><span class='op'>)</span>,<span class='st'>"Rate_Change"</span>,<span class='st'>"Flows"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>mutate</span><span class='op'>(</span>predictors<span class='op'>=</span><span class='fu'>if_else</span><span class='op'>(</span><span class='va'>variable</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'d_USD3M'</span>,<span class='st'>'d_EUR3M'</span>,<span class='st'>'d_USD1W'</span>,<span class='st'>'d_EUR1W'</span><span class='op'>)</span>,<span class='st'>"Rate_Change"</span>,<span class='st'>"Flows"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>Date</span>,y<span class='op'>=</span><span class='va'>value</span>,colour<span class='op'>=</span><span class='va'>variable</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_line</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>labs</span><span class='op'>(</span>title<span class='op'>=</span><span class='st'>"Interests and ETF Flows"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>title<span class='op'>=</span><span class='st'>"Interests and ETF Flows"</span>,x<span class='op'>=</span><span class='st'>""</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span><span class='va'>variable</span>,scales <span class='op'>=</span> <span class='st'>"free_y"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>theme</span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>'none'</span><span class='op'>)</span>
+  <span class='fu'>theme</span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>'none'</span>,
+        axis.text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size<span class='op'>=</span><span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
 </details>
@@ -1534,7 +1885,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <details>
 <summary>Show code</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cor</a></span><span class='op'>(</span><span class='va'>y_endog_scaled</span> <span class='op'>%&gt;%</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>Date</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cor</a></span><span class='op'>(</span><span class='va'>y_endog</span> <span class='op'>%&gt;%</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>CE_dummy</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
   <span class='fu'>corrplot</span><span class='op'>(</span>method<span class='op'>=</span><span class='st'>"circle"</span>,title<span class='op'>=</span><span class='st'>"linear correlations"</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -1577,27 +1928,17 @@ S_t=
 <h1 id="results">Results</h1>
 <p>Shannon’s transfer entropy measure the information flow (reduction in uncertainty in probability) is a model-free way that captures the non-linear complexity of a financial network. As an exploratory exercise, we assess the information transfer from and to the changes of three interest rates.</p>
 <p>Our analysis considers the full period of analysis and the period of the credit easing programme. For each period we assess the information gain, measured using the effective transfer entropy, between the fund flows and the three interest rate changes. We investigate the information flow between series up to <span class="math inline">\(t-3\)</span> periods.</p>
-<p><strong>TO-DO</strong> * Relative Explanation Added</p>
-<blockquote>
-<p>To measure the amount of information gain due to the transfer entropy, we follow Marschinski and Kantz (2002) by relating the information gain to the entropy of the series based on the REA (relative explanation added) measure defined as follows:</p>
-</blockquote>
-<p><span class="math display">\[REA(m,l)=\frac{T_{Y \to X}(m,l)}{H(X_0|X_{-1,...,X_{-m}})}\]</span></p>
-<blockquote>
-<p>Here the information flow from Y to X, measured by the transfer entropy, is related to the total flow of information based the conditional block entropy of X. Put differently, it measures the additional information gain by observing the history of X and Y when already observing X.</p>
-</blockquote>
 <h2 id="results-for-full-sample">Results for Full Sample</h2>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>Show code</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/load.html'>load</a></span><span class='op'>(</span><span class='st'>"eteResults.RData"</span><span class='op'>)</span>
-<span class='va'>rename_data</span><span class='op'>&lt;-</span><span class='kw'>function</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span><span class='op'>{</span>
-  <span class='va'>df</span><span class='op'>&lt;-</span><span class='fu'>bind_rows</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>rename_data</span><span class='op'>&lt;-</span><span class='kw'>function</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span><span class='op'>{</span>
  <span class='va'>df</span><span class='op'>[</span>, <span class='va'>ticker</span> <span class='op'>:=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>ticker</span>, 
                         levels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>$</span><span class='va'>ticker</span><span class='op'>)</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/order.html'>order</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>[</span><span class='va'>dir</span> <span class='op'>==</span> <span class='st'>"X-&gt;Y"</span><span class='op'>]</span><span class='op'>$</span><span class='va'>ete</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span><span class='op'>]</span>
   <span class='va'>df</span><span class='op'>[</span>, <span class='va'>dir</span> <span class='op'>:=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>dir</span>, levels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"X-&gt;Y"</span>, <span class='st'>"Y-&gt;X"</span><span class='op'>)</span>,
                           labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Flow towards Interest Rate Changes"</span>,
-                                     <span class='st'>"Flow towards ETF"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>]</span>
+                                     <span class='st'>"Flow from Interest Rate Changes to .."</span><span class='op'>)</span><span class='op'>)</span><span class='op'>]</span>
 <span class='op'>}</span>
 <span class='va'>plot_data</span><span class='op'>&lt;-</span><span class='fu'>rename_data</span><span class='op'>(</span><span class='va'>res_EU</span><span class='op'>)</span>
 <span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>plot_data</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ticker</span>, y <span class='op'>=</span> <span class='va'>ete</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
@@ -1613,9 +1954,9 @@ S_t=
 </div>
 </details>
 <div class="figure"><span id="fig:EU"></span>
-<img src="index_files/figure-html5/EU-1.png" alt="Effective Transfer Entropy for Change EU Libor" width="624" />
+<img src="index_files/figure-html5/EU-1.png" alt="Effective Transfer Entropy for Change in 3-Month EU Libor" width="624" />
 <p class="caption">
-Figure 1: Effective Transfer Entropy for Change EU Libor
+Figure 1: Effective Transfer Entropy for Change in 3-Month EU Libor
 </p>
 </div>
 </div>
@@ -1637,9 +1978,9 @@ Figure 1: Effective Transfer Entropy for Change EU Libor
 </div>
 </details>
 <div class="figure"><span id="fig:US"></span>
-<img src="index_files/figure-html5/US-1.png" alt="Effective Transfer Entropy for Change US Libor" width="624" />
+<img src="index_files/figure-html5/US-1.png" alt="Effective Transfer Entropy for Daily Change in 3-Month US Libor" width="624" />
 <p class="caption">
-Figure 2: Effective Transfer Entropy for Change US Libor
+Figure 2: Effective Transfer Entropy for Daily Change in 3-Month US Libor
 </p>
 </div>
 </div>
@@ -1647,7 +1988,7 @@ Figure 2: Effective Transfer Entropy for Change US Libor
 <details>
 <summary>Show code</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>plot_data</span><span class='op'>&lt;-</span><span class='fu'>rename_data</span><span class='op'>(</span><span class='va'>res_SONIA</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>plot_data</span><span class='op'>&lt;-</span><span class='fu'>rename_data</span><span class='op'>(</span><span class='va'>res_EU_1W</span><span class='op'>)</span>
 <span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>plot_data</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ticker</span>, y <span class='op'>=</span> <span class='va'>ete</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
   <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span><span class='va'>dir</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_hline</span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fl'>0</span>, color <span class='op'>=</span> <span class='st'>"gray"</span><span class='op'>)</span> <span class='op'>+</span>
@@ -1660,10 +2001,34 @@ Figure 2: Effective Transfer Entropy for Change US Libor
 </code></pre>
 </div>
 </details>
-<div class="figure"><span id="fig:Sonia"></span>
-<img src="index_files/figure-html5/Sonia-1.png" alt="Effective Transfer Entropy for Change SONIA" width="624" />
+<div class="figure">
+<img src="index_files/figure-html5/EU%201w-1.png" alt="Effective Transfer Entropy for Daily Change in 1-Week EU Libor" width="624" />
 <p class="caption">
-Figure 3: Effective Transfer Entropy for Change SONIA
+(#fig:EU 1w)Effective Transfer Entropy for Daily Change in 1-Week EU Libor
+</p>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>Show code</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>plot_data</span><span class='op'>&lt;-</span><span class='fu'>rename_data</span><span class='op'>(</span><span class='va'>res_US_1W</span><span class='op'>)</span>
+<span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>plot_data</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ticker</span>, y <span class='op'>=</span> <span class='va'>ete</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span><span class='va'>dir</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_hline</span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fl'>0</span>, color <span class='op'>=</span> <span class='st'>"gray"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme</span><span class='op'>(</span>axis.text.x <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>angle <span class='op'>=</span> <span class='fl'>90</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='cn'>NULL</span>, y <span class='op'>=</span> <span class='st'>"Effective Transfer Entropy"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_errorbar</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>ymin <span class='op'>=</span> <span class='va'>ete</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span><span class='op'>(</span><span class='fl'>0.95</span><span class='op'>)</span> <span class='op'>*</span> <span class='va'>se</span>,  
+                    ymax <span class='op'>=</span> <span class='va'>ete</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span><span class='op'>(</span><span class='fl'>0.95</span><span class='op'>)</span> <span class='op'>*</span> <span class='va'>se</span><span class='op'>)</span>,  
+                width <span class='op'>=</span> <span class='fl'>0.25</span>, col <span class='op'>=</span> <span class='st'>"blue"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<div class="figure">
+<img src="index_files/figure-html5/US%201w-1.png" alt="Effective Transfer Entropy for Daily Change in 1-Week US Libor" width="624" />
+<p class="caption">
+(#fig:US 1w)Effective Transfer Entropy for Daily Change in 1-Week US Libor
 </p>
 </div>
 </div>
@@ -1686,9 +2051,33 @@ Figure 3: Effective Transfer Entropy for Change SONIA
 </div>
 </details>
 <div class="figure"><span id="fig:EUce"></span>
-<img src="index_files/figure-html5/EUce-1.png" alt="Effective Transfer Entropy for Change EU Libor" width="624" />
+<img src="index_files/figure-html5/EUce-1.png" alt="Effective Transfer Entropy for Daily Change in 3-month EU Libor" width="624" />
 <p class="caption">
-Figure 4: Effective Transfer Entropy for Change EU Libor
+Figure 3: Effective Transfer Entropy for Daily Change in 3-month EU Libor
+</p>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>Show code</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>plot_data</span><span class='op'>&lt;-</span><span class='fu'>rename_data</span><span class='op'>(</span><span class='va'>res_EU_CE_1W</span><span class='op'>)</span>
+<span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>plot_data</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ticker</span>, y <span class='op'>=</span> <span class='va'>ete</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span><span class='va'>dir</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_hline</span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fl'>0</span>, color <span class='op'>=</span> <span class='st'>"gray"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme</span><span class='op'>(</span>axis.text.x <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>angle <span class='op'>=</span> <span class='fl'>90</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='cn'>NULL</span>, y <span class='op'>=</span> <span class='st'>"Effective Transfer Entropy"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_errorbar</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>ymin <span class='op'>=</span> <span class='va'>ete</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span><span class='op'>(</span><span class='fl'>0.95</span><span class='op'>)</span> <span class='op'>*</span> <span class='va'>se</span>,  
+                    ymax <span class='op'>=</span> <span class='va'>ete</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span><span class='op'>(</span><span class='fl'>0.95</span><span class='op'>)</span> <span class='op'>*</span> <span class='va'>se</span><span class='op'>)</span>,  
+                width <span class='op'>=</span> <span class='fl'>0.25</span>, col <span class='op'>=</span> <span class='st'>"blue"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<div class="figure"><span id="fig:EUce1w"></span>
+<img src="index_files/figure-html5/EUce1w-1.png" alt="Effective Transfer Entropy for Daily Change in 1-week EU Libor" width="624" />
+<p class="caption">
+Figure 4: Effective Transfer Entropy for Daily Change in 1-week EU Libor
 </p>
 </div>
 </div>
@@ -1710,9 +2099,9 @@ Figure 4: Effective Transfer Entropy for Change EU Libor
 </div>
 </details>
 <div class="figure"><span id="fig:USce"></span>
-<img src="index_files/figure-html5/USce-1.png" alt="Effective Transfer Entropy for Change US Libor" width="624" />
+<img src="index_files/figure-html5/USce-1.png" alt="Effective Transfer Entropy for Daily Change 3-month US Libor" width="624" />
 <p class="caption">
-Figure 5: Effective Transfer Entropy for Change US Libor
+Figure 5: Effective Transfer Entropy for Daily Change 3-month US Libor
 </p>
 </div>
 </div>
@@ -1720,7 +2109,7 @@ Figure 5: Effective Transfer Entropy for Change US Libor
 <details>
 <summary>Show code</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>plot_data</span><span class='op'>&lt;-</span><span class='fu'>rename_data</span><span class='op'>(</span><span class='va'>res_SONIA_CE</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>plot_data</span><span class='op'>&lt;-</span><span class='fu'>rename_data</span><span class='op'>(</span><span class='va'>res_US_CE_1W</span><span class='op'>)</span>
 <span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>plot_data</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ticker</span>, y <span class='op'>=</span> <span class='va'>ete</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
   <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span><span class='va'>dir</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_hline</span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fl'>0</span>, color <span class='op'>=</span> <span class='st'>"gray"</span><span class='op'>)</span> <span class='op'>+</span>
@@ -1733,10 +2122,10 @@ Figure 5: Effective Transfer Entropy for Change US Libor
 </code></pre>
 </div>
 </details>
-<div class="figure"><span id="fig:Soniace"></span>
-<img src="index_files/figure-html5/Soniace-1.png" alt="Effective Transfer Entropy for Change SONIA" width="624" />
+<div class="figure"><span id="fig:USce1w"></span>
+<img src="index_files/figure-html5/USce1w-1.png" alt="Effective Transfer Entropy for Daily Change 1-week US Libor" width="624" />
 <p class="caption">
-Figure 6: Effective Transfer Entropy for Change SONIA
+Figure 6: Effective Transfer Entropy for Daily Change 1-week US Libor
 </p>
 </div>
 </div>
@@ -1757,6 +2146,15 @@ Figure 6: Effective Transfer Entropy for Change SONIA
 <blockquote>
 <p>Kolokolova, O., Lin, M.-T., &amp; Poon, S.-H. (2020). Too big to ignore? Hedge fund flows and bond yields. Journal of Banking &amp; Finance, 112, 105271.</p>
 </blockquote>
+<ul>
+<li>Multivariate transfer entropy</li>
+</ul>
+<blockquote>
+<p>Gonzalez, M. R., Basse, T., Saft, D., &amp; Kunze, F. (2021). Leading indicators for US house prices: New Evidence and Implications for EU Financial Risk Managers. European Financial Management, eufm.12325. <a href="https://doi.org/10.1111/eufm.12325" class="uri">https://doi.org/10.1111/eufm.12325</a> Behrendt, S., &amp; Prange, P. (2021). What are you searching for? On the equivalence of proxies for online investor attention. Finance Research Letters, 38, 101401. Multivariate transfer entropy: Lizier &amp; Rubinov, 2012, Preprint, Technical Report 25/2012, Max Planck Institute for Mathematics in the Sciences. Available from: <a href="http://www.mis.mpg.de/preprints/2012/preprint2012_25.pdf" class="uri">http://www.mis.mpg.de/preprints/2012/preprint2012_25.pdf</a> <a href="https://github.com/pwollstadt/IDTxl" class="uri">https://github.com/pwollstadt/IDTxl</a></p>
+</blockquote>
+<ul>
+<li>Identify regimes using a HMM VAR model and test transfer entropy between regimes??</li>
+</ul>
 <h1 id="reference">Reference</h1>
 <p>Lundberg, S. M., &amp; Lee, S.-I. (2017). A unified approach to interpreting model predictions. Proceedings of the 31st International Conference on Neural Information Processing Systems, 4768–4777.</p>
 <p>Brandt, P. T., Colaresi, M., &amp; Freeman, J. R. (2008). The Dynamics of Reciprocity, Accountability, and Credibility. The Journal of Conflict Resolution, 52(3), 343–374.</p>
@@ -1772,7 +2170,7 @@ Figure 6: Effective Transfer Entropy for Change SONIA
 <p>Sims, C. A., &amp; Zha, T. (1998). Bayesian Methods for Dynamic Multivariate Models. International Economic Review, 39(4), 949–968.</p>
 <p>Sims, C. A., &amp; Zha, T. (2006). Were There Regime Switches in U.S. Monetary Policy? The American Economic Review, 96(1), 54–81.</p>
 <p>Behrendt, S., Dimpfl, T., Peter, F. J., &amp; Zimmermann, D. J. (2019). RTransferEntropy — Quantifying information flow between different time series using effective transfer entropy. SoftwareX, 10, 100265.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <section class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
