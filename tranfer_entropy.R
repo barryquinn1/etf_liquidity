@@ -14,7 +14,7 @@ read_excel("raw.xlsx",
                       as.Date(as.numeric(Date),
                               origin = "1899-12-30"),datE),Date=NULL)->dat
 dat<-bind_cols(Date=dat$datE,dat %>% 
-                 select(-datE) %>% 
+                 dplyr::select(-datE) %>% 
                  map_df(as.numeric))
 # drop all missing variables
 dat<-dat[-c(17:19)]
@@ -40,15 +40,46 @@ dat %>%
   drop_na() ->y_endog
 
 # Shannon's transfer entropy
+## full period
 y_endog %>% 
-  pivot_longer(cols=!starts_with(c("Date","d_EU")), 
+  rename(d_IR=d_EU) %>%
+  pivot_longer(cols=!starts_with(c("Date","d_IR")), 
                names_to = "ETF",values_to = "Value") %>%
   group_split(ETF)->df_list_EU
+
 y_endog %>% 
-  pivot_longer(cols=!starts_with(c("Date","d_SONIA")), 
+  rename(d_IR=d_SONIA) %>%
+  pivot_longer(cols=!starts_with(c("Date","d_IR")), 
                names_to = "ETF",values_to = "Value") %>%
   group_split(ETF)->df_list_SONIA
 
+y_endog %>% 
+  rename(d_IR=d_US) %>%
+  pivot_longer(cols=!starts_with(c("Date","d_IR")), 
+               names_to = "ETF",values_to = "Value") %>%
+  group_split(ETF)->df_list_US
+
+## Credit Easing period
+y_endog %>% 
+  rename(d_IR=d_EU) %>%
+  filter(CE_dummy==1) %>%
+  pivot_longer(cols=!starts_with(c("Date","d_IR")), 
+               names_to = "ETF",values_to = "Value") %>%
+  group_split(ETF)->df_list_EU_CEperiod
+
+y_endog %>%
+  rename(d_IR=d_SONIA) %>%
+  filter(CE_dummy==1) %>%
+  pivot_longer(cols=!starts_with(c("Date","d_IR")), 
+               names_to = "ETF",values_to = "Value") %>%
+  group_split(ETF)->df_list_SONIA_CEperiod
+
+y_endog %>% 
+  rename(d_IR=d_US) %>%
+  filter(CE_dummy==1) %>%
+  pivot_longer(cols=!starts_with(c("Date","d_IR")), 
+               names_to = "ETF",values_to = "Value") %>%
+  group_split(ETF)->df_list_US_CEperiod
 
 # effective transfer entropy for High Yield and Corporate Bonds for full sample
 # transfer_entropy(dat_anal$d_int_rate,dat_anal$`High Yield`,
@@ -68,7 +99,7 @@ y_endog %>%
 
 
 max_te <- function(d) {
-  te <- transfer_entropy(d$Value, d$d_SONIA, 
+  te <- transfer_entropy(d$Value, d$d_IR, 
                          shuffles = 200,ly=3, lx=3, nboot = 1000)
   data.table(
     ticker = d$ETF[1],
@@ -77,15 +108,30 @@ max_te <- function(d) {
   )
 }
 plan(multiprocess)
-df_list_EU %>% 
-  map(~max_te())->res_EU
+
+df_list_US %>% 
+  map(~max_te(.x))->res_US
+df_list_US_CEperiod %>% 
+  map(~max_te(.x))->res_US_CE
+
 df_list_SONIA %>% 
   map(~max_te(.x))->res_SONIA
+df_list_SONIA_CEperiod %>% 
+  map(~max_te(.x))->res_SONIA_CE
 
+df_list_EU_CEperiod %>% 
+  map(~max_te(.x))->res_EU_CE
+df_list_EU %>% 
+  map(~max_te(.x))->res_EU
+
+save(y_endog,res_EU,
+     res_EU_CE,res_SONIA,
+     res_SONIA_CE,res_US,
+     res_US_CE,file ="eteResults.RData")
 write_csv(y_endog,"etf_flows.csv")
 
 max_rte <- function(d) {
-  te <- transfer_entropy(d$Value, d$d_int_rate, entropy = "Renyi",
+  te <- transfer_entropy(d$Value, d$d_IR, entropy = "Renyi",
                          shuffles = 50, nboot = 200, quiet = T)
   data.table(
     ticker = d$ETF[1],
@@ -133,10 +179,6 @@ ggplot(df_full, aes(x = ticker, y = ete)) +
 #                     ymax = ete + qnorm(0.95) * se),  
 #                 width = 0.25, col = "blue") +
 #   geom_point()
-
-
-## saving----
-save(df,res,file ="eteResults.RData")
 
 
 
