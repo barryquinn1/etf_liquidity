@@ -91,8 +91,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   
   
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2021-09-02"/>
-  <meta property="article:created" itemprop="dateCreated" content="2021-09-02"/>
+  <meta property="article:published" itemprop="datePublished" content="2021-09-03"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-09-03"/>
   <meta name="article:author" content="Lisha Li"/>
   <meta name="article:author" content="Barry Quinn"/>
   <meta name="article:author" content="Lisa Sheenan"/>
@@ -110,7 +110,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Credit Easing and ETF Flows"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Lisha Li"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Barry Quinn"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Lisa Sheenan"]}]}]},{"type":"character","attributes":{},"value":["2021-09-02"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","cold_folding"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Credit Easing and ETF Flows"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Lisha Li"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Barry Quinn"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Lisa Sheenan"]}]}]},{"type":"character","attributes":{},"value":["2021-09-03"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","cold_folding"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1453,7 +1453,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Credit Easing and ETF Flows","authors":[{"author":"Lisha Li","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""},{"author":"Barry Quinn","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""},{"author":"Lisa Sheenan","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-09-02T00:00:00.000+00:00","citationText":"Li, et al., 2021"}
+{"title":"Credit Easing and ETF Flows","authors":[{"author":"Lisha Li","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""},{"author":"Barry Quinn","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""},{"author":"Lisa Sheenan","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-09-03T00:00:00.000+00:00","citationText":"Li, et al., 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1479,7 +1479,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 ,   
   Lisa Sheenan
   
-<br/>2021-09-02
+<br/>2021-09-03
 </div>
 
 <div class="d-article">
@@ -1518,6 +1518,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>y_endog</span> <span class='op'>%&gt;%</span>
   <span class='fu'>mutate</span><span class='op'>(</span>Date<span class='op'>=</span><span class='va'>dat</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/match.html'>match</a></span><span class='op'>(</span><span class='va'>y_endog</span><span class='op'>$</span><span class='va'>CORP</span>,<span class='va'>dat</span><span class='op'>$</span><span class='va'>CORP</span><span class='op'>)</span>,<span class='op'>]</span><span class='op'>$</span><span class='va'>Date</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>arrange</span><span class='op'>(</span><span class='va'>Date</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'>gather</span><span class='op'>(</span><span class='va'>variable</span>,<span class='va'>value</span>,<span class='op'>-</span><span class='va'>Date</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
     <span class='fu'>mutate</span><span class='op'>(</span>predictors<span class='op'>=</span><span class='fu'>if_else</span><span class='op'>(</span><span class='va'>variable</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'d_USD3M'</span>,<span class='st'>'d_EUR3M'</span>,<span class='st'>'d_USD1W'</span>,<span class='st'>'d_EUR1W'</span><span class='op'>)</span>,<span class='st'>"Rate_Change"</span>,<span class='st'>"Flows"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>Date</span>,y<span class='op'>=</span><span class='va'>value</span>,colour<span class='op'>=</span><span class='va'>variable</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>

@@ -1,6 +1,7 @@
 # Set-up----
 dels<-ls()
 rm(list=dels)
+pacman::p_unload("data.table")
 pacman::p_load("tidyverse","readxl","lubridate",'RTransferEntropy','future')
 read_excel("raw.xlsx",sheet = "new_values")->dat
 dat<-dat[-c(14,20)] # exclude aggregate bonds due to high correlation with other
@@ -22,48 +23,143 @@ dat %>%
          d_EUR1W=c(NA,diff(EUR1W)),
          CE_dummy=if_else(Date>=as.Date("23-3-2020","%d-%m-%Y") & 
                             Date<=as.Date("31-12-2020","%d-%m-%Y"),1,0)) %>%
-  select(-Date,-USD3M,-USD1W,-EUR3M,-EUR1W) %>%
+  # select(-Date,-USD3M,-USD1W,-EUR3M,-EUR1W) %>%
   drop_na() ->y_endog
 
-# Shannon's transfer entropy
-## full period
 y_endog %>% 
-  rename(d_IR=d_EUR3M) %>%
-  pivot_longer(cols=!starts_with(c("Date","d_IR")), 
-               names_to = "ETF",values_to = "Value")->df_list_EU
+  filter(Date>=as.Date("1-3-2020","%d-%m-%Y"))->y_endog_short
 
-y_endog %>% 
-  rename(d_IR=d_EUR1W) %>%
-  pivot_longer(cols=!starts_with(c("Date","d_IR")), 
-               names_to = "ETF",values_to = "Value")->df_list_EU_1W
+## Unit root testing using Elliot Rothenberg & Stock Test
+library(urca)
+summary(ur.ers(y_endog$CORP,model='const',lag.max = 10))
 
-y_endog %>% 
-  rename(d_IR=d_USD3M) %>%
-  pivot_longer(cols=!starts_with(c("Date","d_IR")), 
-               names_to = "ETF",values_to = "Value")->df_list_US
+## Minimum embedding time series dimension
+nonlinearTseries::estimateEmbeddingDim(y_endog$d_USD3M, 
+                                                   time.lag=10, 
+                                                   max.embedding.dim=25,
+                                 threshold=0.9, do.plot=TRUE)
 
-y_endog %>% 
-  rename(d_IR=d_USD1W) %>%
-  pivot_longer(cols=!starts_with(c("Date","d_IR")), 
-               names_to = "ETF",values_to = "Value")->df_list_US_1W
+nl_dim<-function(ts){
+  nonlinearTseries::estimateEmbeddingDim(ts, 
+                                         time.lag=10, 
+                                         max.embedding.dim=25,
+                                         threshold=0.9, do.plot=TRUE)
+}
+
+y_endog_short %>% select(-Date,-CE_dummy) %>% map_df(~nl_dim(.x)) ->dims
 
 library(data.table)
 ## Analysis
-max_te <- function(d) {
+max_te <- function(d,lyx=2) {
   te <- transfer_entropy(d$Value, d$d_IR, 
-                         shuffles =500 ,ly=5, lx=5, nboot = 2000)
+                         shuffles =200 ,ly=lyx, lx=lyx, nboot =500)
   data.table(
     ticker = d$ETF[1],
     dir = c("X->Y", "Y->X"),
     coef(te)
   )
 }
-plan(multisession)
+TE_algo <- function(yvar,data,lags) {
+  
+  require(dplyr)
+  data %>% 
+    rename(d_IR=yvar) %>%
+    select(-excludes) %>%
+    pivot_longer(cols=!starts_with(c("Date","d_IR")), 
+                 names_to = "ETF",values_to = "Value") %>%
+    group_split(ETF) %>%
+    map(~max_te(.x)) %>%
+    bind_rows()
+}
 
-df_list_US %>%
+plan(multisession)
+y_endog_short %>% select(-excludes)
+results<-vector("list",length = 4)
+yvars<-c("USD3M","EUR3M","USD1W","EUR1W")
+for (i in seq_along(yvars)) {
+  excludes<-c(setdiff(yvars,yvars[i]),"d_EUR3M","d_USD3M","d_EUR1W","d_USD1W")
+  results[[i]]<-TE_algo(yvars[i],y_endog_short,8)
+}
+
+## Quick plot
+rename_data<-function(df){
+  df[, ticker := factor(ticker, 
+                        levels = unique(df$ticker)[order(df[dir == "X->Y"]$ete)])]
+  df[, dir := factor(dir, levels = c("X->Y", "Y->X"),
+                     labels = c("Flow towards Interest Rate Changes",
+                                "Flow from Interest Rate Changes to .."))]
+}
+
+for (i in 1:length(results)) {
+  plot_data<-rename_data(results[[i]])
+  p<-ggplot(plot_data, aes(x = ticker, y = ete)) + 
+    facet_wrap(~dir) +
+    geom_hline(yintercept = 0, color = "gray") +
+    theme(axis.text.x = element_text(angle = 90)) +
+    labs(x = NULL, y = "Effective Transfer Entropy") +
+    geom_errorbar(aes(ymin = ete - qnorm(0.95) * se,  
+                      ymax = ete + qnorm(0.95) * se),  
+                  width = 0.25, col = "blue") +
+    geom_point()
+  return(p)
+}
+rename(results[[4]])%>% 
+  ggplot(aes(x = ticker, y = ete)) + 
+  facet_wrap(~dir) +
+  geom_hline(yintercept = 0, color = "gray") +
+  theme(axis.text.x = element_text(angle = 90)) +
+  labs(x = NULL, y = "Effective Transfer Entropy") +
+  geom_errorbar(aes(ymin = ete - qnorm(0.95) * se,  
+                    ymax = ete + qnorm(0.95) * se),  
+                width = 0.25, col = "blue") +
+  geom_point()
+
+
+y_endog %>% 
+  rename(d_IR="d_USD3M") %>%
+  select(-d_USD1W,-d_EUR1W) %>%
+  pivot_longer(cols=!starts_with(c("Date","d_IR")), 
+               names_to = "ETF",values_to = "Value") %>%
   group_split(ETF) %>%
   map(~max_te(.x)) %>%
-  bind_rows()->res_US
+  bind_rows()->res_US3M
+
+rename_data<-function(df){
+  df[, ticker := factor(ticker, 
+                        levels = unique(df$ticker)[order(df[dir == "X->Y"]$ete)])]
+  df[, dir := factor(dir, levels = c("X->Y", "Y->X"),
+                     labels = c("Flow towards Interest Rate Changes",
+                                "Flow from Interest Rate Changes to .."))]
+}
+plot_data<-rename_data(res_US3M)
+ggplot(plot_data, aes(x = ticker, y = ete)) + 
+  facet_wrap(~dir) +
+  geom_hline(yintercept = 0, color = "gray") +
+  theme(axis.text.x = element_text(angle = 90)) +
+  labs(x = NULL, y = "Effective Transfer Entropy") +
+  geom_errorbar(aes(ymin = ete - qnorm(0.95) * se,  
+                    ymax = ete + qnorm(0.95) * se),  
+                width = 0.25, col = "blue") +
+  geom_point()
+
+y_endog %>% 
+  rename(d_IR="d_EUR3M") %>%
+  select(-d_USD1W,-d_EUR1W) %>%
+  pivot_longer(cols=!starts_with(c("Date","d_IR")), 
+               names_to = "ETF",values_to = "Value") %>%
+  group_split(ETF) %>%
+  map(~max_te(.x)) %>%
+  bind_rows()->res_EUR3M
+plot_data<-rename_data(res_EUR3M)
+ggplot(plot_data, aes(x = ticker, y = ete)) + 
+  facet_wrap(~dir) +
+  geom_hline(yintercept = 0, color = "gray") +
+  theme(axis.text.x = element_text(angle = 90)) +
+  labs(x = NULL, y = "Effective Transfer Entropy") +
+  geom_errorbar(aes(ymin = ete - qnorm(0.95) * se,  
+                    ymax = ete + qnorm(0.95) * se),  
+                width = 0.25, col = "blue") +
+  geom_point()
 
 df_list_US_1W %>% 
   group_split(ETF) %>%

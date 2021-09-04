@@ -18,9 +18,9 @@ dels<-ls()
 rm(list=dels)
 load("eteResults.RData")
 pacman::p_load("tidyverse","readxl","lubridate",'vars','corrplot','data.table')
-y_endog %>% 
+df_anal %>% 
   dplyr::select(-CE_dummy) %>%
-  map_df(scale) ->y_endog_scaled
+  map_df(scale) ->df_anal_scaled
 ```
 
 # Introduction
@@ -35,11 +35,12 @@ We investigate the dynamic impact of fixed income ETF fund flows and central ban
 
 
 # Data
-The data is sourced from Bloomberg and consists of daily indices capturing net ETF Flows into different bond categories of ETF in the US market. The data is for the period `r first(dat$Date)` - `r last(dat$Date)`.  The sample also include three interest ratios, US 3-month LIBOR, EU 3-Month LIBOR and the SONIA interest rate benchmark.
+The data is sourced from Bloomberg and consists of daily indices capturing net ETF Flows into different bond categories of ETF in the US market. The data is for the period `r first(df_anal_short$Date)` - `r last(df_anal_short$Date)`.  The sample also include three interest ratios, US 3-month LIBOR, EU 3-Month LIBOR and the SONIA interest rate benchmark.
 
 ```{r plot}
-y_endog %>%
-  mutate(Date=dat[match(y_endog$CORP,dat$CORP),]$Date) %>%
+df_anal %>%
+  mutate(Date=dat[match(df_anal$CORP,dat$CORP),]$Date) %>%
+  arrange(Date) %>%
   gather(variable,value,-Date) %>%
     mutate(predictors=if_else(variable %in% c('d_USD3M','d_EUR3M','d_USD1W','d_EUR1W'),"Rate_Change","Flows")) %>%
   ggplot(aes(x=Date,y=value,colour=variable)) +
@@ -55,7 +56,7 @@ y_endog %>%
 ## Linear pairwise correlations
 
 ```{r correlation}
-cor(y_endog %>% dplyr::select(-CE_dummy)) %>% 
+cor(df_anal %>% dplyr::select(-CE_dummy)) %>% 
   corrplot(method="circle",title="linear correlations")
 ```
 Some obvious correlation in the three interest rates. There are also some strong correlations among the ETF bond flows that will require careful consideration. Is this due to overlapping categorisation?
