@@ -17,10 +17,9 @@ knitr::opts_chunk$set(message = FALSE,warnings=FALSE, code_folding=TRUE, cache =
 dels<-ls()
 rm(list=dels)
 load("eteResults.RData")
+load('eteResultsl3.RData')
 pacman::p_load("tidyverse","readxl","lubridate",'vars','corrplot','data.table')
-df_anal %>% 
-  dplyr::select(-CE_dummy) %>%
-  map_df(scale) ->df_anal_scaled
+df_anal<-y_endog_short 
 ```
 
 # Introduction
@@ -35,14 +34,14 @@ We investigate the dynamic impact of fixed income ETF fund flows and central ban
 
 
 # Data
-The data is sourced from Bloomberg and consists of daily indices capturing net ETF Flows into different bond categories of ETF in the US market. The data is for the period `r first(df_anal_short$Date)` - `r last(df_anal_short$Date)`.  The sample also include three interest ratios, US 3-month LIBOR, EU 3-Month LIBOR and the SONIA interest rate benchmark.
+The data is sourced from Bloomberg and consists of daily indices capturing net ETF Flows into different bond categories of ETF in the US market. The data is for the period `r first(df_anal$Date)` - `r last(df_anal$Date)`.  The sample also include three interest ratios, US 3-month LIBOR, EU 3-Month LIBOR and the SONIA interest rate benchmark.
 
 ```{r plot}
 df_anal %>%
   mutate(Date=dat[match(df_anal$CORP,dat$CORP),]$Date) %>%
   arrange(Date) %>%
   gather(variable,value,-Date) %>%
-    mutate(predictors=if_else(variable %in% c('d_USD3M','d_EUR3M','d_USD1W','d_EUR1W'),"Rate_Change","Flows")) %>%
+    # mutate(predictors=if_else(variable %in% c('d_USD3M','d_EUR3M','d_USD1W','d_EUR1W'),"Rate_Change","Flows")) %>%
   ggplot(aes(x=Date,y=value,colour=variable)) +
   geom_line() +
   labs(title="Interests and ETF Flows",x="") +
@@ -56,7 +55,7 @@ df_anal %>%
 ## Linear pairwise correlations
 
 ```{r correlation}
-cor(df_anal %>% dplyr::select(-CE_dummy)) %>% 
+cor(df_anal %>% dplyr::select(-CE_dummy,-Date)) %>% 
   corrplot(method="circle",title="linear correlations")
 ```
 Some obvious correlation in the three interest rates. There are also some strong correlations among the ETF bond flows that will require careful consideration. Is this due to overlapping categorisation?
@@ -118,20 +117,13 @@ Thereby, each value in the observed time series $y_t$ is replaced by an integer 
 
 Shannon's transfer entropy measure the information flow (reduction in uncertainty in probability) is a model-free way that captures the non-linear complexity of a financial network.  As an exploratory exercise, we assess the information transfer from and to the changes of three interest rates. 
 
-Our analysis considers the full period of analysis and the period of the credit easing programme. For each period we assess the information gain, measured using the effective transfer entropy,  between the fund flows and the three interest rate changes.  We investigate the information flow between series up to $t-3$ periods.  
+Our analysis considers the full period of analysis and the period of the credit easing programme. For each period we assess the information gain, measured using the effective transfer entropy,  between the fund flows and the three interest rate changes.  We investigate the dynamic lead-lag  information using up to $t-2$ period in each series.  
 
 ## Results for Full Sample
 
 ```{r EU, fig.cap='Effective Transfer Entropy for Change in 3-Month EU Libor'}
-rename_data<-function(df){
- df[, ticker := factor(ticker, 
-                        levels = unique(df$ticker)[order(df[dir == "X->Y"]$ete)])]
-  df[, dir := factor(dir, levels = c("X->Y", "Y->X"),
-                          labels = c("Flow towards Interest Rate Changes",
-                                     "Flow from Interest Rate Changes to .."))]
-}
-plot_data<-rename_data(res_EU)
-ggplot(plot_data, aes(x = ticker, y = ete)) + 
+full_results[["d_EUR3M"]] %>%
+  ggplot(aes(x = ticker, y = ete)) + 
   facet_wrap(~dir) +
   geom_hline(yintercept = 0, color = "gray") +
   theme(axis.text.x = element_text(angle = 90)) +
@@ -139,12 +131,26 @@ ggplot(plot_data, aes(x = ticker, y = ete)) +
   geom_errorbar(aes(ymin = ete - qnorm(0.95) * se,  
                     ymax = ete + qnorm(0.95) * se),  
                 width = 0.25, col = "blue") +
-  geom_point()
+  geom_point() +
+  ggtitle("Using 2 lags")
+```
+```{r EU1, fig.cap='Effective Transfer Entropy for Change in 3-Month EU Libor'}
+full_resultsl3[["d_EUR3M"]] %>%
+  ggplot(aes(x = ticker, y = ete)) + 
+  facet_wrap(~dir) +
+  geom_hline(yintercept = 0, color = "gray") +
+  theme(axis.text.x = element_text(angle = 90)) +
+  labs(x = NULL, y = "Effective Transfer Entropy") +
+  geom_errorbar(aes(ymin = ete - qnorm(0.95) * se,  
+                    ymax = ete + qnorm(0.95) * se),  
+                width = 0.25, col = "blue") +
+  geom_point() +
+  ggtitle("Using 3 lags")
 ```
 
 ```{r US,fig.cap='Effective Transfer Entropy for Daily Change in 3-Month US Libor'}
-plot_data<-rename_data(res_US)
-ggplot(plot_data, aes(x = ticker, y = ete)) + 
+full_results[["d_USD3M"]] %>%
+  ggplot(aes(x = ticker, y = ete)) + 
   facet_wrap(~dir) +
   geom_hline(yintercept = 0, color = "gray") +
   theme(axis.text.x = element_text(angle = 90)) +
@@ -152,12 +158,12 @@ ggplot(plot_data, aes(x = ticker, y = ete)) +
   geom_errorbar(aes(ymin = ete - qnorm(0.95) * se,  
                     ymax = ete + qnorm(0.95) * se),  
                 width = 0.25, col = "blue") +
-  geom_point()
+  geom_point() +
+  ggtitle("Using 2 lags")
 ```
-
-```{r EU 1w, fig.cap='Effective Transfer Entropy for Daily Change in 1-Week EU Libor'}
-plot_data<-rename_data(res_EU_1W)
-ggplot(plot_data, aes(x = ticker, y = ete)) + 
+```{r US1,fig.cap='Effective Transfer Entropy for Daily Change in 3-Month US Libor'}
+full_resultsl3[["d_USD3M"]] %>%
+  ggplot(aes(x = ticker, y = ete)) + 
   facet_wrap(~dir) +
   geom_hline(yintercept = 0, color = "gray") +
   theme(axis.text.x = element_text(angle = 90)) +
@@ -165,12 +171,14 @@ ggplot(plot_data, aes(x = ticker, y = ete)) +
   geom_errorbar(aes(ymin = ete - qnorm(0.95) * se,  
                     ymax = ete + qnorm(0.95) * se),  
                 width = 0.25, col = "blue") +
-  geom_point()
+  geom_point() +
+  ggtitle("Using 3 lags")
 ```
 
-```{r US 1w, fig.cap='Effective Transfer Entropy for Daily Change in 1-Week US Libor'}
-plot_data<-rename_data(res_US_1W)
-ggplot(plot_data, aes(x = ticker, y = ete)) + 
+
+```{r EU1w, fig.cap='Effective Transfer Entropy for Daily Change in 1-Week EU Libor'}
+full_results[["d_EUR1W"]] %>%
+  ggplot(aes(x = ticker, y = ete)) + 
   facet_wrap(~dir) +
   geom_hline(yintercept = 0, color = "gray") +
   theme(axis.text.x = element_text(angle = 90)) +
@@ -178,15 +186,55 @@ ggplot(plot_data, aes(x = ticker, y = ete)) +
   geom_errorbar(aes(ymin = ete - qnorm(0.95) * se,  
                     ymax = ete + qnorm(0.95) * se),  
                 width = 0.25, col = "blue") +
-  geom_point()
+  geom_point() + 
+  ggtitle("Using 2 lags")
+```
+```{r EU1w1, fig.cap='Effective Transfer Entropy for Daily Change in 1-Week EU Libor'}
+full_resultsl3[["d_EUR1W"]] %>%
+  ggplot(aes(x = ticker, y = ete)) + 
+  facet_wrap(~dir) +
+  geom_hline(yintercept = 0, color = "gray") +
+  theme(axis.text.x = element_text(angle = 90)) +
+  labs(x = NULL, y = "Effective Transfer Entropy") +
+  geom_errorbar(aes(ymin = ete - qnorm(0.95) * se,  
+                    ymax = ete + qnorm(0.95) * se),  
+                width = 0.25, col = "blue") +
+  geom_point() + 
+  ggtitle("Using 3 lags")
 ```
 
+
+```{r US1w, fig.cap='Effective Transfer Entropy for Daily Change in 1-Week US Libor'}
+full_results[["d_USD1W"]] %>%
+  ggplot(aes(x = ticker, y = ete)) + 
+  facet_wrap(~dir) +
+  geom_hline(yintercept = 0, color = "gray") +
+  theme(axis.text.x = element_text(angle = 90)) +
+  labs(x = NULL, y = "Effective Transfer Entropy") +
+  geom_errorbar(aes(ymin = ete - qnorm(0.95) * se,  
+                    ymax = ete + qnorm(0.95) * se),  
+                width = 0.25, col = "blue") +
+  geom_point() + ggtitle("Using 2 lags")
+```
+
+```{r US1w1, fig.cap='Effective Transfer Entropy for Daily Change in 1-Week US Libor'}
+full_resultsl3[["d_USD1W"]] %>%
+  ggplot(aes(x = ticker, y = ete)) + 
+  facet_wrap(~dir) +
+  geom_hline(yintercept = 0, color = "gray") +
+  theme(axis.text.x = element_text(angle = 90)) +
+  labs(x = NULL, y = "Effective Transfer Entropy") +
+  geom_errorbar(aes(ymin = ete - qnorm(0.95) * se,  
+                    ymax = ete + qnorm(0.95) * se),  
+                width = 0.25, col = "blue") +
+  geom_point() + ggtitle("Using 3 lags")
+```
 
 ## Results for credit easing period 23-3-2020 to 31-12-2020
 
 ```{r EUce, fig.cap='Effective Transfer Entropy for Daily Change in 3-month EU Libor'}
-plot_data<-rename_data(res_EU_CE)
-ggplot(plot_data, aes(x = ticker, y = ete)) + 
+CEperiod_results[["d_EUR3M"]] %>%
+  ggplot(aes(x = ticker, y = ete)) + 
   facet_wrap(~dir) +
   geom_hline(yintercept = 0, color = "gray") +
   theme(axis.text.x = element_text(angle = 90)) +
@@ -194,12 +242,25 @@ ggplot(plot_data, aes(x = ticker, y = ete)) +
   geom_errorbar(aes(ymin = ete - qnorm(0.95) * se,  
                     ymax = ete + qnorm(0.95) * se),  
                 width = 0.25, col = "blue") +
-  geom_point()
+  geom_point() + ggtitle("Using 2 lags")
 ```
+```{r EUce1, fig.cap='Effective Transfer Entropy for Daily Change in 3-month EU Libor'}
+CEperiod_resultsl3[["d_EUR3M"]] %>%
+  ggplot(aes(x = ticker, y = ete)) + 
+  facet_wrap(~dir) +
+  geom_hline(yintercept = 0, color = "gray") +
+  theme(axis.text.x = element_text(angle = 90)) +
+  labs(x = NULL, y = "Effective Transfer Entropy") +
+  geom_errorbar(aes(ymin = ete - qnorm(0.95) * se,  
+                    ymax = ete + qnorm(0.95) * se),  
+                width = 0.25, col = "blue") +
+  geom_point() + ggtitle("Using 3 lags")
+```
+
 
 ```{r EUce1w, fig.cap='Effective Transfer Entropy for Daily Change in 1-week EU Libor'}
-plot_data<-rename_data(res_EU_CE_1W)
-ggplot(plot_data, aes(x = ticker, y = ete)) + 
+CEperiod_results[["d_EUR1W"]] %>%
+  ggplot(aes(x = ticker, y = ete)) + 
   facet_wrap(~dir) +
   geom_hline(yintercept = 0, color = "gray") +
   theme(axis.text.x = element_text(angle = 90)) +
@@ -207,12 +268,25 @@ ggplot(plot_data, aes(x = ticker, y = ete)) +
   geom_errorbar(aes(ymin = ete - qnorm(0.95) * se,  
                     ymax = ete + qnorm(0.95) * se),  
                 width = 0.25, col = "blue") +
-  geom_point()
+  geom_point() + ggtitle("Using 2 lags")
+```
+```{r EUce1w1, fig.cap='Effective Transfer Entropy for Daily Change in 1-week EU Libor'}
+CEperiod_resultsl3[["d_EUR1W"]] %>%
+  ggplot(aes(x = ticker, y = ete)) + 
+  facet_wrap(~dir) +
+  geom_hline(yintercept = 0, color = "gray") +
+  theme(axis.text.x = element_text(angle = 90)) +
+  labs(x = NULL, y = "Effective Transfer Entropy") +
+  geom_errorbar(aes(ymin = ete - qnorm(0.95) * se,  
+                    ymax = ete + qnorm(0.95) * se),  
+                width = 0.25, col = "blue") +
+  geom_point() + ggtitle("Using 3 lags")
 ```
 
+
 ```{r USce,fig.cap='Effective Transfer Entropy for Daily Change 3-month US Libor'}
-plot_data<-rename_data(res_US_CE)
-ggplot(plot_data, aes(x = ticker, y = ete)) + 
+CEperiod_results[["d_USD3M"]] %>%
+  ggplot(aes(x = ticker, y = ete)) + 
   facet_wrap(~dir) +
   geom_hline(yintercept = 0, color = "gray") +
   theme(axis.text.x = element_text(angle = 90)) +
@@ -220,12 +294,25 @@ ggplot(plot_data, aes(x = ticker, y = ete)) +
   geom_errorbar(aes(ymin = ete - qnorm(0.95) * se,  
                     ymax = ete + qnorm(0.95) * se),  
                 width = 0.25, col = "blue") +
-  geom_point()
+  geom_point() + ggtitle("Using 2 lags")
+```
+```{r USce1,fig.cap='Effective Transfer Entropy for Daily Change 3-month US Libor'}
+CEperiod_resultsl3[["d_USD3M"]] %>%
+  ggplot(aes(x = ticker, y = ete)) + 
+  facet_wrap(~dir) +
+  geom_hline(yintercept = 0, color = "gray") +
+  theme(axis.text.x = element_text(angle = 90)) +
+  labs(x = NULL, y = "Effective Transfer Entropy") +
+  geom_errorbar(aes(ymin = ete - qnorm(0.95) * se,  
+                    ymax = ete + qnorm(0.95) * se),  
+                width = 0.25, col = "blue") +
+  geom_point() + ggtitle("Using 3 lags")
+
 ```
 
 ```{r USce1w,fig.cap='Effective Transfer Entropy for Daily Change 1-week US Libor'}
-plot_data<-rename_data(res_US_CE_1W)
-ggplot(plot_data, aes(x = ticker, y = ete)) + 
+CEperiod_results[["d_USD1W"]] %>%
+  ggplot(aes(x = ticker, y = ete)) + 
   facet_wrap(~dir) +
   geom_hline(yintercept = 0, color = "gray") +
   theme(axis.text.x = element_text(angle = 90)) +
@@ -233,12 +320,28 @@ ggplot(plot_data, aes(x = ticker, y = ete)) +
   geom_errorbar(aes(ymin = ete - qnorm(0.95) * se,  
                     ymax = ete + qnorm(0.95) * se),  
                 width = 0.25, col = "blue") +
-  geom_point()
+  geom_point() + ggtitle("Using 2 lags")
+```
+
+```{r USce1w1,fig.cap='Effective Transfer Entropy for Daily Change 1-week US Libor'}
+CEperiod_resultsl3[["d_USD1W"]] %>%
+  ggplot(aes(x = ticker, y = ete)) + 
+  facet_wrap(~dir) +
+  geom_hline(yintercept = 0, color = "gray") +
+  theme(axis.text.x = element_text(angle = 90)) +
+  labs(x = NULL, y = "Effective Transfer Entropy") +
+  geom_errorbar(aes(ymin = ete - qnorm(0.95) * se,  
+                    ymax = ete + qnorm(0.95) * se),  
+                width = 0.25, col = "blue") +
+  geom_point() + ggtitle("Using 3 lags")
 ```
 
 
+### Further analysis to consider
 
-### **Things to do**
+*In order of importance*
+
+* Using some machine learning to optimise the entropy process
 
 * Relative Explanation Added
 
@@ -248,10 +351,6 @@ $$REA(m,l)=\frac{T_{Y \to X}(m,l)}{H(X_0|X_{-1,...,X_{-m}})}$$
 
 >Here the information flow from Y to X, measured by the transfer entropy, is related to the total flow of information based the conditional block entropy of X. Put differently, it measures the additional information gain by observing the history of X and Y when already observing X.
 
-* Regression analysis based on: 
-
->Kolokolova, O., Lin, M.-T., & Poon, S.-H. (2020). Too big to ignore? Hedge fund flows and bond yields. Journal of Banking & Finance, 112, 105271.
-
 * Multivariate transfer entropy
 
 > Gonzalez, M. R., Basse, T., Saft, D., & Kunze, F. (2021). Leading indicators for US house prices: New Evidence and Implications for EU Financial Risk Managers. European Financial Management, eufm.12325. https://doi.org/10.1111/eufm.12325
@@ -259,7 +358,13 @@ $$REA(m,l)=\frac{T_{Y \to X}(m,l)}{H(X_0|X_{-1,...,X_{-m}})}$$
 > Multivariate transfer entropy: Lizier & Rubinov, 2012, Preprint, Technical Report 25/2012, Max Planck Institute for Mathematics in the Sciences. Available from: http://www.mis.mpg.de/preprints/2012/preprint2012_25.pdf
 > https://github.com/pwollstadt/IDTxl
 
-* Identify regimes using a HMM VAR model and test transfer entropy between regimes??
+* Identify regimes using a HMM VAR model and test transfer entropy between regimes
+
+* Regression analysis based on: 
+
+>Kolokolova, O., Lin, M.-T., & Poon, S.-H. (2020). Too big to ignore? Hedge fund flows and bond yields. Journal of Banking & Finance, 112, 105271.
+
+
 
 # Reference
 

@@ -13,7 +13,7 @@ names(dat)[-1]<-new_names[-1]
 
 # Create data for analysis
 dat %>% 
-  select(-CONV,-SONIA) %>%
+  dplyr::select(-CONV,-SONIA) %>%
   arrange(Date) %>%
   drop_na() %>%
   mutate(d_USD3M=c(NA,diff(USD3M)),
@@ -34,15 +34,15 @@ y_endog %>%
 
 ## Minimum embedding time series dimension
 
-nl_dim<-function(ts){
-  nonlinearTseries::estimateEmbeddingDim(ts, 
-                                         time.lag=1, 
-                                         max.embedding.dim=10,
-                                         threshold=0.9, do.plot=TRUE)
-}
-
-y_endog_short %>% select(-Date,-CE_dummy) %>% map_df(~nl_dim(.x)) ->dims
-rowMeans(dims)
+# nl_dim<-function(ts){
+#   nonlinearTseries::estimateEmbeddingDim(ts, 
+#                                          time.lag=1, 
+#                                          max.embedding.dim=10,
+#                                          threshold=0.9, do.plot=TRUE)
+# }
+# 
+# y_endog_short %>% select(-Date,-CE_dummy) %>% map_df(~nl_dim(.x)) ->dims
+# rowMeans(dims)
 
 ## Some functions for the analysis
 max_te <- function(d,lyx=2,bootn) {
@@ -59,7 +59,7 @@ TE_algo <- function(yvar,data,lags,boot=500) {
   require(dplyr)
   data %>% 
     rename(d_IR=yvar) %>%
-    select(-excludes) %>%
+    dplyr::select(-excludes) %>%
     pivot_longer(cols=!starts_with(c("Date","d_IR")), 
                  names_to = "ETF",values_to = "Value") %>%
     group_split(ETF) %>%
@@ -81,7 +81,7 @@ full_results<-vector("list",4)
 yvars<-c("d_USD3M","d_EUR3M","d_USD1W","d_EUR1W")
 names(full_results)<-yvars
 for (i in yvars) {
-  full_results[[i]]<-TE_algo(i,y_endog_short,lags = 2,boot = 500)
+  full_results[[i]]<-TE_algo(i,y_endog_short,lags = 3,boot = 500)
 }
 full_results %>% map(~rename_data(.x))
 
@@ -90,9 +90,10 @@ names(CEperiod_results)<-yvars
 y_endog_short %>% filter(CE_dummy==1)->CE_data
 
 for (i in yvars) {
-  CEperiod_results[[i]]<-TE_algo(i,CE_data,lags = 2,boot = 500)
+  CEperiod_results[[i]]<-TE_algo(i,CE_data,lags = 3,boot = 500)
 }
 CEperiod_results %>% map(~rename_data(.x))
-
-save.image("eteResults.RData")
+CEperiod_resultsl3<-CEperiod_results
+full_resultsl3<-full_results
+save(full_resultsl3,CEperiod_resultsl3,file="eteResultsl3.RData")
 write_csv(y_endog,"etf_flows.csv")
