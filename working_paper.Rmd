@@ -8,6 +8,15 @@ date: "`r Sys.Date()`"
 output: 
   pdf_document:
         keep_tex: true
+        number_sections: true
+header-includes:
+ \usepackage{booktabs}
+ \usepackage{longtable}
+ \usepackage{array}
+ \usepackage{multirow}
+ \usepackage{wrapfig}
+ \usepackage{float}
+ \floatplacement{figure}{H}
 ---
 
 ```{r set-up, include=FALSE}
@@ -18,6 +27,8 @@ load("eteResults.RData")
 load('eteResultsl3.RData')
 pacman::p_load("tidyverse","readxl","lubridate",'vars','corrplot','data.table')
 df_anal<-y_endog_short 
+fontsize=6
+set_flextable_defaults(fonts_ignore=TRUE)
 ```
 
 # Introduction
@@ -132,8 +143,8 @@ final_results %>%
   geom_tile() + 
   scale_fill_distiller(type = "seq") +
   facet_wrap(~`Interest Rate Change`+ dir) +
-  theme(text = element_text(size=4),
-        axis.text.x = element_text(angle = 45))
+  theme(text = element_text(size=fontsize),
+        axis.text.x = element_text(angle = 90))
 
 ```
 
@@ -145,8 +156,8 @@ final_resultsCE %>% mutate(lag=as.numeric(str_remove(Lag,"lag")),
   geom_tile() + 
   scale_fill_distiller(type = "seq") +
   facet_wrap(~`Interest Rate Change`+dir) +
-  theme(text = element_text(size=4),
-        axis.text.x = element_text(angle = 45))
+  theme(text = element_text(size=fontsize),
+        axis.text.x = element_text(angle = 90))
 
 ```
 
@@ -158,8 +169,8 @@ final_results %>% mutate(lag=as.numeric(str_remove(Lag,"lag"))) %>%
   geom_tile() + 
   scale_fill_distiller(type = "seq",palette ="PuRd") +
   facet_wrap(~`Interest Rate Change`+dir) +
-  theme(text = element_text(size=4),
-        axis.text.x = element_text(angle = 45))
+  theme(text = element_text(size=fontsize),
+        axis.text.x = element_text(angle = 90))
 
 ```
 
@@ -171,25 +182,30 @@ final_resultsCE %>% mutate(lag=as.numeric(str_remove(Lag,"lag")),
   geom_tile() + 
   scale_fill_distiller(type = "seq",palette ="PuRd") +
   facet_wrap(~`Interest Rate Change`+dir) +
-  theme(text = element_text(size=4),
-        axis.text.x = element_text(angle = 45))
+  theme(text = element_text(size=fontsize),
+        axis.text.x = element_text(angle = 90))
 
 ```
 
 ## False discovery correction
 
-The previous procedure treats each effective transfer entropy estimates as independent when considering their level of significance.  As we have over 2000 NHST p-values this is a unrealistic assumption.The replication crisis in finance has shown that researchers routinely explicitly or implicitly ignore multiple comparison bias and do not control for false discovery.  This has lead many to assert that most research findings use the standard null hypothesis significance testing are likely false (Campbell ,2017).  We correct for false discovery by applying the procedure first set in Benjamini and Hochberg (1995).  Astonishingly, this correction is little used in finance, where since its publication this paper has bee citied over 50000 times.      
+The previous procedure treats each effective transfer entropy estimates as independent when considering their level of significance.  As we have over 2000 NHST p-values this is a unrealistic assumption.The replication crisis in finance has shown that researchers routinely explicitly or implicitly ignore multiple comparison bias and do not control for false discovery.  This has lead many to assert that most research findings use the standard null hypothesis significance testing are likely false (Campbell ,2017).  We correct for false discovery by applying the procedure first set in Benjamini and Hochberg (1995).  Astonishingly, this correction is little used in finance, even though since its publication this paper has been cited over 50000 times.      
 
 ```{r fullless6, fig.cap="Full period grid search results (adjusted p value<5%)", layout="l-screen-inset"}
 final_results %>% mutate(lag=as.numeric(str_remove(Lag,"lag"))) %>%
   mutate(adjusted_pvalue=p.adjust(`p-value`,method = "fdr")) %>%
   filter(adjusted_pvalue<0.05) %>%
-  ggplot(aes(x=ticker,y=lag,fill=adjusted_pvalue)) + 
-  geom_tile() + 
-  scale_fill_distiller(type = "seq",palette ="PuRd") +
-  facet_wrap(~`Interest Rate Change`+dir) +
-  theme(text = element_text(size=4),
-        axis.text.x = element_text(angle = 45))
+  # {summary(.$adjusted_pvalue)}
+  flextable::flextable()
+
+
+# %>%
+#   ggplot(aes(x=ticker,y=lag,fill=adjusted_pvalue)) + 
+#   geom_tile() + 
+#   scale_fill_distiller(type = "seq",palette ="PuRd") +
+#   facet_wrap(~`Interest Rate Change`+dir) +
+#   theme(text = element_text(size=fontsize),
+#         axis.text.x = element_text(angle = 90))
 
 ```
 
@@ -197,12 +213,14 @@ final_results %>% mutate(lag=as.numeric(str_remove(Lag,"lag"))) %>%
 final_resultsCE %>% mutate(lag=as.numeric(str_remove(Lag,"lag"))) %>%
   mutate(adjusted_pvalue=p.adjust(`p-value`,method = "fdr")) %>%
   filter(adjusted_pvalue<0.05) %>%
-  ggplot(aes(x=ticker,y=lag,fill=adjusted_pvalue)) + 
-  geom_tile() + 
-  scale_fill_distiller(type = "seq",palette ="PuRd") +
-  facet_wrap(~`Interest Rate Change`+dir) +
-  theme(text = element_text(size=4),
-        axis.text.x = element_text(angle = 45))
+  # {summary(.$adjusted_pvalue)}
+  flextable::flextable()  
+  # ggplot(aes(x=ticker,y=lag,fill=adjusted_pvalue)) + 
+  # geom_tile() + 
+  # scale_fill_distiller(type = "seq",palette ="PuRd") +
+  # facet_wrap(~`Interest Rate Change`+dir) +
+  # theme(text = element_text(size=fontsize),
+  #       axis.text.x = element_text(angle = 90))
 
 ```
 
