@@ -25,7 +25,7 @@ dels<-ls()
 rm(list=dels)
 load("eteResults.RData")
 load('eteResultsl3.RData')
-pacman::p_load("tidyverse","readxl","lubridate",'vars','corrplot','data.table')
+pacman::p_load("tidyverse","readxl","lubridate",'vars','corrplot','data.table',"flextable")
 df_anal<-y_endog_short 
 fontsize=6
 set_flextable_defaults(fonts_ignore=TRUE)
@@ -191,12 +191,17 @@ final_resultsCE %>% mutate(lag=as.numeric(str_remove(Lag,"lag")),
 
 The previous procedure treats each effective transfer entropy estimates as independent when considering their level of significance.  As we have over 2000 NHST p-values this is a unrealistic assumption.The replication crisis in finance has shown that researchers routinely explicitly or implicitly ignore multiple comparison bias and do not control for false discovery.  This has lead many to assert that most research findings use the standard null hypothesis significance testing are likely false (Campbell ,2017).  We correct for false discovery by applying the procedure first set in Benjamini and Hochberg (1995).  Astonishingly, this correction is little used in finance, even though since its publication this paper has been cited over 50000 times.      
 
+When we adjust the previous results for false discovery we have more credible findings. Table 1 shows the effective transfer entropy values which remain after our Benjamini and Hochberg (1995) adjustment for the full sample period.  Table 1 shows the effective transfer entropy estimates for the CE period.  Some interesting insights emerge....
+
 ```{r fullless6, fig.cap="Full period grid search results (adjusted p value<5%)", layout="l-screen-inset"}
 final_results %>% mutate(lag=as.numeric(str_remove(Lag,"lag"))) %>%
   mutate(adjusted_pvalue=p.adjust(`p-value`,method = "fdr")) %>%
   filter(adjusted_pvalue<0.05) %>%
-  # {summary(.$adjusted_pvalue)}
-  flextable::flextable()
+  dplyr::select(Lag,ticker,te,ete,se,Direction) %>%
+  flextable() %>% 
+  colformat_double(digits = 4) %>%
+  fit_to_width(max_width = 7) %>%
+  flextable::set_caption("Full period grid search results adjusted for false discovery rate")
 
 
 # %>%
@@ -212,9 +217,14 @@ final_results %>% mutate(lag=as.numeric(str_remove(Lag,"lag"))) %>%
 ```{r CE7, fig.cap="Credit Easing period grid search results (adjusted p value<5%)", layout="l-screen-inset"}
 final_resultsCE %>% mutate(lag=as.numeric(str_remove(Lag,"lag"))) %>%
   mutate(adjusted_pvalue=p.adjust(`p-value`,method = "fdr")) %>%
-  filter(adjusted_pvalue<0.05) %>%
+  filter(adjusted_pvalue<0.05) %>% 
+  dplyr::select(Lag,ticker,te,ete,se,Direction) %>%
   # {summary(.$adjusted_pvalue)}
-  flextable::flextable()  
+  flextable() %>% 
+  colformat_double(digits = 4) %>%
+  fit_to_width(max_width = 7) %>%
+  flextable::set_caption("Credit easing period grid search results adjusted for false discovery rate")
+  
   # ggplot(aes(x=ticker,y=lag,fill=adjusted_pvalue)) + 
   # geom_tile() + 
   # scale_fill_distiller(type = "seq",palette ="PuRd") +

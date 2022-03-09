@@ -18,3 +18,4 @@ lmtest
 vars
 corrplot
 data.table
+flextable
