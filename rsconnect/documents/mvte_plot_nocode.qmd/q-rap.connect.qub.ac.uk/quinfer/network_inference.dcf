@@ -1,0 +1,13 @@
+name: network_inference
+title: network_inference
+username: quinfer
+account: quinfer
+server: q-rap.connect.qub.ac.uk
+hostUrl: https://q-rap.connect.qub.ac.uk/__api__
+appId: 23
+bundleId: 109
+url: https://q-rap.connect.qub.ac.uk/content/1f03a4ae-2b19-4d40-80a3-c78fefed239e/
+when: 1656666752.92037
+lastSyncTime: 1656666752.92038
+asMultiple: FALSE
+asStatic: TRUE

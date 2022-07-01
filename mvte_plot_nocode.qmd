@@ -1,0 +1,118 @@
+---
+title: Credit easing, Bond ETF Flows and network inference algorithms
+format:
+  html:
+    code-fold: true
+author: 
+  - Lisha Li
+  - Barry Quinn
+  - Lisa Sheenan
+date: "`r Sys.Date()`"
+bibliography: refs.bib
+execute: 
+  message: false
+  warnings: false
+---
+
+```{r}
+#| include: false
+dels<-ls()
+rm(list=dels)
+pacman::p_load("tidyverse","readxl","lubridate",'vars','corrplot','data.table',"flextable")
+df_anal<-read_csv("raw.csv")
+reticulate::use_condaenv("idtxl")
+
+```
+
+# Abstract
+
+Network inference algorithms are valuable tools for the study of complex financial multivariate time series. Multivariate transfer entropy is well suited for this task, being a model-free measure that captures nonlinear and lagged dependencies between time series to infer a minimal directed network model. Greedy algorithms have been proposed to efficiently deal with high-dimensional datasets while avoiding redundant inferences and capturing synergistic effects. However, multiple statistical comparisons may inflate the false positive rate and are computationally demanding, which limited the size of previous validation studies. The algorithm we present addresses these challenges by employing hierarchical statistical tests to control the family-wise error rate and to allow for efficient parallel computing. We apply the algorithm investigate the information flow in the fixed income ETF markets, when the recent credit easing period was implement.
+
+## Measuring information flows using transfer entropy
+
+Let $log$ denote the logarithm to the base 2, then informational gain is measured in bits. Shannon entropy (Shannon 1948) states that for a discrete random variable $J$ with probability distribution $p(j)$, where $j$ stands for the different outcomes the random variable $J$ can take, the average number of bits required to optimally encode independent draws from the distribution of $J$ can be calculated as
+
+$$
+  H_J = - \sum_j p(j) \cdot log \left(p(j)\right).
+$$
+
+Formally, Shannon's formula is a measure for uncertainty, which increases with the number of bits needed to optimally encode a sequence of realizations of $J$. In order to measure the information flow between two processes, Shannon entropy is combined with the concept of the Kullback-Leibler distance [@KL51] and by assuming that the underlying processes evolve over time according to a Markov process (Schreiber 2000).
+
+Let $I$ and $J$ denote two discrete random variables with marginal probability distributions $p(i)$ and $p(j)$ and joint probability distribution $p(i,j)$, whose dynamical structures correspond to stationary Markov processes of order $k$ (process $I$) and $l$ (process $J$). The Markov property implies that the probability to observe $I$ at time $t+1$ in state $i$ conditional on the $k$ previous observations is $p(i_{t+1}|i_t,...,i_{t-k+1})=p(i_{t+1}|i_t,...,i_{t-k})$. The average number of bits needed to encode the observation in $t+1$ if the previous $k$ values are known is given by
+
+$$
+  h_I(k)=- \sum_i p\left(i_{t+1}, i_t^{(k)}\right) \cdot log \left(p\left(i_{t+1}|i_t^{(k)}\right)\right),
+$$ where $i^{(k)}_t=(i_t,...,i_{t-k+1})$. $h_J(l)$ can be derived analogously for process $J$. In the bivariate case, information flow from process $J$ to process $I$ is measured by quantifying the deviation from the generalized Markov property $p(i_{t+1}| i_t^{(k)})=p(i_{t+1}| i_t^{(k)},j_t^{(l)})$ relying on the Kullback-Leibler distance (Schreiber 2000). Thus, (Shannon) transfer entropy is given by:
+
+$$
+  T_{J \rightarrow I}(k,l) = \sum_{i,j} p\left(i_{t+1}, i_t^{(k)}, j_t^{(l)}\right) \cdot log \left(\frac{p\left(i_{t+1}| i_t^{(k)}, j_t^{(l)}\right)}{p\left(i_{t+1}|i_t^{(k)}\right)}\right),
+$$ where $T_{J\rightarrow I}$ consequently measures the information flow from $J$ to $I$ ( $T_{I \rightarrow J}$ as a measure for the information flow from $I$ to $J$ can be derived analogously).
+
+The above transfer entropy estimates are commonly biased due to small sample effects. A remedy is provided by the effective transfer entropy [@MK02], which is computed in the following way:
+
+$$
+  ET_{J \rightarrow I}(k,l)=  T_{J \rightarrow I}(k,l)- T_{J_{\text{shuffled}} \rightarrow I}(k,l),
+$$ where $T_{J_{\text{shuffled}} \rightarrow I}(k,l)$ indicates the transfer entropy using a shuffled version of the time series of $J$. Shuffling implies randomly drawing values from the time series of $J$ and realigning them to generate a new time series. This procedure destroys the time series dependencies of $J$ as well as the statistical dependencies between $J$ and $I$. As a result $T_{J_{\text{shuffled}} \rightarrow I}(k,l)$ converges to zero with increasing sample size and any nonzero value of $T_{J_{\text{shuffled}} \rightarrow I}(k,l)$ is due to small sample effects. The transfer entropy estimates from shuffled data can therefore be used as an estimator for the bias induced by these small sample effects. To derive a consistent estimator, shuffling is repeated many times and the average of the resulting shuffled transfer entropy estimates across all replications is subtracted from the Shannon transfer entropy estimate to obtain a bias corrected effective transfer entropy estimate.
+
+## Transfer entropy and financial time series
+
+According to @Terry.2016, transfer entropy may be considered to be a generalisation of Granger causality and is in this respect, able to answer the question how much information is transferred at a certain time step from the past of one time series to the current state of another time series. @Terry.2016 emphasise that transfer entropy is an asynchronous measure of information flow and, therefore, able to quantify differing amounts of information flow from a time series X to a time series Y opposed to the flow from Y to X.
+
+Previous entropy based measures (e.g., mutual information) did not expose this directional characteristic. @Syczewska.2014 argue that financial time series often show autoregressive conditional heteroscedasticity and show non‐Gaussian statistics alongside nonlinear correlations. In this respect, they give an overview of Granger causality tests for nonstationary financial time series and refer to the method published by @Toda.1995 as well as concepts for nonlinear Granger causality that may be applied in financial analysis, yet require more complicated steps to prepare and analyze such data. @Thomas.2013 state that Granger causality has been a predominant measure to detect relationships between time series, however, its insights may often only be used to interpret the existence, and possibly compare statistics, rather than measure the exact quantity of information flow in financial time series as several assumptions about the underlying statistics and dynamics must be met for a quantitative interpretation of Granger causality. Transfer entropy on the contrary, according to @Thomas.2013, is not limited to the assumptions made by the predominantly applied measures of Granger causality, especially regarding linear dynamics. Other methods, such as the Hasbrouck information share, assume cointegration between time series, whereas transfer entropy does again not have such prerequisites. Therefore, @Thomas.2013 state that transfer entropy is applicable even if one cannot be sure about whether the assumptions required by the standard models are met by the data.
+
+More recently, @Scaramozzino.2021 consider the causal information flow between social media sentiment and the top 50 S&P500 index. Their network inference algorithm showed that entropy measures of information show the most intense social media flows are from the tech sector. A important area in finance to understand the complexity of network connecitivity is the systemic risk of financial systems. @Nicola.2020 using a information network modelling to understand the systemic risk dynamics in the US banking system. Their bank network model finds causal links to leading financial stress indicators, including the LIBOR Index Swap Rate, the St Louis Fed Financial Stress Index and the USD/CHF exchange rates.
+
+Considering the above mentioned discussions, transfer entropy is a promising generalized measure for quantifying the extent and direction of information flow between financial time series.
+
+## Machine learning workflow for multivariate transfer entropy
+
+The machine learning workflow we developed constitutes advances over traditional econometric approaches as we were able to perform a hyperparameter grid search in a parallel manner. The hyperparameter grid search traverses the meta‐space of results dependent on methodological settings such as the chosen lags for causal inference, strictly stationary versus not strictly stationary processes considered, conditional mutual information estimator used for transfer entropy, and so forth. The parameter space we wish to traverse is indicated by combinations of the following value sets:
+
+-   Time series analysed: etf flows and their first difference
+
+-   Subsampling methods
+
+    -   20 replications of 30 data points in each subsample of the original full series available (# obs)
+
+-   Conditional Mutual Information Estimator: (JidtGaussianCMI, JditKraskovCMI)
+
+-   Minimum lag considered: 0
+
+-   Maximum lag considered 50
+
+# Data and initial results
+
+The data is sourced from Bloomberg and consists of daily indices capturing net ETF Flows into different bond categories of ETF in the US market. The data is for the period `r first(df_anal$Date)` - `r last(df_anal$Date)`. The sample also include three interest ratios, US 3-month LIBOR, EU 3-Month LIBOR and the SONIA interest rate benchmark.
+
+```{r plot}
+
+df_anal %>%
+  mutate(Dates=dmy(Dates)) %>%
+  arrange(Dates) %>%
+  gather(variable,value,-Dates) %>%
+    # mutate(predictors=if_else(variable %in% c('d_USD3M','d_EUR3M','d_USD1W','d_EUR1W'),"Rate_Change","Flows")) %>%
+  ggplot(aes(x=Dates,y=value,colour=variable)) +
+  geom_line() +
+  labs(title="Interest rates and ETF Flows",x="") +
+  facet_wrap(~variable,scales = "free_y") +
+  theme(legend.position = 'none',
+        axis.text = element_text(size=5))
+
+```
+
+## Linear pairwise correlations
+
+```{r correlation}
+cor(df_anal %>% dplyr::select(-Dates)) %>% 
+  corrplot(method="circle",title="linear correlations")
+```
+
+An obvious correlation between the three interest rates. There are also some strong correlations among the ETF bond flows that will require careful consideration. For instance, the correlation of the level time series of ETF flows between Municipal (MUNI) and Government (GOVE), Corporate(CORP) and High Yield (HIGH), Municipal and High Yield, Investment(INVE) and Aggregate(AGGR), and Investment and Intermediate(INTE) are highly positive.
+
+## Network inference graphs
+
+Below plots the results of the network inference analysis. One practical problem is the control of statistical errors that arise from testing multiple sources in a data set
+
+![Causal inference graph for full sample](full-network-pretty.png){fig-align="center"}
+
+![Causal inference network graph for credit easing period](ce-network-pretty.png){fig-align="center"}

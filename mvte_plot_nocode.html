@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-0.9.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Lisha Li">
+<meta name="author" content="Barry Quinn">
+<meta name="author" content="Lisa Sheenan">
+<meta name="dcterms.date" content="2022-07-01">
+
+<title>Credit easing, Bond ETF Flows and network inference algorithms</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="mvte_plot_nocode_files/libs/clipboard/clipboard.min.js"></script>
+<script src="mvte_plot_nocode_files/libs/quarto-html/quarto.js"></script>
+<script src="mvte_plot_nocode_files/libs/quarto-html/popper.min.js"></script>
+<script src="mvte_plot_nocode_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="mvte_plot_nocode_files/libs/quarto-html/anchor.min.js"></script>
+<link href="mvte_plot_nocode_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="mvte_plot_nocode_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="mvte_plot_nocode_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="mvte_plot_nocode_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="mvte_plot_nocode_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Credit easing, Bond ETF Flows and network inference algorithms</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Authors</div>
+    <div class="quarto-title-meta-contents">
+             <p>Lisha Li </p>
+             <p>Barry Quinn </p>
+             <p>Lisa Sheenan </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 1, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<section id="abstract" class="level1">
+<h1>Abstract</h1>
+<p>Network inference algorithms are valuable tools for the study of complex financial multivariate time series. Multivariate transfer entropy is well suited for this task, being a model-free measure that captures nonlinear and lagged dependencies between time series to infer a minimal directed network model. Greedy algorithms have been proposed to efficiently deal with high-dimensional datasets while avoiding redundant inferences and capturing synergistic effects. However, multiple statistical comparisons may inflate the false positive rate and are computationally demanding, which limited the size of previous validation studies. The algorithm we present addresses these challenges by employing hierarchical statistical tests to control the family-wise error rate and to allow for efficient parallel computing. We apply the algorithm investigate the information flow in the fixed income ETF markets, when the recent credit easing period was implement.</p>
+<section id="measuring-information-flows-using-transfer-entropy" class="level2">
+<h2 class="anchored" data-anchor-id="measuring-information-flows-using-transfer-entropy">Measuring information flows using transfer entropy</h2>
+<p>Let <span class="math inline">\(log\)</span> denote the logarithm to the base 2, then informational gain is measured in bits. Shannon entropy (Shannon 1948) states that for a discrete random variable <span class="math inline">\(J\)</span> with probability distribution <span class="math inline">\(p(j)\)</span>, where <span class="math inline">\(j\)</span> stands for the different outcomes the random variable <span class="math inline">\(J\)</span> can take, the average number of bits required to optimally encode independent draws from the distribution of <span class="math inline">\(J\)</span> can be calculated as</p>
+<p><span class="math display">\[
+  H_J = - \sum_j p(j) \cdot log \left(p(j)\right).
+\]</span></p>
+<p>Formally, Shannon’s formula is a measure for uncertainty, which increases with the number of bits needed to optimally encode a sequence of realizations of <span class="math inline">\(J\)</span>. In order to measure the information flow between two processes, Shannon entropy is combined with the concept of the Kullback-Leibler distance <span class="citation" data-cites="KL51">(<a href="#ref-KL51" role="doc-biblioref"><strong>KL51?</strong></a>)</span> and by assuming that the underlying processes evolve over time according to a Markov process (Schreiber 2000).</p>
+<p>Let <span class="math inline">\(I\)</span> and <span class="math inline">\(J\)</span> denote two discrete random variables with marginal probability distributions <span class="math inline">\(p(i)\)</span> and <span class="math inline">\(p(j)\)</span> and joint probability distribution <span class="math inline">\(p(i,j)\)</span>, whose dynamical structures correspond to stationary Markov processes of order <span class="math inline">\(k\)</span> (process <span class="math inline">\(I\)</span>) and <span class="math inline">\(l\)</span> (process <span class="math inline">\(J\)</span>). The Markov property implies that the probability to observe <span class="math inline">\(I\)</span> at time <span class="math inline">\(t+1\)</span> in state <span class="math inline">\(i\)</span> conditional on the <span class="math inline">\(k\)</span> previous observations is <span class="math inline">\(p(i_{t+1}|i_t,...,i_{t-k+1})=p(i_{t+1}|i_t,...,i_{t-k})\)</span>. The average number of bits needed to encode the observation in <span class="math inline">\(t+1\)</span> if the previous <span class="math inline">\(k\)</span> values are known is given by</p>
+<p><span class="math display">\[
+  h_I(k)=- \sum_i p\left(i_{t+1}, i_t^{(k)}\right) \cdot log \left(p\left(i_{t+1}|i_t^{(k)}\right)\right),
+\]</span> where <span class="math inline">\(i^{(k)}_t=(i_t,...,i_{t-k+1})\)</span>. <span class="math inline">\(h_J(l)\)</span> can be derived analogously for process <span class="math inline">\(J\)</span>. In the bivariate case, information flow from process <span class="math inline">\(J\)</span> to process <span class="math inline">\(I\)</span> is measured by quantifying the deviation from the generalized Markov property <span class="math inline">\(p(i_{t+1}| i_t^{(k)})=p(i_{t+1}| i_t^{(k)},j_t^{(l)})\)</span> relying on the Kullback-Leibler distance (Schreiber 2000). Thus, (Shannon) transfer entropy is given by:</p>
+<p><span class="math display">\[
+  T_{J \rightarrow I}(k,l) = \sum_{i,j} p\left(i_{t+1}, i_t^{(k)}, j_t^{(l)}\right) \cdot log \left(\frac{p\left(i_{t+1}| i_t^{(k)}, j_t^{(l)}\right)}{p\left(i_{t+1}|i_t^{(k)}\right)}\right),
+\]</span> where <span class="math inline">\(T_{J\rightarrow I}\)</span> consequently measures the information flow from <span class="math inline">\(J\)</span> to <span class="math inline">\(I\)</span> ( <span class="math inline">\(T_{I \rightarrow J}\)</span> as a measure for the information flow from <span class="math inline">\(I\)</span> to <span class="math inline">\(J\)</span> can be derived analogously).</p>
+<p>The above transfer entropy estimates are commonly biased due to small sample effects. A remedy is provided by the effective transfer entropy <span class="citation" data-cites="MK02">(<a href="#ref-MK02" role="doc-biblioref"><strong>MK02?</strong></a>)</span>, which is computed in the following way:</p>
+<p><span class="math display">\[
+  ET_{J \rightarrow I}(k,l)=  T_{J \rightarrow I}(k,l)- T_{J_{\text{shuffled}} \rightarrow I}(k,l),
+\]</span> where <span class="math inline">\(T_{J_{\text{shuffled}} \rightarrow I}(k,l)\)</span> indicates the transfer entropy using a shuffled version of the time series of <span class="math inline">\(J\)</span>. Shuffling implies randomly drawing values from the time series of <span class="math inline">\(J\)</span> and realigning them to generate a new time series. This procedure destroys the time series dependencies of <span class="math inline">\(J\)</span> as well as the statistical dependencies between <span class="math inline">\(J\)</span> and <span class="math inline">\(I\)</span>. As a result <span class="math inline">\(T_{J_{\text{shuffled}} \rightarrow I}(k,l)\)</span> converges to zero with increasing sample size and any nonzero value of <span class="math inline">\(T_{J_{\text{shuffled}} \rightarrow I}(k,l)\)</span> is due to small sample effects. The transfer entropy estimates from shuffled data can therefore be used as an estimator for the bias induced by these small sample effects. To derive a consistent estimator, shuffling is repeated many times and the average of the resulting shuffled transfer entropy estimates across all replications is subtracted from the Shannon transfer entropy estimate to obtain a bias corrected effective transfer entropy estimate.</p>
+</section>
+<section id="transfer-entropy-and-financial-time-series" class="level2">
+<h2 class="anchored" data-anchor-id="transfer-entropy-and-financial-time-series">Transfer entropy and financial time series</h2>
+<p>According to <span class="citation" data-cites="Terry.2016">Terry et al. (<a href="#ref-Terry.2016" role="doc-biblioref">2016</a>)</span>, transfer entropy may be considered to be a generalisation of Granger causality and is in this respect, able to answer the question how much information is transferred at a certain time step from the past of one time series to the current state of another time series. <span class="citation" data-cites="Terry.2016">Terry et al. (<a href="#ref-Terry.2016" role="doc-biblioref">2016</a>)</span> emphasise that transfer entropy is an asynchronous measure of information flow and, therefore, able to quantify differing amounts of information flow from a time series X to a time series Y opposed to the flow from Y to X.</p>
+<p>Previous entropy based measures (e.g., mutual information) did not expose this directional characteristic. <span class="citation" data-cites="Syczewska.2014">(<a href="#ref-Syczewska.2014" role="doc-biblioref"><strong>Syczewska.2014?</strong></a>)</span> argue that financial time series often show autoregressive conditional heteroscedasticity and show non‐Gaussian statistics alongside nonlinear correlations. In this respect, they give an overview of Granger causality tests for nonstationary financial time series and refer to the method published by <span class="citation" data-cites="Toda.1995">Toda and Yamamoto (<a href="#ref-Toda.1995" role="doc-biblioref">1995</a>)</span> as well as concepts for nonlinear Granger causality that may be applied in financial analysis, yet require more complicated steps to prepare and analyze such data. <span class="citation" data-cites="Thomas.2013">Thomas and Julia (<a href="#ref-Thomas.2013" role="doc-biblioref">2013</a>)</span> state that Granger causality has been a predominant measure to detect relationships between time series, however, its insights may often only be used to interpret the existence, and possibly compare statistics, rather than measure the exact quantity of information flow in financial time series as several assumptions about the underlying statistics and dynamics must be met for a quantitative interpretation of Granger causality. Transfer entropy on the contrary, according to <span class="citation" data-cites="Thomas.2013">Thomas and Julia (<a href="#ref-Thomas.2013" role="doc-biblioref">2013</a>)</span>, is not limited to the assumptions made by the predominantly applied measures of Granger causality, especially regarding linear dynamics. Other methods, such as the Hasbrouck information share, assume cointegration between time series, whereas transfer entropy does again not have such prerequisites. Therefore, <span class="citation" data-cites="Thomas.2013">Thomas and Julia (<a href="#ref-Thomas.2013" role="doc-biblioref">2013</a>)</span> state that transfer entropy is applicable even if one cannot be sure about whether the assumptions required by the standard models are met by the data.</p>
+<p>More recently, <span class="citation" data-cites="Scaramozzino.2021">Scaramozzino, Cerchiello, and Aste (<a href="#ref-Scaramozzino.2021" role="doc-biblioref">2021</a>)</span> consider the causal information flow between social media sentiment and the top 50 S&amp;P500 index. Their network inference algorithm showed that entropy measures of information show the most intense social media flows are from the tech sector. A important area in finance to understand the complexity of network connecitivity is the systemic risk of financial systems. <span class="citation" data-cites="Nicola.2020">Nicola, Cerchiello, and Aste (<a href="#ref-Nicola.2020" role="doc-biblioref">2020</a>)</span> using a information network modelling to understand the systemic risk dynamics in the US banking system. Their bank network model finds causal links to leading financial stress indicators, including the LIBOR Index Swap Rate, the St Louis Fed Financial Stress Index and the USD/CHF exchange rates.</p>
+<p>Considering the above mentioned discussions, transfer entropy is a promising generalized measure for quantifying the extent and direction of information flow between financial time series.</p>
+</section>
+<section id="machine-learning-workflow-for-multivariate-transfer-entropy" class="level2">
+<h2 class="anchored" data-anchor-id="machine-learning-workflow-for-multivariate-transfer-entropy">Machine learning workflow for multivariate transfer entropy</h2>
+<p>The machine learning workflow we developed constitutes advances over traditional econometric approaches as we were able to perform a hyperparameter grid search in a parallel manner. The hyperparameter grid search traverses the meta‐space of results dependent on methodological settings such as the chosen lags for causal inference, strictly stationary versus not strictly stationary processes considered, conditional mutual information estimator used for transfer entropy, and so forth. The parameter space we wish to traverse is indicated by combinations of the following value sets:</p>
+<ul>
+<li><p>Time series analysed: etf flows and their first difference</p></li>
+<li><p>Subsampling methods</p>
+<ul>
+<li>20 replications of 30 data points in each subsample of the original full series available (# obs)</li>
+</ul></li>
+<li><p>Conditional Mutual Information Estimator: (JidtGaussianCMI, JditKraskovCMI)</p></li>
+<li><p>Minimum lag considered: 0</p></li>
+<li><p>Maximum lag considered 50</p></li>
+</ul>
+</section>
+</section>
+<section id="data-and-initial-results" class="level1">
+<h1>Data and initial results</h1>
+<p>The data is sourced from Bloomberg and consists of daily indices capturing net ETF Flows into different bond categories of ETF in the US market. The data is for the period - . The sample also include three interest ratios, US 3-month LIBOR, EU 3-Month LIBOR and the SONIA interest rate benchmark.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df_anal <span class="sc">%&gt;%</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Dates=</span><span class="fu">dmy</span>(Dates)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Dates) <span class="sc">%&gt;%</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(variable,value,<span class="sc">-</span>Dates) <span class="sc">%&gt;%</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># mutate(predictors=if_else(variable %in% c('d_USD3M','d_EUR3M','d_USD1W','d_EUR1W'),"Rate_Change","Flows")) %&gt;%</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Dates,<span class="at">y=</span>value,<span class="at">colour=</span>variable)) <span class="sc">+</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Interest rates and ETF Flows"</span>,<span class="at">x=</span><span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>variable,<span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">'none'</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="mvte_plot_nocode_files/figure-html/plot-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<section id="linear-pairwise-correlations" class="level2">
+<h2 class="anchored" data-anchor-id="linear-pairwise-correlations">Linear pairwise correlations</h2>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(df_anal <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>Dates)) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">corrplot</span>(<span class="at">method=</span><span class="st">"circle"</span>,<span class="at">title=</span><span class="st">"linear correlations"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="mvte_plot_nocode_files/figure-html/correlation-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Some obvious correlation in the three interest rates. There are also some strong correlations among the ETF bond flows that will require careful consideration. For instance, the correlation of the level time series of ETF flows between Municipal (MUNI) and and Government (GOVE), Corporate(CORP) and High Yield (HIGH), Municipal and High Yield, Investment(INVE) and Aggregate(AGGR), and Investment and Intermediate(INTE) are highly positive.</p>
+</section>
+<section id="network-inference-graphs" class="level2">
+<h2 class="anchored" data-anchor-id="network-inference-graphs">Network inference graphs</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="full-network-pretty.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Causal inference graph for full sample</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ce-network-pretty.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Causal inference network graph for credit easing period</figcaption><p></p>
+</figure>
+</div>
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-Nicola.2020" class="csl-entry" role="doc-biblioentry">
+Nicola, Giancarlo, Paola Cerchiello, and Tomaso Aste. 2020. <span>“<span class="nocase">Information Network Modeling for U.S. Banking Systemic Risk</span>.”</span> <em>Entropy</em> 22 (11): 1331. <a href="https://doi.org/10.3390/e22111331">https://doi.org/10.3390/e22111331</a>.
+</div>
+<div id="ref-Scaramozzino.2021" class="csl-entry" role="doc-biblioentry">
+Scaramozzino, Roberta, Paola Cerchiello, and Tomaso Aste. 2021. <span>“<span class="nocase">Information Theoretic Causality Detection between Financial and Sentiment Data</span>.”</span> <em>Entropy</em> 23 (5): 621. <a href="https://doi.org/10.3390/e23050621">https://doi.org/10.3390/e23050621</a>.
+</div>
+<div id="ref-Terry.2016" class="csl-entry" role="doc-biblioentry">
+Terry, Bossomaier, Lionel Barnett, Michael Harré, and Joseph T Lizier. 2016. <em><span class="nocase">An Introduction to Transfer Entropy: Information Flow in Complex Systems</span></em>. Springer International Publishing. <a href="https://doi.org/10.1007/978-3-319-43222-9">https://doi.org/10.1007/978-3-319-43222-9</a>.
+</div>
+<div id="ref-Thomas.2013" class="csl-entry" role="doc-biblioentry">
+Thomas, Dimpfl, and Franziska Julia Peter. 2013. <span>“<span class="nocase">Using transfer entropy to measure information flows between financial markets</span>.”</span> <em>Stud. Nonlinear Dyn. Econom.</em> 17 (1): 85–102. <a href="https://doi.org/10.1515/snde-2012-0044">https://doi.org/10.1515/snde-2012-0044</a>.
+</div>
+<div id="ref-Toda.1995" class="csl-entry" role="doc-biblioentry">
+Toda, Hiro Y., and Taku Yamamoto. 1995. <span>“<span class="nocase">Statistical inference in vector autoregressions with possibly integrated processes</span>.”</span> <em>Journal of Econometrics</em> 66 (1-2): 225–50. <a href="https://doi.org/10.1016/0304-4076(94)01616-8">https://doi.org/10.1016/0304-4076(94)01616-8</a>.
+</div>
+</div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
